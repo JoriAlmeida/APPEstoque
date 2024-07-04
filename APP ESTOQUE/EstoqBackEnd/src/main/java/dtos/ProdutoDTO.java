@@ -1,13 +1,15 @@
 package dtos;
 
 
+import entity.FornecedorEntity;
 import entity.ProdutoEntity;
 
 public class ProdutoDTO {
 
 	private int id_prod;
 
-	private int fk_id_forn;
+
+	private FornecedorEntity fornecedorEntity;
 	private String prod_nome;
 	private String prod_descricao;
 	private int prod_ponto_rep;
@@ -17,7 +19,7 @@ public class ProdutoDTO {
 	
 	public ProdutoDTO(ProdutoEntity produtoEntity) {
 		this.id_prod = produtoEntity.getId_prod();
-		this.fk_id_forn = produtoEntity.getFornecedorEntity() !=null ? produtoEntity.getFornecedorEntity().getId_forn(): 0;
+		this.fornecedorEntity = new FornecedorEntity();
 		this.prod_nome = produtoEntity.getProd_nome();
 		this.prod_descricao = produtoEntity.getProd_descricao();
 		this.prod_ponto_rep = produtoEntity.getProd_ponto_rep();
@@ -26,7 +28,8 @@ public class ProdutoDTO {
 
 	public ProdutoDTO(int id_prod, int fk_id_forn, String prod_nome, String prod_descricao, int prod_ponto_rep, double valor_quant) {
 		this.id_prod = id_prod;
-		this.fk_id_forn = fk_id_forn;
+		this.fornecedorEntity = new FornecedorEntity();
+		this.fornecedorEntity.setId_forn(fk_id_forn);
 		this.prod_nome = prod_nome;
 		this.prod_descricao = prod_descricao;
 		this.prod_ponto_rep = prod_ponto_rep;
@@ -43,12 +46,12 @@ public class ProdutoDTO {
 		this.id_prod = id_prod;
 	}
 
-	public int getFk_id_forn() {
-		return fk_id_forn;
+	public FornecedorEntity getFornecedorEntity() {
+		return fornecedorEntity;
 	}
 
-	public void setFk_id_forn(int fk_id_forn) {
-		this.fk_id_forn = fk_id_forn;
+	public void setFornecedorEntity(FornecedorEntity fornecedorEntity) {
+		this.fornecedorEntity = fornecedorEntity;
 	}
 	
 	

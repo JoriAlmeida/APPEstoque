@@ -1,7 +1,6 @@
 package entity;
 
 
-import com.estoque.aplicacao.entidades.TP_Movimentacao;
 
 import dtos.ProdutoDTO;
 import jakarta.persistence.Entity;
@@ -22,7 +21,7 @@ public class ProdutoEntity {
 	
 
 	@ManyToOne
-    @JoinColumn(name = "fk_id_forn")
+    @JoinColumn(name = "fornecedor")
 	private FornecedorEntity fornecedorEntity;
 	
 	private String prod_nome;
@@ -35,7 +34,7 @@ public class ProdutoEntity {
 	public ProdutoEntity(ProdutoDTO produtoDTO) {
 		this.id_prod = produtoDTO.getId_prod();
 		this.fornecedorEntity = new FornecedorEntity();
-		this.fornecedorEntity.setId_forn(produtoDTO.get());
+		this.fornecedorEntity.setId_forn(produtoDTO.getFk_id_forn());
 		this.prod_nome = produtoDTO.getProd_nome();
 		this.prod_descricao = produtoDTO.getProd_descricao();
 		this.prod_ponto_rep = produtoDTO.getProd_ponto_rep();
