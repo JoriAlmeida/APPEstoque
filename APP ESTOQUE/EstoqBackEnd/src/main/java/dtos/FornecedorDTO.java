@@ -1,5 +1,7 @@
 package dtos;
 
+import entity.FornecedorEntity;
+
 public class FornecedorDTO {
 
 	
@@ -9,6 +11,32 @@ public class FornecedorDTO {
 	private String forn_email;
 	private String forn_cnpj;
 	private String forn_endereco;
+		
+	
+	public FornecedorDTO(){
+	}
+	
+	public FornecedorDTO(FornecedorEntity fornecedorEntity) {
+		this.id_forn = fornecedorEntity.getId_forn();
+		this.forn_nome = fornecedorEntity.getForn_nome();
+		this.forn_telefone = fornecedorEntity.getForn_telefone();
+		this.forn_email = fornecedorEntity.getForn_email();
+		this.forn_cnpj = fornecedorEntity.getForn_cnpj();
+		this.forn_endereco = fornecedorEntity.getForn_endereco();
+	}
+	
+	
+	public FornecedorDTO(int id_forn, String forn_nome, String forn_telefone, String forn_email, String forn_cnpj, String forn_endereco) {
+		this.id_forn = id_forn;
+		this.forn_nome = forn_nome;
+		this.forn_telefone = forn_telefone;
+		this.forn_email = forn_email;
+		this.forn_cnpj = forn_cnpj;
+		this.forn_endereco = forn_endereco;
+	}
+	
+	
+	
 	
 	public int getId_forn() {
 		return id_forn;

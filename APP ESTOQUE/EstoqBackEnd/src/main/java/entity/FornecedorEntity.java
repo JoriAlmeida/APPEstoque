@@ -1,6 +1,10 @@
 package entity;
 
+import dtos.FornecedorDTO;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
@@ -8,12 +12,36 @@ import jakarta.persistence.Table;
 public class FornecedorEntity {
 	
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_forn;
+	
 	private String forn_nome;
 	private String forn_telefone;
 	private String forn_email;
 	private String forn_cnpj;
 	private String forn_endereco;
+	
+	
+	public FornecedorEntity(FornecedorDTO fornecedorDTO) {
+		this.id_forn = fornecedorDTO.getId_forn();
+		this.forn_nome = fornecedorDTO.getForn_nome();
+		this.forn_telefone = fornecedorDTO.getForn_telefone();
+		this.forn_email = fornecedorDTO.getForn_email();
+		this.forn_cnpj = fornecedorDTO.getForn_cnpj();
+		this.forn_endereco = fornecedorDTO.getForn_endereco();
+
+	}
+	
+	public FornecedorEntity(int id_forn, String forn_nome, String forn_telefone, String forn_email, String forn_cnpj, String forn_endereco) {
+		this.id_forn = id_forn;
+		this.forn_nome = forn_nome;
+		this.forn_telefone = forn_telefone;
+		this.forn_email = forn_email;
+		this.forn_cnpj = forn_cnpj;
+		this.forn_endereco = forn_endereco;
+	}
+	
 	
 	public int getId_forn() {
 		return id_forn;

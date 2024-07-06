@@ -1,0 +1,113 @@
+.containerLogin{
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(45deg, blue, indigo, violet);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+.boxLogin{
+    align-items: center;
+    height: 450px;
+    width: 460px;
+    border: 1.5px solid white;
+    border-radius: 8%;
+    box-shadow:2px #4B0082;
+    
+}
+
+.logoLogin{
+    margin-top: 40px;
+    text-align: center;
+}
+
+.imagemLogin{
+    width: 140px;
+    height: 140px;
+}
+
+.botaoLogin{
+    margin-top: 50px;
+
+}
+
+.buttonLogin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 35px;
+    margin-left: 90px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    background-color: #4B0082;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.buttonLogin:focus {
+    outline: none;
+}
+
+.buttonLogin:hover {
+    background-color: #551A8B;
+    transform: scale(1.05);
+}
+
+.buttonLogin:active {
+    background-color: #301934;
+    transform: scale(1);
+}
+
+.emailLogin{
+    margin-left: 60px;
+    font-size: 20px;
+    margin-top: 50px;
+    display: flex;
+}
+
+.inputEmail{
+    height: 25px;
+    width: 350px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid black;
+    outline: none;
+    font-size: 22px;
+}
+
+
+.inputEmail::placeholder {
+    color: white;
+    opacity: 85%;
+    text-align: center;
+}
+
+.inputSenha{
+    height: 25px;
+    width: 350px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid black;
+    outline: none;
+    font-size: 22px;
+}
+
+.inputSenha::placeholder {
+    color: white;
+    opacity: 85%;
+    text-align: center;
+}
+
+.senhaLogin{
+    margin-left: 60px;
+    font-size: 20px;
+    margin-top: 30px;
+}
+

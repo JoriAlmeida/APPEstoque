@@ -19,7 +19,7 @@ public class ProdutoController {
 		this.produtoService = produtoService;
 	}
 
-	@GetMapping(value = "/encontrartodos")
+	@GetMapping(value = "/encontrarProdutos")
 	public List<ProdutoDTO> encontrarProdutos() {
 		return produtoService.encontrarProdutos();
 	}

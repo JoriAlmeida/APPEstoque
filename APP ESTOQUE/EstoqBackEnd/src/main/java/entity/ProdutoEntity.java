@@ -1,9 +1,9 @@
 package entity;
 
 
-
 import dtos.ProdutoDTO;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -19,9 +19,8 @@ public class ProdutoEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_prod;
 	
-
-	@ManyToOne
-    @JoinColumn(name = "fornecedor")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "fk_id_forn")
 	private FornecedorEntity fornecedorEntity;
 	
 	private String prod_nome;
@@ -31,9 +30,10 @@ public class ProdutoEntity {
 	
 
 	
+	
 	public ProdutoEntity(ProdutoDTO produtoDTO) {
 		this.id_prod = produtoDTO.getId_prod();
-		this.fornecedorEntity = new FornecedorEntity();
+
 		this.fornecedorEntity.setId_forn(produtoDTO.getFk_id_forn());
 		this.prod_nome = produtoDTO.getProd_nome();
 		this.prod_descricao = produtoDTO.getProd_descricao();
