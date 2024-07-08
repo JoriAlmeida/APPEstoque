@@ -1,0 +1,160 @@
+.menu-wrapper {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+
+}
+  
+  .menu-sidebar {
+    width: 100%;
+    background: linear-gradient(45deg, blue, indigo, violet);
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+
+  }
+  
+  .profile-section {
+    width: 100%;
+    display: flex;
+    flex-direction: row;  
+    justify-content: space-between;
+    border-bottom: 1px solid;
+  }
+  
+  .avatar-placeholder {
+    margin-top: 10px;
+    width: 80px;
+    height: 80px;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 40px;
+  }
+  
+  .avatar-placeholder svg {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .menu-buttons {
+    margin-top: 70px;
+    display: flex;
+    gap: 10px;
+    justify-content: space-around;
+
+  }
+  
+  .botaoSair{
+    display: flex;
+    gap: 10px;
+    padding: 20px;
+
+  }
+  
+  
+  .main-button {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 23px;
+    font-weight: bold;
+  }
+
+  .main-buttonDeposito{
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 23px;
+    font-weight: bold;
+    background: none;
+  }
+  
+  
+  .logoSair {
+    border: none;
+    cursor: pointer;
+    color: white;
+    display: flex;
+    justify-content: flex-end;
+    text-decoration: none;
+  }
+  
+  .logoSair :hover,
+  .submenu-button:hover {
+    color: yellow;
+  }
+  
+  .submenu-button {
+    padding: 3px 20px;
+    border: none;
+    cursor: pointer;
+    color: black;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #add8e6;
+    opacity: 80%;
+  }
+  
+  .main-button:hover,
+  .submenu-button:hover {
+    color: white;
+    font-weight: bold;
+  }
+
+  .main-buttonDeposito:hover,
+  .submenu-button:hover {
+    color: white;
+    font-weight: bold;
+  }
+  
+  .content-section {
+    background-color: white;
+    flex:5;
+    border-left: solid 1px;
+  }
+  
+
+  .submenu-container {
+    display:flex;
+    flex-direction: column;
+  }
+
+  .NomeUsuario{
+    margin-top: -2px;
+    font-size: 20px;
+    margin-left: 15px;
+    color: white;
+  }
+
+  .boxProfile{
+    display: flex;
+    flex-direction: column;
+    margin-right: 50px;
+  }
+
+  .submenu-container.active {
+
+    border: 0.5px solid;
+    position: absolute;
+    display: flex;
+    flex-direction:column;
+    background: none; 
+    margin-top: 52px;
+    margin-right: 300px;
+  }
+  

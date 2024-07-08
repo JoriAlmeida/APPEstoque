@@ -1,131 +1,53 @@
-.visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    padding: 0;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
-  }
- 
-  .produtos-box h1 {
-    text-align: center;
-    margin-top: 70px;
-    font-weight: bold;
-    font-size: 70px
-  }
- 
-  .produto-bar {
-    display: flex;
-    justify-content: end;
-    padding: 10px 40px 10px 10px;
-    margin-top: 50px;
- 
-  }
- 
-  .produtoFornecedor-bar {
-    display: flex;
-    justify-content: end;
-    padding: 10px 40px 10px 10px;
-    margin-bottom: 50px;
- 
-  }
- 
- 
-  .tableProdutos {
-    margin-left: 70px;
-    width: 90%;
-    border-collapse: collapse;
-    border: 1px solid;
- 
-  }
- 
-  .tableProdutos th,
-  .tableProdutos td {
-    border-bottom: 1px solid #dcdcdc;
-    text-align: center;
-    border: 1px solid;
-  }
- 
-  .tableProdutos th {
-    background-color: #778899;
-    text-align: center;
-  }
- 
-  .botaoBuscar {
-    width: 100px;
-    height: 30px;
-    margin-right: 130px;
-  }
- 
-  .inputBusca::placeholder {
-    color: black;
- 
-  }
- 
-  .inputBusca:hover {
-    background-color: white;
-  }
- 
-  .inputBusca {
-    background-color: #dcdcdc;
-    width: 600px;
-    height: 30px;
-    margin-right: 20px;
-    border: 0.1px solid #778899;
-    ;
-    border-radius: 8px;
-  }
- 
-  .iconesCrudProdutos {
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    margin-left: 80px;
-  }
- 
-  .boxBotaoCadastro {
-    display: flex;
-    justify-content: end;
-    margin-right: 40px;
-  }
- 
-  .botaoCadastroProduto {
-    margin-right: 20px;
-    color: black;
-  }
- 
-  .botaoCadastroProduto {
-    display: flex;
-    justify-content: end;
-    margin-right: 40px;
-  }
- 
-  .textoProduto h1 {
-    font-size: 50px;
-    font-weight: bold;
-  }
- 
-  .textoProduto {
-    margin-top: -40px;
-  }
- 
-  tbody tr:nth-child(odd) {
-    background-color: #dcdcdc;
-  }
- 
-  tbody tr:nth-child(even) {
-    background-color: #ffffff;
-  }
- 
- 
-  .inputWrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
- 
-  .inputBusca {
-    padding-right: 40px;
-  }
+.containerProduto {
+  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.tituloProduto {
+  margin-bottom: 20px;
+}
+
+.search-inputProduto {
+  padding: 10px;
+  width: 80%;
+  max-width: 400px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.product-table {
+  margin-left: 150px;
+  width: 80%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.product-table th, .product-table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.button-containerProduto {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.action-button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.action-button:hover {
+  background-color: #0056b3;
+}
