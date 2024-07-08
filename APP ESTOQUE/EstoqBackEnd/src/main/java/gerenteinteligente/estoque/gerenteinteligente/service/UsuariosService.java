@@ -44,7 +44,7 @@ public class UsuariosService {
 
 	
 	
-	
+	/*
 	public ResponseEntity<String> VerificarLogin(String usu_email, String usu_senha) {
 		UsuariosEntity usuariosEntity = usuariosRepository.findByEmail(usu_email);
 
@@ -58,6 +58,7 @@ public class UsuariosService {
 
 		return new ResponseEntity<>(String.valueOf(usuariosEntity.getId_usuario()), HttpStatus.OK);
 	}
+	*/
 	
 
 

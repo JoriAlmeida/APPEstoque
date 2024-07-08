@@ -16,7 +16,6 @@ public class ProdutoDTO {
 
 	}
 	
-	
 	public ProdutoDTO(ProdutoEntity produtoEntity) {
 		this.id_prod = produtoEntity.getId_prod();
 		this.fk_id_forn = produtoEntity.getFornecedorEntity() != null? produtoEntity.getFornecedorEntity().getId_forn() : 0;
@@ -25,25 +24,30 @@ public class ProdutoDTO {
 		this.prod_ponto_rep = produtoEntity.getProd_ponto_rep();
 		this.valor_quant = produtoEntity.getValor_quant();
 	}
-
 	
+	public ProdutoDTO(int id_prod, int fk_id_forn, String prod_nome, String prod_descricao, int prod_ponto_rep, double valor_quant) {
+		this.id_prod = id_prod;
+		this.fk_id_forn = fk_id_forn;
+		this.prod_nome = prod_nome;
+		this.prod_descricao = prod_descricao;
+		this.prod_ponto_rep = prod_ponto_rep;
+		this.valor_quant = valor_quant;
+	}
+
 	public int getId_prod() {
 		return id_prod;
 	}
 	public void setId_prod(int id_prod) {
 		this.id_prod = id_prod;
 	}
-
 	
 	public int getFk_id_forn() {
 		return fk_id_forn;
 	}
 
-
 	public void setFk_id_forn(int fk_id_forn) {
 		this.fk_id_forn = fk_id_forn;
 	}	
-	
 	
 	public String getProd_nome() {
 		return prod_nome;

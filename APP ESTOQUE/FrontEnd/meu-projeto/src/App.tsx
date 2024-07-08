@@ -5,14 +5,20 @@ import Login from './pages/login/login';
 import Produtos from './pages/produtos/produtos';
 import Fornecedores from './pages/fornecedores/fornecedores';
 import Menu from './pages/menu/menu';
+import CadastroProduto from './pages/cadastrarProdutos/cadastrarProdutos';
 
 function App() {
+
+
+
   return (
     <Routes>
       <Route path="/" element={<Login />} />
       <Route path="/menu" element={<Menu />} />
       <Route path="/produtos" element={<Produtos />} />
+      <Route path="/cadastroprodutos" element={<CadastroProduto/>} />
       <Route path="/fornecedores" element={<Fornecedores />} />
+
     </Routes>
   );
 }

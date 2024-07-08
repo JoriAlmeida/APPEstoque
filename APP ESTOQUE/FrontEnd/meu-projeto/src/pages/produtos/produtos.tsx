@@ -10,42 +10,19 @@ function Produtos() {
   const navegate = useNavigate();
 
   const [searchTerm, setSearchTerm] = useState('');
-
   const [produto, setProduto] = useState<Array<Produto>>([]);
-  const [validador, setValidador] = useState('');
+
 
   async function carregarProdutos() {
     const resp = await axios.get('http://localhost:8081/produtos/encontrarProdutos');
     setProduto(resp.data);
-    console.log(resp.data)
-
-
-    if (produto != undefined) {
-      setValidador(resp.data[0]);
-    }
-    else {
-      alert('ERROR');
-    }
   }
-
-  async function verificador() {
-    if (validador == "") {
-
-    } else {
-      setValidador("dados")
-    }
-
-  }
-
 
 
   useEffect(() => {
     carregarProdutos();
 
   }, [])
-
-
-
 
 
 

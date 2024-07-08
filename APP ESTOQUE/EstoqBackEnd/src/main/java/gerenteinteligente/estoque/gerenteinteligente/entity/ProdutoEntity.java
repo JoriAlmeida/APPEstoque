@@ -33,16 +33,17 @@ public class ProdutoEntity {
 	public ProdutoEntity() {
 
 	}
-	
+
 	public ProdutoEntity(ProdutoDTO produtoDTO) {
 		this.id_prod = produtoDTO.getId_prod();
-
-		this.fornecedorEntity.setId_forn(produtoDTO.getFk_id_forn());
+	    this.fornecedorEntity = new FornecedorEntity();
+	    this.fornecedorEntity.setId_forn(produtoDTO.getFk_id_forn());
 		this.prod_nome = produtoDTO.getProd_nome();
 		this.prod_descricao = produtoDTO.getProd_descricao();
 		this.prod_ponto_rep = produtoDTO.getProd_ponto_rep();
 		this.valor_quant = produtoDTO.getValor_quant();
 	}
+	
 
 	
 	public int getId_prod() {

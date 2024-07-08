@@ -33,9 +33,11 @@ public class UsuariosController {
 		return usuariosService.findById(id);
 	}
 	
+	/*
 	@GetMapping(value = "/verifyemail/{usu_email}/{usu_senha}")
 	public ResponseEntity<String> VerificarLogin(@PathVariable String usu_email, @PathVariable String usu_senha) {
 		return usuariosService.VerificarLogin(usu_email, usu_senha);
 	}
+	*/
 
 }
