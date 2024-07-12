@@ -1,8 +1,6 @@
 package gerenteinteligente.estoque.gerenteinteligente.entity;
 
-
 import gerenteinteligente.estoque.gerenteinteligente.dtos.UsuariosDTO;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,35 +20,36 @@ public class UsuariosEntity {
 	private int usu_permissao;
 	private String usu_nome;
 	private String usu_cpf;
-	private String usu_email;
+	
+	private String email;
 	
 	private String usu_senha;
 	
-	
+	public UsuariosEntity() {
+
+	}
 	
 	public UsuariosEntity(UsuariosDTO usuariosDTO) {
 		this.id_usuario = usuariosDTO.getId_usuario();
 		this.usu_permissao = usuariosDTO.getUsu_permissao();
 		this.usu_nome = usuariosDTO.getUsu_nome();
 		this.usu_cpf = usuariosDTO.getUsu_cpf();
-		this.usu_email = usuariosDTO.getUsu_email();
+		this.email = usuariosDTO.getEmail();
 		this.usu_senha = usuariosDTO.getUsu_senha();
 	}
 	
 	
-	public UsuariosEntity(int id_usuario, int usu_permissao, String usu_nome, String usu_cpf, String usu_email, String usu_senha) {
+	public UsuariosEntity(int id_usuario, int usu_permissao, String usu_nome, String usu_cpf, String email, String usu_senha) {
 		this.id_usuario = id_usuario;
 		this.usu_permissao = usu_permissao;
 		this.usu_nome = usu_nome;
 		this.usu_cpf = usu_cpf;
-		this.usu_email = usu_email;
+		this.email = email;
 		this.usu_senha = usu_senha;
 	}
 	
 	
-	public UsuariosEntity() {
 
-	}
 	
 	public int getId_usuario() {
 		return id_usuario;
@@ -84,12 +83,12 @@ public class UsuariosEntity {
 		this.usu_cpf = usu_cpf;
 	}
 
-	public String getUsu_email() {
-		return usu_email;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUsu_email(String usu_email) {
-		this.usu_email = usu_email;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getUsu_senha() {
@@ -99,6 +98,7 @@ public class UsuariosEntity {
 	public void setUsu_senha(String usu_senha) {
 		this.usu_senha = usu_senha;
 	}
+	
 
 	
 }

@@ -3,6 +3,7 @@ package gerenteinteligente.estoque.gerenteinteligente.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,36 +31,35 @@ public class UsuariosService {
 	}
 	
 	
-	public UsuariosDTO findById(int id_usuario) {
-		UsuariosEntity usuariosEntity = usuariosRepository.findById(id_usuario).get();
 
-		if (usuariosEntity == null) {
-			return null;
-		}
-
-		UsuariosDTO usuariosDTO = new UsuariosDTO(usuariosEntity);
-
+	public UsuariosDTO findByEmail(String email) {
+		UsuariosEntity usuariosEntity = usuariosRepository.findByEmail(email.toLowerCase());
+		UsuariosDTO usuariosDTO = converterLista(usuariosEntity);
 		return usuariosDTO;
 	}
 
-	
-	
-	/*
-	public ResponseEntity<String> VerificarLogin(String usu_email, String usu_senha) {
-		UsuariosEntity usuariosEntity = usuariosRepository.findByEmail(usu_email);
+	public ResponseEntity<String> verificarlogin(String email, String usu_senha) {
+
+		UsuariosEntity usuariosEntity = usuariosRepository.findByEmail(email.toLowerCase());
 
 		if (usuariosEntity == null) {
-			return new ResponseEntity<>("The informed customer [" + usu_email + "] does not exist.", HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>("Usuario não cadastrado", HttpStatus.NOT_FOUND);
 		}
 
 		if ((usu_senha).equals(usuariosEntity.getUsu_senha())) {
-			return new ResponseEntity<>("E-mail and password do not match.", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>("Login realizado com sucesso!", HttpStatus.OK);
 		}
 
-		return new ResponseEntity<>(String.valueOf(usuariosEntity.getId_usuario()), HttpStatus.OK);
+		return new ResponseEntity<>("Login realizado com sucesso!", HttpStatus.OK);
 	}
-	*/
-	
 
+	//Converte lista para DTO
+	private UsuariosDTO converterLista(UsuariosEntity usuariosEntity) {
+		UsuariosDTO usuariosDTO = new UsuariosDTO(usuariosEntity.getId_usuario(), usuariosEntity.getUsu_permissao(), usuariosEntity.getUsu_nome(),usuariosEntity.getUsu_cpf(),usuariosEntity.getEmail(), usuariosEntity.getUsu_senha());
+
+		return usuariosDTO;
+	}
+	
+	
 
 }

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { Produto } from 'Models/Produto';
-import ComponentMenu from 'Component/ComponentMenu';
+import { Produto } from '../../Models/Produto';
+import ComponentMenu from '../../Component/ComponentMenu';
 import './produtos.css';
 
 
 function Produtos() {
-  const navegate = useNavigate();
+  const navegacao = useNavigate();
 
   const [searchTerm, setSearchTerm] = useState('');
   const [produto, setProduto] = useState<Array<Produto>>([]);
@@ -15,7 +15,8 @@ function Produtos() {
 
   async function carregarProdutos() {
     const resp = await axios.get('http://localhost:8081/produtos/encontrarProdutos');
-    setProduto(resp.data);
+    setProduto(resp.data.slice(0, 10));
+
   }
 
 
@@ -33,8 +34,6 @@ function Produtos() {
         <input
           type="text"
           placeholder="Buscar produto por nome"
-  
-       
           className="search-inputProduto"
         />
         <table className="product-table">
@@ -46,6 +45,8 @@ function Produtos() {
               <th>Descrição</th>
               <th>Ponto de Reposição</th>
               <th>Valor Unit</th>
+              <th>Status</th>
+              <th>Exibir Produto</th>
             </tr>
           </thead>
           <tbody>
@@ -57,14 +58,14 @@ function Produtos() {
                 <td>{produto.prod_descricao}</td>
                 <td>{produto.prod_ponto_rep}</td>
                 <td>{produto.valor_quant}</td>
+                <td>{produto.prod_status}</td>
+                <td><button onClick={() => navegacao('../editarProdutos')}>Editar</button></td>
               </tr>
             ))}
           </tbody>
         </table>
         <div className="button-containerProduto">
-          <button className="action-button">Cadastrar Produto</button>
-          <button className="action-button">Excluir Produto</button>
-          <button className="action-button">Editar Produto</button>
+          <button className="action-button" onClick={() => navegacao('../cadastroProdutos')}>Cadastrar Produto</button>
         </div>
       </div>
     </ComponentMenu>

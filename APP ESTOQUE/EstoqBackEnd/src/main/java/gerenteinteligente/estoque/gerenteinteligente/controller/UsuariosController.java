@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import gerenteinteligente.estoque.gerenteinteligente.dtos.ProdutoDTO;
 import gerenteinteligente.estoque.gerenteinteligente.dtos.UsuariosDTO;
 import gerenteinteligente.estoque.gerenteinteligente.entity.UsuariosEntity;
 import gerenteinteligente.estoque.gerenteinteligente.service.UsuariosService;
@@ -28,16 +29,21 @@ public class UsuariosController {
 	}
 	
 	
-	@GetMapping(value = "/{id}")
-	public UsuariosDTO findById(@PathVariable int id) {
-		return usuariosService.findById(id);
+	
+	@GetMapping(value = "/encontrarusuarios")
+	public List<UsuariosDTO> encontrarUsuarios() {
+		return usuariosService.encontrarUsuarios();
 	}
 	
-	/*
-	@GetMapping(value = "/verifyemail/{usu_email}/{usu_senha}")
-	public ResponseEntity<String> VerificarLogin(@PathVariable String usu_email, @PathVariable String usu_senha) {
-		return usuariosService.VerificarLogin(usu_email, usu_senha);
+	
+	@GetMapping(value = "/z'/{email}")
+	public UsuariosDTO encontraremail(@PathVariable String email) {
+		return usuariosService.findByEmail(email);
 	}
-	*/
+
+	@GetMapping(value = "/verificarlogin/{email}/{usu_senha}")
+	public ResponseEntity<String> verificarlogin(@PathVariable String email, @PathVariable String usu_senha) {
+		return usuariosService.verificarlogin(email, usu_senha);
+	}
 
 }

@@ -10,6 +10,8 @@ public class ProdutoDTO {
 	private String prod_descricao;
 	private int prod_ponto_rep;
 	private double valor_quant;
+
+	private String prod_status;
 	
 	
 	public ProdutoDTO() {
@@ -23,15 +25,17 @@ public class ProdutoDTO {
 		this.prod_descricao = produtoEntity.getProd_descricao();
 		this.prod_ponto_rep = produtoEntity.getProd_ponto_rep();
 		this.valor_quant = produtoEntity.getValor_quant();
+		this.prod_status = produtoEntity.getProd_status();
 	}
 	
-	public ProdutoDTO(int id_prod, int fk_id_forn, String prod_nome, String prod_descricao, int prod_ponto_rep, double valor_quant) {
+	public ProdutoDTO(int id_prod, int fk_id_forn, String prod_nome, String prod_descricao, int prod_ponto_rep, double valor_quant, String prod_status) {
 		this.id_prod = id_prod;
 		this.fk_id_forn = fk_id_forn;
 		this.prod_nome = prod_nome;
 		this.prod_descricao = prod_descricao;
 		this.prod_ponto_rep = prod_ponto_rep;
 		this.valor_quant = valor_quant;
+		this.prod_status = prod_status;
 	}
 
 	public int getId_prod() {
@@ -72,6 +76,14 @@ public class ProdutoDTO {
 	}
 	public void setValor_quant(double valor_quant) {
 		this.valor_quant = valor_quant;
+	}
+	
+	public String getProd_status() {
+		return prod_status;
+	}
+
+	public void setProd_status(String prod_status) {
+		this.prod_status = prod_status;
 	}
 }
 

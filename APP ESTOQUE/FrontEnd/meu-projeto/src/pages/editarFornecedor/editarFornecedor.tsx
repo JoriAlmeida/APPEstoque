@@ -1,0 +1,140 @@
+import React, { useState, useEffect } from 'react';
+import ComponentMenu from '../../Component/ComponentMenu';
+import './editarFornecedor.css';
+import { useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
+import { Fornecedor } from '../../Models/Fornecedor';
+
+function EditarFornecedor() {
+
+    const navegacao = useNavigate();
+    const param = useParams();
+
+    const [id_forn, setId_forn] = useState(0);
+    const [forn_nome, setForn_nome] = useState("");
+    const [forn_telefone, setForn_telefone] = useState("");
+    const [forn_email, setForn_email] = useState("");
+    const [forn_cnpj, setForn_cnpj] = useState("");
+    const [forn_endereco, setForn_endereco] = useState("");
+    const [forn_status, setForn_status] = useState("");
+    const navegate = useNavigate();
+
+
+    const [fornecedor, setFornecedor] = useState<Array<Fornecedor>>([]);
+
+    useEffect(() => {
+        axios.get("http://localhost:8081/fornecedor/encontrarFornecedorId/" + param.id)
+            .then(response => {
+                setId_forn((response).data.id_forn);
+                setForn_nome((response).data.forn_nome);
+                setForn_telefone((response).data.forn_telefone);
+                setForn_email((response).data.forn_email)
+                setForn_cnpj((response).data.forn_cnpj);
+                setForn_endereco((response).data.forn_endereco);
+                setForn_status((response).data.forn_status);
+            });
+    }, []);
+
+
+    async function alterarFornecedor(event: { preventDefault: () => void; }) {
+        event.preventDefault()
+        const bodyRequest = {
+            id_forn: id_forn,
+            forn_nome: forn_nome,
+            forn_telefone: forn_telefone,
+            forn_email: forn_email,
+            forn_cnpj: forn_cnpj,
+            forn_endereco: forn_endereco,
+            forn_status:forn_status
+        }
+
+        await axios.put('http://localhost:8081/fornecedor/editarFornecedor/'+ id_forn, bodyRequest).then((result) => {
+            alert("Fornecedor alterado com sucesso")
+            console.log(bodyRequest)
+        })
+    }
+
+
+    return (
+        <ComponentMenu>
+            <div className="cadastroFornecedor-container">
+                <h2 className="cadastroFornecedor-titulo">Editar Fornecedore</h2>
+                <div className="cadastroFornecedor-formGroup">
+                    <label className="cadastroFornecedor-label">ID do Fornecedo</label>
+                    <input
+                        type="text"
+                        name="fornecedor_id"
+                        value={id_forn}
+                        onChange={e => setId_forn(Number(e.target.value))}
+                        className="cadastroFornecedor-input"
+                    />
+                </div>
+                <div className="cadastroFornecedor-formGroup">
+                    <label className="cadastroFornecedor-label">Nome do Fornecedor</label>
+                    <input
+                        type="text"
+                        name="fornecedor_nome"
+                        value={forn_nome}
+                        onChange={e => setForn_nome(e.target.value)}
+                        className="cadastroFornecedor-input"
+                    />
+                </div>
+                <div className="cadastroFornecedor-formGroup">
+                    <label className="cadastroFornecedor-label">Telefone do Fornecedor</label>
+                    <input
+                        name="fornecedor_telefone"
+                        value={forn_telefone}
+                        onChange={e => setForn_telefone(e.target.value)}
+                        className="cadastroFornecedor-input"
+                    />
+                </div>
+                <div className="cadastroFornecedor-formGroup">
+                    <label className="cadastroFornecedor-label">Email do Fornecedore</label>
+                    <input
+                        type="email"
+                        name="fornecedor_email"
+                        value={forn_email}
+                        onChange={e => setForn_email(e.target.value)}
+                        className="cadastroFornecedor-input"
+                    />
+                </div>
+                <div className="cadastroFornecedor-formGroup">
+                    <label className="cadastroFornecedor-label">CNPJ do Fornecedor</label>
+                    <input
+                        type="number"
+                        name="fornecedor_cnpj"
+                        value={forn_cnpj}
+                        onChange={e => setForn_cnpj(e.target.value)}
+                        className="cadastroFornecedor-input"
+                    />
+                </div>
+                <div className="cadastroFornecedor-formGroup">
+                    <label className="cadastroFornecedor-label">Endereco do Fornecedor</label>
+                    <input
+                        type="text"
+                        name="fornecedor_endereco"
+                        value={forn_endereco}
+                        onChange={e => setForn_endereco(e.target.value)}
+                        className="cadastroFornecedor-input"
+                    />
+                </div>
+                <div className="cadastroFornecedor-formGroup">
+                    <label className="cadastroFornecedor-label">Status</label>
+                    <input
+                        type="text"
+                        name="fornecedor_status"
+                        value={forn_status}
+                        onChange={e => setForn_status(e.target.value)}
+                        className="cadastroFornecedor-input"
+                    />
+                </div>
+                <div className="cadastroFornecedor-buttonContainer">
+                    <button className="cadastroFornecedor-actionButton" onClick={alterarFornecedor}>Confirmar</button>
+                    <button className="cadastroFornecedor-actionButton cadastroProduto-cancelButton" onClick={() => navegacao('../fornecedores')}>Cancelar</button>
+                </div>
+            </div>
+        </ComponentMenu>
+    )
+}
+
+export default EditarFornecedor;

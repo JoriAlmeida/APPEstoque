@@ -6,11 +6,14 @@ import axios from 'axios';
 
 function CadastroProduto() {
 
+    const navegacao = useNavigate();
+
     const [fk_id_forn, setFk_id_forn] = useState(0);
-    const [prod_nome, setNome_produto] = useState("");
+    const [prod_nome, setProd_nome] = useState("");
     const [prod_descricao, setProduto_descricao] = useState("");
     const [prod_ponto_rep, setProd_ponto_rep] = useState(0);
     const [valor_quant, setValor_quant] = useState(0);
+    const [prod_status, setProd_status] = useState("");
     const navegate = useNavigate();
 
     async function acrescentarProduto(e) {
@@ -21,6 +24,7 @@ function CadastroProduto() {
             prod_descricao: prod_descricao,
             prod_ponto_rep: prod_ponto_rep,
             valor_quant: valor_quant,
+            prod_status: prod_status,
         }
 
         var validarProduto = /[a-z]/g;
@@ -43,7 +47,7 @@ function CadastroProduto() {
             else {
                 try {
                     e.preventDefault();
-                    await axios.post('http://localhost:8080/produtos/cadastrarnovoproduto', bodyRequest).then(response =>
+                    await axios.post('http://localhost:8081/produtos/cadastrarProdutos', bodyRequest).then(response =>
                         alert("Produto novo inserido")
 
                     );
@@ -66,6 +70,7 @@ function CadastroProduto() {
                         type="number"
                         name="fornecedor"
                         value={fk_id_forn}
+                        onChange={e => setFk_id_forn(Number(e.target.value))}
                         className="cadastroProduto-input"
                     />
                 </div>
@@ -75,6 +80,7 @@ function CadastroProduto() {
                         type="text"
                         name="nome"
                         value={prod_nome}
+                        onChange={e => setProd_nome(e.target.value)}
                         className="cadastroProduto-input"
                     />
                 </div>
@@ -83,6 +89,7 @@ function CadastroProduto() {
                     <textarea
                         name="descricao"
                         value={prod_descricao}
+                        onChange={e => setProduto_descricao(e.target.value)}
                         className="cadastroProduto-input"
                     />
                 </div>
@@ -92,6 +99,7 @@ function CadastroProduto() {
                         type="number"
                         name="pontoReposicao"
                         value={prod_ponto_rep}
+                        onChange={e => setProd_ponto_rep(Number(e.target.value))}
                         className="cadastroProduto-input"
                     />
                 </div>
@@ -102,12 +110,23 @@ function CadastroProduto() {
                         step="0.01"
                         name="valorUnitario"
                         value={valor_quant}
+                        onChange={e => setValor_quant(Number(e.target.value))}
+                        className="cadastroProduto-input"
+                    />
+                </div>
+                <div className="cadastroProduto-formGroup">
+                    <label className="cadastroProduto-label">Status</label>
+                    <input
+                        type="text"
+                        name="produto_status"
+                        value={prod_status}
+                        onChange={e => setProd_status(e.target.value)}
                         className="cadastroProduto-input"
                     />
                 </div>
                 <div className="cadastroProduto-buttonContainer">
-                    <button className="cadastroProduto-actionButton" >Confirmar Cadastro</button>
-                    <button className="cadastroProduto-actionButton cadastroProduto-cancelButton" >Cancelar</button>
+                    <button className="cadastroProduto-actionButton" onClick={acrescentarProduto}>Confirmar Cadastro</button>
+                    <button className="cadastroProduto-actionButton cadastroProduto-cancelButton" onClick={() => navegacao('../produtos')}>Cancelar</button>
                 </div>
             </div>
         </ComponentMenu>

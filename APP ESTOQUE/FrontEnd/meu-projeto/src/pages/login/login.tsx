@@ -27,26 +27,22 @@ function Login() {
 
     const resultado = await axios
       .get(
-        "http://localhost:8081/usuario/encontrarUsuarios/" + bodyRequest.USU_EMAIL + "/" + bodyRequest.USU_SENHA
+        "http://localhost:8081/usuario/verificarlogin/" + bodyRequest.USU_EMAIL + "/" + bodyRequest.USU_SENHA
       )
+      
       .then((response) => {
-        if (response.data === "Administrador") {
-          alert("Abrir tela administrador");
-          navegate("../menu");
-        } else {
 
-          userId = response.data;
-          alert("Logado com Sucesso");
-          return navegate('/homeCliente/' + userId);
-        }
+        navegate("../menu");
+
       })
       .catch((error) => {
         if (error.response.status == 404) {
-          alert("E-mail ou Senha invalida");
+          alert("Email ou senha invalido.");
         } else if ((error.response.status = 401)) {
-          alert("E-mail ou Senha invalida");
+          alert("Email ou senha invalido.");
         }
       });
+       
 
 
   }

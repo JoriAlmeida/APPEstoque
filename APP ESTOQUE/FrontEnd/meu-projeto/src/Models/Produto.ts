@@ -5,4 +5,5 @@ export interface Produto{
     prod_descricao: string,   
     prod_ponto_rep: number,
     valor_quant: number,
+    prod_status: string,
 }

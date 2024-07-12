@@ -1,0 +1,68 @@
+ 
+  .cadastroFornecedor-container {
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 40%;
+    align-items: center;
+    margin-left: 450px;
+    margin-top: 15px;
+
+  }
+  
+  .cadastroFornecedor-titulo {
+    margin-bottom: 20px;
+  }
+  
+  .cadastroFornecedor-formGroup {
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  
+  .cadastroFornecedor-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .cadastroFornecedor-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  textarea.cadastroFornecedor-input {
+    resize: vertical;
+  }
+  
+  .cadastroFornecedor-buttonContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .cadastroFornecedor-actionButton {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cadastroFornecedor-actionButton:hover {
+    background-color: #0056b3;
+  }
+  
+  .cadastroFornecedor-cancelButton {
+    background-color: #dc3545;
+  }
+  
+  .cadastroFornecedor-cancelButton:hover {
+    background-color: #c82333;
+  }

@@ -21,13 +21,14 @@ public class ProdutoEntity {
 	private int id_prod;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_forn")
+	@JoinColumn(name = "fk_id_forn")
 	private FornecedorEntity fornecedorEntity;
 	
 	private String prod_nome;
 	private String prod_descricao;
 	private int prod_ponto_rep;
 	private double valor_quant;
+	private String prod_status;
 	
 
 	public ProdutoEntity() {
@@ -42,9 +43,8 @@ public class ProdutoEntity {
 		this.prod_descricao = produtoDTO.getProd_descricao();
 		this.prod_ponto_rep = produtoDTO.getProd_ponto_rep();
 		this.valor_quant = produtoDTO.getValor_quant();
+		this.prod_status = produtoDTO.getProd_status();
 	}
-	
-
 	
 	public int getId_prod() {
 		return id_prod;
@@ -81,6 +81,25 @@ public class ProdutoEntity {
 	}
 	public void setValor_quant(double valor_quant) {
 		this.valor_quant = valor_quant;
+	}
+	
+	public String getProd_status() {
+		return prod_status;
+	}
+
+	public void setProd_status(String prod_status) {
+		this.prod_status = prod_status;
+	}
+	
+	public ProdutoEntity setAlterarCadastro(ProdutoEntity produtoEntity, ProdutoDTO produtoDTO) {
+		produtoEntity.setProd_nome(produtoDTO.getProd_nome());
+		produtoEntity.setProd_descricao(produtoDTO.getProd_descricao());
+		produtoEntity.setProd_ponto_rep(produtoDTO.getProd_ponto_rep());
+		produtoEntity.fornecedorEntity.setId_forn(produtoDTO.getFk_id_forn());
+		produtoEntity.setValor_quant(produtoDTO.getValor_quant());
+		produtoEntity.setProd_status(produtoDTO.getProd_status());
+
+		return produtoEntity;
 	}
 
 }

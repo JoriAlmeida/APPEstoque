@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,6 +26,11 @@ public class ProdutoController {
 	public ProdutoController (ProdutoService produtoService) {
 		this.produtoService = produtoService;
 	}
+	
+	@GetMapping(value = "/encontrarpeloid/{id}")
+	public ProdutoDTO findById(@PathVariable int id) {
+		return produtoService.findById(id);
+	}
 
 	@GetMapping(value = "/encontrarProdutos")
 	public List<ProdutoDTO> encontrarProdutos() {
@@ -36,6 +43,16 @@ public class ProdutoController {
         return new ResponseEntity<>(produtoSalvo, HttpStatus.CREATED);
     }
 	
+	@PutMapping(value = "/alterarProduto/{id}")
+	public void alterarProduto(@PathVariable int id, @RequestBody ProdutoDTO produtoDTO) {
+		produtoService.alterarProduto(id, produtoDTO);
+	}
+
+	@PutMapping(value = "/status/{id}")
+	public ProdutoDTO alterarStatus(@PathVariable int id) {
+		return produtoService.alterarStatus(id);
+
+	}
 
 
 }

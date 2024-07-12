@@ -4,12 +4,11 @@ import gerenteinteligente.estoque.gerenteinteligente.entity.UsuariosEntity;
 
 public class UsuariosDTO {
 
-	
 	private int id_usuario;
 	private int usu_permissao;
 	private String usu_nome;
 	private String usu_cpf;
-	private String usu_email;
+	private String email;
 	private String usu_senha;
 	
 	public UsuariosDTO() {
@@ -21,17 +20,17 @@ public class UsuariosDTO {
 		this.usu_permissao = usuariosEntity.getUsu_permissao();
 		this.usu_nome = usuariosEntity.getUsu_nome();
 		this.usu_cpf = usuariosEntity.getUsu_cpf();
-		this.usu_email = usuariosEntity.getUsu_email();
+		this.email = usuariosEntity.getEmail();
 		this.usu_senha = usuariosEntity.getUsu_senha();
 	}
 	
 	
-	public UsuariosDTO(int id_usuario, int usu_permissao, String usu_nome, String usu_cpf, String usu_email, String usu_senha) {
+	public UsuariosDTO(int id_usuario, int usu_permissao, String usu_nome, String usu_cpf, String email, String usu_senha) {
 		this.id_usuario = id_usuario;
 		this.usu_permissao = usu_permissao;
 		this.usu_nome = usu_nome;
 		this.usu_cpf = usu_cpf;
-		this.usu_email = usu_email;
+		this.email = email;
 		this.usu_senha = usu_senha;
 	}
 	
@@ -68,12 +67,12 @@ public class UsuariosDTO {
 		this.usu_cpf = usu_cpf;
 	}
 
-	public String getUsu_email() {
-		return usu_email;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUsu_email(String usu_email) {
-		this.usu_email = usu_email;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getUsu_senha() {

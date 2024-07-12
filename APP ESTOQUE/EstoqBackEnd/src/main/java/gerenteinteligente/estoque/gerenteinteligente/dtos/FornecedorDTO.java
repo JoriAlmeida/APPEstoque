@@ -11,6 +11,7 @@ public class FornecedorDTO {
 	private String forn_email;
 	private String forn_cnpj;
 	private String forn_endereco;
+	private String forn_status;
 		
 	
 	public FornecedorDTO(){
@@ -23,16 +24,18 @@ public class FornecedorDTO {
 		this.forn_email = fornecedorEntity.getForn_email();
 		this.forn_cnpj = fornecedorEntity.getForn_cnpj();
 		this.forn_endereco = fornecedorEntity.getForn_endereco();
+		this.forn_status = fornecedorEntity.getForn_status();
 	}
 	
 	
-	public FornecedorDTO(int id_forn, String forn_nome, String forn_telefone, String forn_email, String forn_cnpj, String forn_endereco) {
+	public FornecedorDTO(int id_forn, String forn_nome, String forn_telefone, String forn_email, String forn_cnpj, String forn_endereco, String forn_status) {
 		this.id_forn = id_forn;
 		this.forn_nome = forn_nome;
 		this.forn_telefone = forn_telefone;
 		this.forn_email = forn_email;
 		this.forn_cnpj = forn_cnpj;
 		this.forn_endereco = forn_endereco;
+		this.forn_status = forn_status;
 	}
 	
 	
@@ -73,6 +76,13 @@ public class FornecedorDTO {
 	}
 	public void setForn_endereco(String forn_endereco) {
 		this.forn_endereco = forn_endereco;
+	}
+	public String getForn_status() {
+		return forn_status;
+	}
+
+	public void setForn_status(String forn_status) {
+		this.forn_status = forn_status;
 	}
 }
 
