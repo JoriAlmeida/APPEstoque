@@ -85,5 +85,8 @@ public class ProdutoDTO {
 	public void setProd_status(String prod_status) {
 		this.prod_status = prod_status;
 	}
+	
+	
+	
 }
 

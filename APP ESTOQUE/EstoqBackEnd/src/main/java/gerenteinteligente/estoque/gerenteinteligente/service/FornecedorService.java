@@ -7,11 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 import gerenteinteligente.estoque.gerenteinteligente.dtos.FornecedorDTO;
-import gerenteinteligente.estoque.gerenteinteligente.dtos.ProdutoDTO;
 import gerenteinteligente.estoque.gerenteinteligente.entity.FornecedorEntity;
-import gerenteinteligente.estoque.gerenteinteligente.entity.ProdutoEntity;
 import gerenteinteligente.estoque.gerenteinteligente.repository.FornecedorRepository;
 
 

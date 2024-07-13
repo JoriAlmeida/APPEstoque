@@ -21,3 +21,11 @@ VALUES (1, 'Nome 1', 'CPF 1', 'admin@admin.com', 'admin');
 -- Inserção com USU_PERMISSAO = 2
 INSERT INTO USUARIO (USU_PERMISSAO, USU_NOME, USU_CPF, EMAIL, USU_SENHA)
 VALUES (2, 'Nome 2', 'CPF 2', 'email2@example.com', 'senha2');
+
+-- Inserir dados de uma loja fictícia
+INSERT INTO loja (loja_nome, loja_endereco, loja_contato)
+VALUES ('Loja A', 'Rua Comercial, 123', '(11) 9876-5432');
+
+-- Inserir dados de outra loja fictícia
+INSERT INTO loja (loja_nome, loja_endereco, loja_contato)
+VALUES ('Loja B', 'Av. Principal, 456', '(22) 1234-5678');

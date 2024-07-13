@@ -32,12 +32,6 @@ public class UsuariosService {
 	
 	
 
-	public UsuariosDTO findByEmail(String email) {
-		UsuariosEntity usuariosEntity = usuariosRepository.findByEmail(email.toLowerCase());
-		UsuariosDTO usuariosDTO = converterLista(usuariosEntity);
-		return usuariosDTO;
-	}
-
 	public ResponseEntity<String> verificarlogin(String email, String usu_senha) {
 
 		UsuariosEntity usuariosEntity = usuariosRepository.findByEmail(email.toLowerCase());

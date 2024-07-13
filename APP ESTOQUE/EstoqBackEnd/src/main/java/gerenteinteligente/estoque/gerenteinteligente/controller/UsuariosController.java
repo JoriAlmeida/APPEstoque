@@ -35,12 +35,6 @@ public class UsuariosController {
 		return usuariosService.encontrarUsuarios();
 	}
 	
-	
-	@GetMapping(value = "/z'/{email}")
-	public UsuariosDTO encontraremail(@PathVariable String email) {
-		return usuariosService.findByEmail(email);
-	}
-
 	@GetMapping(value = "/verificarlogin/{email}/{usu_senha}")
 	public ResponseEntity<String> verificarlogin(@PathVariable String email, @PathVariable String usu_senha) {
 		return usuariosService.verificarlogin(email, usu_senha);

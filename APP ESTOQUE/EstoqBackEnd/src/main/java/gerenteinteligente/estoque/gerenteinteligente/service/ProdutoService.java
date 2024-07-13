@@ -9,7 +9,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import gerenteinteligente.estoque.gerenteinteligente.dtos.ProdutoDTO;
+import gerenteinteligente.estoque.gerenteinteligente.entity.FornecedorEntity;
 import gerenteinteligente.estoque.gerenteinteligente.entity.ProdutoEntity;
+import gerenteinteligente.estoque.gerenteinteligente.repository.FornecedorRepository;
 import gerenteinteligente.estoque.gerenteinteligente.repository.ProdutoRepository;
 
 
@@ -36,17 +38,38 @@ public class ProdutoService {
 	}
 	
     
+    @Autowired
+    private FornecedorRepository fornecedorRepository; // Certifique-se de ter este repositório
+    
     public ProdutoEntity salvarProduto(ProdutoEntity produto) {
+        FornecedorEntity fornecedor = fornecedorRepository.findById(produto.getFornecedorEntity().getId_forn()).orElse(null);
+        if (fornecedor != null) {
+            produto.setFornecedorEntity(fornecedor);
+        }
         return produtoRepository.save(produto);
     }
     	
-	public ProdutoDTO alterarProduto(int id, ProdutoDTO produtoDTO) {
-		ProdutoEntity produtoEntity = produtoRepository.getReferenceById(id);
-		produtoEntity.setAlterarCadastro(produtoEntity, produtoDTO);
-		produtoRepository.save(produtoEntity);
-		ProdutoDTO userDTOResponse = findById(id);
-		return userDTOResponse;
-	}
+    public ProdutoDTO alterarProduto(int id, ProdutoDTO produtoDTO) {
+        ProdutoEntity produtoEntity = produtoRepository.findById(id).orElse(null);
+        
+        if (produtoEntity != null) {
+            FornecedorEntity fornecedor = fornecedorRepository.findById(produtoDTO.getFk_id_forn()).orElse(null);
+            
+            if (fornecedor != null) {
+                produtoEntity.setFornecedorEntity(fornecedor);
+            }
+            
+            produtoEntity.setProd_nome(produtoDTO.getProd_nome());
+            produtoEntity.setProd_descricao(produtoDTO.getProd_descricao());
+            produtoEntity.setProd_ponto_rep(produtoDTO.getProd_ponto_rep());
+            produtoEntity.setValor_quant(produtoDTO.getValor_quant());
+            produtoEntity.setProd_status(produtoDTO.getProd_status());
+            
+            produtoRepository.save(produtoEntity);
+        }
+        
+        return findById(id);
+    }
 	
     
 	public ProdutoDTO alterarStatus(int id) {

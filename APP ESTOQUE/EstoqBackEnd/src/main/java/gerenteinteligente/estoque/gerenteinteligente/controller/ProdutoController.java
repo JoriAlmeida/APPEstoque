@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import gerenteinteligente.estoque.gerenteinteligente.dtos.ProdutoDTO;
+import gerenteinteligente.estoque.gerenteinteligente.entity.FornecedorEntity;
 import gerenteinteligente.estoque.gerenteinteligente.entity.ProdutoEntity;
 import gerenteinteligente.estoque.gerenteinteligente.service.ProdutoService;
 
@@ -38,15 +39,19 @@ public class ProdutoController {
 	}
 
     @PostMapping(value = "/cadastrarProdutos")
-    public ResponseEntity<ProdutoEntity> salvarProduto(@RequestBody ProdutoEntity produto) {
+    public ResponseEntity<ProdutoEntity> salvarProduto(@RequestBody ProdutoDTO produtoDTO) {
+        FornecedorEntity fornecedor = new FornecedorEntity();
+        fornecedor.setId_forn(produtoDTO.getFk_id_forn());
+        ProdutoEntity produto = new ProdutoEntity(produtoDTO, fornecedor);
         ProdutoEntity produtoSalvo = produtoService.salvarProduto(produto);
         return new ResponseEntity<>(produtoSalvo, HttpStatus.CREATED);
     }
 	
-	@PutMapping(value = "/alterarProduto/{id}")
-	public void alterarProduto(@PathVariable int id, @RequestBody ProdutoDTO produtoDTO) {
-		produtoService.alterarProduto(id, produtoDTO);
-	}
+    @PutMapping(value = "/alterarProduto/{id}")
+    public ResponseEntity<ProdutoDTO> alterarProduto(@PathVariable int id, @RequestBody ProdutoDTO produtoDTO) {
+        ProdutoDTO produtoAlterado = produtoService.alterarProduto(id, produtoDTO);
+        return new ResponseEntity<>(produtoAlterado, HttpStatus.OK);
+    }
 
 	@PutMapping(value = "/status/{id}")
 	public ProdutoDTO alterarStatus(@PathVariable int id) {

@@ -20,6 +20,7 @@ public class ProdutoEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_prod;
 	
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "fk_id_forn")
 	private FornecedorEntity fornecedorEntity;
@@ -35,7 +36,7 @@ public class ProdutoEntity {
 
 	}
 
-	public ProdutoEntity(ProdutoDTO produtoDTO) {
+	public ProdutoEntity(ProdutoDTO produtoDTO, FornecedorEntity fornecedorEntity) {
 		this.id_prod = produtoDTO.getId_prod();
 	    this.fornecedorEntity = new FornecedorEntity();
 	    this.fornecedorEntity.setId_forn(produtoDTO.getFk_id_forn());

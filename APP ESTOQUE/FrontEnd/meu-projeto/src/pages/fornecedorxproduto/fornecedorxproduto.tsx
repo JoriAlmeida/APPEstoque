@@ -20,7 +20,7 @@ function Fornecedoresxproduto() {
     const respProd = await axios.get('http://localhost:8081/produtos/encontrarProdutos');
     setProdutos(respProd.data.slice(0, 10));
     setFornecedores(resp.data.slice(0, 10));
-    setFilteredFornecedores(resp.data.slice(0, 10)); // Inicializa a lista filtrada
+    setFilteredFornecedores(resp.data.slice(0, 10));
 
     console.log();
 
@@ -62,7 +62,10 @@ function Fornecedoresxproduto() {
             ))}
           </tbody>
         </table>
+        <div className="button-containerFornecedor">
+          <button className="action-buttonFornecedor" onClick={() => navegacao('../cadastrarFornecedores')}>Cadastrar Fornecedor</button>
 
+        </div>
         <div className="button-containerFornecedor">
         </div>
       </div>
