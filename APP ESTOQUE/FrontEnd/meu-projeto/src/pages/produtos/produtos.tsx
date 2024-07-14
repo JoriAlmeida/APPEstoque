@@ -47,26 +47,26 @@ function Produtos() {
         <table className="product-table">
           <thead>
             <tr>
-              <th>ID Produto</th>
-              <th>ID Fornecedor</th>
+
               <th>Nome Produto</th>
               <th>Descrição</th>
               <th>Ponto de Reposição</th>
               <th>Valor Unit</th>
               <th>Status</th>
+              <th>ID Fornecedor</th>
               <th>Exibir Produto</th>
             </tr>
           </thead>
           <tbody>
             {produto.map(produto => (
               <tr key={produto.id_prod}>
-                <td>{produto.id_prod}</td>
-                <td>{getNomeFornecedor(produto.fk_id_forn)}</td>
+
                 <td>{produto.prod_nome}</td>
                 <td>{produto.prod_descricao}</td>
                 <td>{produto.prod_ponto_rep}</td>
                 <td>{produto.valor_quant}</td>
                 <td>{produto.prod_status}</td>
+                <td>{getNomeFornecedor(produto.fk_id_forn)}</td>
                 <td><button onClick={() => navegacao('../editarProdutos')}>Editar</button></td>
               </tr>
             ))}

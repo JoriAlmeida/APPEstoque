@@ -13,14 +13,14 @@ function Fornecedoresxproduto() {
   const [searchTerm, setSearchTerm] = useState('');
   const [fornecedores, setFornecedores] = useState<Array<Fornecedor>>([]);
   const [produtos, setProdutos] = useState<Array<Produto>>([]);
-  const [filteredFornecedores, setFilteredFornecedores] = useState<Array<Fornecedor>>([]);
+  const [filteredProdutos, setFilteredProdutos] = useState<Array<Produto>>([]);
 
   async function carregarFornecedores() {
     const resp = await axios.get('http://localhost:8081/fornecedor/encontrarFornecedores');
     const respProd = await axios.get('http://localhost:8081/produtos/encontrarProdutos');
     setProdutos(respProd.data.slice(0, 10));
     setFornecedores(resp.data.slice(0, 10));
-    setFilteredFornecedores(resp.data.slice(0, 10));
+    setFilteredProdutos(resp.data.slice(0, 10));
 
     console.log();
 
@@ -34,6 +34,16 @@ function Fornecedoresxproduto() {
     const fornecedor = fornecedores.find(fornecedor => fornecedor.id_forn === id);
     return fornecedor ? fornecedor.forn_nome : 'Desconhecido';
   };
+
+
+  useEffect(() => {
+    // Filtrar fornecedores com base no termo de busca
+    const results = produtos.filter(produtos =>
+      getNomeFornecedor(produtos.fk_id_forn).toLowerCase().includes(searchTerm.toLowerCase())
+      
+    );
+    setFilteredProdutos(results);
+  }, [searchTerm, produtos]);
 
   return (
     <ComponentMenu>
@@ -54,7 +64,7 @@ function Fornecedoresxproduto() {
             </tr>
           </thead>
           <tbody>
-            {produtos.map(produtos => (
+            {filteredProdutos.map(produtos => (
               <tr key={produtos.id_prod}>
                 <td>{getNomeFornecedor(produtos.fk_id_forn)}</td>
                 <td>{produtos.prod_nome}</td>
