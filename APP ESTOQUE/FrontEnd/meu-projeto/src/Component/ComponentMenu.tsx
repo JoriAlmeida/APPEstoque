@@ -3,6 +3,9 @@ import { FaBox, FaWarehouse, FaTruck, FaExchangeAlt, FaUser } from 'react-icons/
 import { NavLink } from 'react-router-dom';
 import '../Component/ComponentMenu.css';
 import { IoExitOutline } from "react-icons/io5";
+import { useNavigate } from 'react-router-dom';
+
+
 
 interface MenuProps {
   children: ReactNode;
@@ -10,6 +13,8 @@ interface MenuProps {
 
 const ComponentMenu: React.FC<MenuProps> = ({ children }) => {
   const [showSubmenus, setShowSubmenus] = useState(false);
+
+  const navegacao = useNavigate();
 
   const toggleSubmenus = () => {
     setShowSubmenus(!showSubmenus);
@@ -20,7 +25,7 @@ const ComponentMenu: React.FC<MenuProps> = ({ children }) => {
       <nav className="menu-sidebar" aria-label="Menu principal">
         <div className="profile-section">
           <div className = "boxProfile">
-          <div className="avatar-placeholder" aria-hidden="true">
+          <div className="avatar-placeholder" aria-hidden="true" onClick={() => navegacao('../menu')}>
             <FaUser size={1} color="black" />
           </div>
           <h1 className ="NomeUsuario">Administrador</h1>

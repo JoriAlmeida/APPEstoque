@@ -54,10 +54,10 @@ function Login() {
             <img className="imagemLogin" src={logo} alt="Logo do login" />
           </div>
           <div className="emailLogin">
-            <input className="inputEmail" type="email" placeholder='Email ID' value={USU_EMAIL} onChange={(e) => loginVerifica(e.target.value)} />
+            <input className="inputEmail" type="email" placeholder='Email ID' value={USU_EMAIL} onChange={(e) => loginVerifica(e.target.value)} required autoComplete="off"/>
           </div>
           <div className="senhaLogin">
-            <input type="password" className="inputSenha" placeholder='Password' value={USU_SENHA} onChange={(e) => senhaVerifica(e.target.value)} />
+            <input type="password" className="inputSenha" placeholder='Password' value={USU_SENHA} onChange={(e) => senhaVerifica(e.target.value)} required autoComplete="new-password"/>
           </div>
 
           <div className="botaoLogin" onClick={verificarLogin}>

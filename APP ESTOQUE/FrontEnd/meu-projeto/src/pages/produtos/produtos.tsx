@@ -67,7 +67,7 @@ function Produtos() {
                 <td>{produto.valor_quant}</td>
                 <td>{produto.prod_status}</td>
                 <td>{getNomeFornecedor(produto.fk_id_forn)}</td>
-                <td><button onClick={() => navegacao('../editarProdutos')}>Editar</button></td>
+                <td><button onClick={() => navegacao('../editarProdutos/'+ produto.id_prod)}>Editar</button></td>
               </tr>
             ))}
           </tbody>
