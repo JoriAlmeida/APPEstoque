@@ -24,7 +24,7 @@ useEffect(() => {
       setFilteredLojas(lojas);
     } else {
       const results = lojas.filter(loja =>
-        `Loja ${loja.id_loja}`.toLowerCase().includes(searchTerm.toLowerCase())
+        `Loja ${loja.loja}`.toLowerCase().includes(searchTerm.toLowerCase())
       );
       setFilteredLojas(results);
     }
@@ -57,12 +57,12 @@ useEffect(() => {
           </thead>
           <tbody>
             {filteredLojas.map(lojas => (
-              <tr key={lojas.id_loja}>
-                <td>Loja {lojas.id_loja}</td>
+              <tr key={lojas.loja}>
+                <td>Loja {lojas.loja}</td>
                 <td>{lojas.loja_nome}</td>
                 <td>{lojas.loja_endereco}</td>
                 <td>{lojas.loja_contato}</td>
-                <td><button onClick={() => navegacao('../movimentacaoLoja/' + lojas.id_loja)}>Editar</button></td>
+                <td><button onClick={() => navegacao('../movimentacaoLoja/' + lojas.loja)}>Editar</button></td>
               </tr>
             ))}
           </tbody>

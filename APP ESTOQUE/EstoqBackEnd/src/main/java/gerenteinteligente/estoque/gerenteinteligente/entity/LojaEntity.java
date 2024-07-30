@@ -13,7 +13,7 @@ public class LojaEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id_loja;
+	private int loja;
 	private String loja_nome;
 	private String loja_endereco;
 	private String loja_contato;
@@ -23,18 +23,18 @@ public class LojaEntity {
 	}
 
 	public LojaEntity(LojaDTO lojaDTO) {
-		this.id_loja = lojaDTO.getId_loja();
+		this.loja = lojaDTO.getLoja();
 		this.loja_nome = lojaDTO.getLoja_nome();
 		this.loja_endereco = lojaDTO.getLoja_endereco();
 		this.loja_contato = lojaDTO.getLoja_contato();
 	}
 
-	public int getId_loja() {
-		return id_loja;
+	public int getLoja() {
+		return loja;
 	}
 
-	public void setId_loja(int id_loja) {
-		this.id_loja = id_loja;
+	public void setLoja(int loja) {
+		this.loja = loja;
 	}
 
 	public String getLoja_nome() {

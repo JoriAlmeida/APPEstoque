@@ -1,68 +1,116 @@
- 
-  .cadastroFornecedor-container {
-    text-align: center;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 40%;
-    align-items: center;
-    margin-left: 450px;
-    margin-top: 15px;
+.editarProduto-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+}
 
-  }
-  
-  .cadastroFornecedor-titulo {
-    margin-bottom: 20px;
-  }
-  
-  .cadastroFornecedor-formGroup {
-    margin-bottom: 15px;
-    text-align: left;
-  }
-  
-  .cadastroFornecedor-label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
-  .cadastroFornecedor-input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  
-  textarea.cadastroFornecedor-input {
-    resize: vertical;
-  }
-  
-  .cadastroFornecedor-buttonContainer {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
-  
-  .cadastroFornecedor-actionButton {
-    padding: 10px 20px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .cadastroFornecedor-actionButton:hover {
-    background-color: #0056b3;
-  }
-  
-  .cadastroFornecedor-cancelButton {
-    background-color: #dc3545;
-  }
-  
-  .cadastroFornecedor-cancelButton:hover {
-    background-color: #c82333;
-  }
+.editarProduto-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.editarProduto-titulo {
+  font-size: 28px;
+  color: #333;
+}
+
+.editarProduto-content {
+  width: 100%;
+  max-width: 1000px;
+}
+
+.editarProduto-form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.editarProduto-formRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.editarProduto-formGroup {
+  flex: 1;
+  min-width: 250px;
+  margin-bottom: 15px;
+}
+
+.editarProduto-formGroup-name {
+  flex: 2;
+  margin-right: 15px;
+}
+
+.editarProduto-formGroup-status {
+  flex: 1;
+}
+
+.editarProduto-formGroup-left {
+  flex: 1;
+  margin-right: 15px;
+}
+
+.editarProduto-descriptionGroup {
+  flex: 2;
+}
+
+.editarProduto-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+.editarProduto-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+textarea.editarProduto-textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+  height: 120px; /* Ajuste a altura conforme necessário */
+  resize: vertical;
+}
+
+.editarProduto-buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.editarProduto-actionButton {
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.editarProduto-actionButton:hover {
+  background-color: #0056b3;
+}
+
+.editarProduto-cancelButton {
+  background-color: #dc3545;
+}
+
+.editarProduto-cancelButton:hover {
+  background-color: #c82333;
+}

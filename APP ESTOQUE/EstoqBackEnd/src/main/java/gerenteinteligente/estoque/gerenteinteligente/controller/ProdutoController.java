@@ -16,6 +16,7 @@ import gerenteinteligente.estoque.gerenteinteligente.dtos.ProdutoDTO;
 import gerenteinteligente.estoque.gerenteinteligente.entity.FornecedorEntity;
 import gerenteinteligente.estoque.gerenteinteligente.entity.ProdutoEntity;
 import gerenteinteligente.estoque.gerenteinteligente.service.ProdutoService;
+import jakarta.transaction.Transactional;
 
 
 @RestController
@@ -58,6 +59,8 @@ public class ProdutoController {
 		return produtoService.alterarStatus(id);
 
 	}
+	
+	
 
 
 }

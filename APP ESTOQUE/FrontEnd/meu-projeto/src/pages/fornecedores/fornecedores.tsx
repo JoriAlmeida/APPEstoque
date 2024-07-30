@@ -38,7 +38,7 @@ function Fornecedores() {
         <input
           type="text"
           placeholder="Buscar fornecedor por nome"
-          className="search-inputProduto"
+          className="search-inputFornecedor"
           value={searchTerm}
           onChange={e => setSearchTerm(e.target.value)}
         />

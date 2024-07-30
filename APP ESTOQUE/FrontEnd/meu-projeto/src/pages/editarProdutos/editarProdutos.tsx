@@ -6,135 +6,108 @@ import axios from 'axios';
 import { Produto } from '../../Models/Produto';
 
 function EditarProdutos() {
-
     const navegacao = useNavigate();
     const param = useParams();
 
-    const [id_prod, setId_prod] = useState(0);
-    const [fk_id_forn, setFk_id_forn] = useState(0);
-    const [prod_nome, setProd_nome] = useState("");
-    const [prod_descricao, setProd_descricao] = useState("");
-    const [prod_ponto_rep, setProd_ponto_rep] = useState(0);
-    const [valor_quant, setValor_quant] = useState(0);
-    const [prod_status, setProd_status] = useState("");
-    const navegate = useNavigate();
-
-
-    const [produto, setProduto] = useState<Array<Produto>>([]);
+    const [produto, setProduto] = useState<Produto | null>(null);
 
     useEffect(() => {
-        axios.get("http://localhost:8081/produtos/encontrarpeloid/" + param.id)
-            .then(response => {
-                setId_prod((response).data.id_prod);
-                setFk_id_forn((response).data.fk_id_forn);
-                setProd_nome((response).data.prod_nome);
-                setProd_descricao((response).data.prod_descricao)
-                setProd_ponto_rep((response).data.prod_ponto_rep);
-                setValor_quant((response).data.valor_quant);
-                setProd_status((response).data.prod_status);
-            });
-    }, []);
+        axios.get(`http://localhost:8081/produtos/encontrarpeloid/${param.id}`)
+            .then(response => setProduto(response.data))
+            .catch(error => console.error('Erro ao buscar produto', error));
+    }, [param.id]);
 
-
-    async function alterarProduto(event: { preventDefault: () => void; }) {
-        event.preventDefault()
-        const bodyRequest = {
-            id_prod: id_prod,
-            fk_id_forn: fk_id_forn,
-            prod_nome: prod_nome,
-            prod_descricao: prod_descricao,
-            prod_ponto_rep: prod_ponto_rep,
-            valor_quant: valor_quant,
-            prod_status:prod_status
+    const alterarProduto = async (event: React.FormEvent) => {
+        event.preventDefault();
+        if (produto) {
+            await axios.put(`http://localhost:8081/produtos/alterarProduto/${produto.id_prod}`, produto)
+                .then(() => {
+                    alert('Produto alterado com sucesso');
+                })
+                .catch(error => console.error('Erro ao atualizar produto', error));
         }
+    };
 
-        await axios.put('http://localhost:8081/produtos/alterarProduto/'+ id_prod, bodyRequest).then((result) => {
-            alert("Fornecedor alterado com sucesso")
-            console.log(bodyRequest)
-        })
-    }
 
+
+    const formatCurrency = (value: number) => {
+        return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value);
+    };
+
+    const parseCurrency = (value: string) => {
+        return Number(value.replace(/[^0-9,-]+/g, '').replace(',', '.'));
+    };
 
     return (
         <ComponentMenu>
-            <div className="cadastroFornecedor-container">
-                <h2 className="cadastroFornecedor-titulo">Editar Fornecedore</h2>
-                <div className="cadastroFornecedor-formGroup">
-                    <label className="cadastroFornecedor-label">ID do Fornecedo</label>
-                    <input
-                        type="text"
-                        name="fornecedor_id"
-                        value={id_prod}
-                        onChange={e => setId_prod(Number(e.target.value))}
-                        className="cadastroFornecedor-input"
-                    />
+            <div className="editarProduto-container">
+                <div className="editarProduto-header">
+                    <h2 className="editarProduto-titulo">Editar Produto</h2>
                 </div>
-                <div className="cadastroFornecedor-formGroup">
-                    <label className="cadastroFornecedor-label">Nome do Fornecedor</label>
-                    <input
-                        type="text"
-                        name="fornecedor_nome"
-                        value={fk_id_forn}
-                        onChange={e => setFk_id_forn(Number(e.target.value))}
-                        className="cadastroFornecedor-input"
-                    />
-                </div>
-                <div className="cadastroFornecedor-formGroup">
-                    <label className="cadastroFornecedor-label">Telefone do Fornecedor</label>
-                    <input
-                        name="fornecedor_telefone"
-                        value={prod_nome}
-                        onChange={e => setProd_nome(e.target.value)}
-                        className="cadastroFornecedor-input"
-                    />
-                </div>
-                <div className="cadastroFornecedor-formGroup">
-                    <label className="cadastroFornecedor-label">Email do Fornecedore</label>
-                    <input
-                        type="email"
-                        name="fornecedor_email"
-                        value={prod_descricao}
-                        onChange={e => setProd_descricao(e.target.value)}
-                        className="cadastroFornecedor-input"
-                    />
-                </div>
-                <div className="cadastroFornecedor-formGroup">
-                    <label className="cadastroFornecedor-label">CNPJ do Fornecedor</label>
-                    <input
-                        type="number"
-                        name="fornecedor_cnpj"
-                        value={prod_ponto_rep}
-                        onChange={e => setProd_ponto_rep(Number(e.target.value))}
-                        className="cadastroFornecedor-input"
-                    />
-                </div>
-                <div className="cadastroFornecedor-formGroup">
-                    <label className="cadastroFornecedor-label">Endereco do Fornecedor</label>
-                    <input
-                        type="text"
-                        name="fornecedor_endereco"
-                        value={valor_quant}
-                        onChange={e => setValor_quant(Number(e.target.value))}
-                        className="cadastroFornecedor-input"
-                    />
-                </div>
-                <div className="cadastroFornecedor-formGroup">
-                    <label className="cadastroFornecedor-label">Status</label>
-                    <input
-                        type="text"
-                        name="fornecedor_status"
-                        value={prod_status}
-                        onChange={e => setProd_status(e.target.value)}
-                        className="cadastroFornecedor-input"
-                    />
-                </div>
-                <div className="cadastroFornecedor-buttonContainer">
-                    <button className="cadastroFornecedor-actionButton" onClick={alterarProduto}>Confirmar</button>
-                    <button className="cadastroFornecedor-actionButton cadastroProduto-cancelButton" onClick={() => navegacao('../produtos')}>Cancelar</button>
+                <div className="editarProduto-content">
+                    <div className="editarProduto-form">
+                        <form onSubmit={alterarProduto}>
+                            <div className="editarProduto-formRow">
+                                <div className="editarProduto-formGroup editarProduto-formGroup-name">
+                                    <label className="editarProduto-label">Nome do Produto</label>
+                                    <input
+                                        type="text"
+                                        value={produto?.prod_nome || ''}
+                                        onChange={e => setProduto(prev => prev ? { ...prev, prod_nome: e.target.value } : null)}
+                                        className="editarProduto-input"
+                                        required
+                                    />
+                                </div>
+                                <div className="editarProduto-formGroup editarProduto-formGroup-status">
+                                    <label className="editarProduto-label">Status</label>
+                                    <input
+                                        type="text"
+                                        value={produto?.prod_status || ''}
+                                        onChange={e => setProduto(prev => prev ? { ...prev, prod_status: e.target.value } : null)}
+                                        className="editarProduto-input"
+                                        required
+                                    />
+                                </div>
+                            </div>
+                            <div className="editarProduto-formRow">
+                                <div className="editarProduto-formGroup editarProduto-formGroup-left">
+                                    <label className="editarProduto-label">Ponto de Reposição</label>
+                                    <input
+                                        type="number"
+                                        value={produto?.prod_ponto_rep || 0}
+                                        onChange={e => setProduto(prev => prev ? { ...prev, prod_ponto_rep: Number(e.target.value) } : null)}
+                                        className="editarProduto-input"
+                                        required
+                                    />
+                                    <label className="editarProduto-label">Valor Unit</label>
+                                    <input
+                                        type="text"
+                                        value={produto ? formatCurrency(produto.valor_quant) : '0'}
+                                        onChange={e => setProduto(prev => prev ? { ...prev, valor_quant: parseCurrency(e.target.value) } : null)}
+                                        className="editarProduto-input"
+                                        required
+                                    />
+                                </div>
+                                <div className="editarProduto-formGroup editarProduto-descriptionGroup">
+                                    <label className="editarProduto-label">Descrição</label>
+                                    <textarea
+                                        value={produto?.prod_descricao || ''}
+                                        onChange={e => setProduto(prev => prev ? { ...prev, prod_descricao: e.target.value } : null)}
+                                        className="editarProduto-textarea"
+                                        required
+                                    />
+                                </div>
+                            </div>
+                            <div className="editarProduto-buttonContainer">
+                                <button type="submit" className="editarProduto-actionButton">Confirmar</button>
+                                <button type="button" className="editarProduto-actionButton editarProduto-cancelButton" onClick={() => navegacao('/produtos')}>Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </ComponentMenu>
-    )
+    );
 }
 
 export default EditarProdutos;

@@ -4,7 +4,7 @@ import gerenteinteligente.estoque.gerenteinteligente.entity.LojaEntity;
 
 public class LojaDTO {
 
-	private int id_loja;
+	private int loja;
 	private String loja_nome;
 	private String loja_endereco;
 	private String loja_contato;
@@ -14,18 +14,18 @@ public class LojaDTO {
 	}
 
 	public LojaDTO(LojaEntity lojaEntity) {
-		this.id_loja = lojaEntity.getId_loja();
+		this.loja = lojaEntity.getLoja();
 		this.loja_nome = lojaEntity.getLoja_nome();
 		this.loja_endereco = lojaEntity.getLoja_endereco();
 		this.loja_contato = lojaEntity.getLoja_contato();
 	}
 
-	public int getId_loja() {
-		return id_loja;
+	public int getLoja() {
+		return loja;
 	}
 
-	public void setId_loja(int id_loja) {
-		this.id_loja = id_loja;
+	public void setLoja(int loja) {
+		this.loja = loja;
 	}
 
 	public String getLoja_nome() {

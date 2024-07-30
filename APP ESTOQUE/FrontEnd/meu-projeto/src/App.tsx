@@ -10,6 +10,8 @@ import CadastroFornecedor from './pages/cadastrarFornecedores/cadastrarFornecedo
 import EditarFornecedor from './pages/editarFornecedor/editarFornecedor';
 import EditarProdutos from './pages/editarProdutos/editarProdutos';
 import Fornecedorxproduto from './pages/fornecedorxproduto/fornecedorxproduto';
+import MovimentoLoja from './pages/movimentacaoLoja/movimentacaoLoja';
+import Estoque from './pages/estoque/estoque';
 import Lojas from './pages/lojas/lojas'
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
       <Route path="/editarProdutos/:id" element={<EditarProdutos/>} />
       <Route path="/fornecedorxproduto" element={<Fornecedorxproduto/>} />
       <Route path="/cadastrarFornecedores" element={<CadastroFornecedor/>} />
+      <Route path="/movimentacaoLoja/:id" element={<MovimentoLoja/>} />
+      <Route path="/estoque" element={<Estoque/>} />
       <Route path="/loja" element={<Lojas/>} />
 
     </Routes>

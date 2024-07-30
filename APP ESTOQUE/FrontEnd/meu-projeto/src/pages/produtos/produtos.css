@@ -12,6 +12,7 @@
 }
 
 .search-inputProduto {
+  margin-left: 26px;
   padding: 10px;
   width: 80%;
   max-width: 800px;
@@ -31,14 +32,25 @@
   padding: 5px;
   border: 1px solid #ddd;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-
+  white-space: nowrap; /* Adicionado para evitar quebra de linha */
+  max-width: 150px; /* Limita a largura máxima da célula */
+  overflow: hidden; /* Oculta o excesso de texto */
+  text-overflow: ellipsis; /* Adiciona reticências ao texto excedente */
 }
 
-.button-containerProduto {
-  display: flex;
-  margin-left:150px;
+.pagination-controls {
 
+  justify-content: space-between;
+  margin-left: 150px;
+  width: 80%;
 }
+
+.pagination-controls button {
+  padding: 10px;
+  margin: 10px;
+  cursor: pointer;
+}
+
 
 .action-button {
   padding: 10px 20px;
@@ -54,8 +66,19 @@
   background-color: #0056b3;
 }
 
-.product-table th{
+.product-table th {
   background-color: indigo;
   color: white;
   text-align: center;
+}
+
+.boxSuperiorProduto{
+  display: flex;
+  justify-content: center;
+  justify-content: space-around;
+}
+
+
+.botaoCadastroProduto{
+  margin-right: 8px;
 }
