@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ComponentMenu from '../../Component/ComponentMenu';
+import ComponentMenu from '../../Component/ComponentMenu/ComponentMenu';
 import './editarProdutos.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -8,14 +8,12 @@ import { Produto } from '../../Models/Produto';
 function EditarProdutos() {
     const navegacao = useNavigate();
     const param = useParams();
-
+    const [id, setId] = useState('');
+    const [status, setStatus] = useState('');
     const [produto, setProduto] = useState<Produto | null>(null);
+    const navegate = useNavigate();
 
-    useEffect(() => {
-        axios.get(`http://localhost:8081/produtos/encontrarpeloid/${param.id}`)
-            .then(response => setProduto(response.data))
-            .catch(error => console.error('Erro ao buscar produto', error));
-    }, [param.id]);
+
 
     const alterarProduto = async (event: React.FormEvent) => {
         event.preventDefault();
@@ -27,6 +25,28 @@ function EditarProdutos() {
                 .catch(error => console.error('Erro ao atualizar produto', error));
         }
     };
+
+
+    async function carregarProdutos() {
+        axios.get(`http://localhost:8081/produtos/encontrarpeloid/${param.prod}`)
+        .then(response => setProduto(response.data))
+        .catch(error => console.error('Erro ao buscar produto', error));
+      }
+
+      useEffect(() => {
+        carregarProdutos();
+      }, []);
+
+    const alterarStatus = async () => {
+        const bodyRequest = {
+            prod_status: status
+        }
+        const resultado = axios.put('http://localhost:8081/produtos/status/' + param.prod);
+        setStatus((await resultado).data.prod_status);
+        alert("Status alterado");
+        carregarProdutos();
+
+      };
 
 
 
@@ -79,7 +99,7 @@ function EditarProdutos() {
                                         className="editarProduto-input"
                                         required
                                     />
-                                    <label className="editarProduto-label">Valor Unit</label>
+                                    <label className="editarProduto-labelValorUnit" >Valor Unit</label>
                                     <input
                                         type="text"
                                         value={produto ? formatCurrency(produto.valor_quant) : '0'}
@@ -100,11 +120,21 @@ function EditarProdutos() {
                             </div>
                             <div className="editarProduto-buttonContainer">
                                 <button type="submit" className="editarProduto-actionButton">Confirmar</button>
-                                <button type="button" className="editarProduto-actionButton editarProduto-cancelButton" onClick={() => navegacao('/produtos')}>Cancelar</button>
+                                <button type="button" className="editarProduto-actionButton editarProduto-cancelButton" onClick={() => navegacao('/produtos/'+param.id)}>Cancelar</button>
                             </div>
+                            
+                                    {(produto?.prod_status) &&
+                                        <button className="btnAlteracaoStatusProdutos" onClick={() => alterarStatus()}>
+                                            Ativo</button> ||
+                                        <button className="btnAlteracaoStatusProdutos" onClick={() => alterarStatus()}>
+                                            Desativado</button>}
+
                         </form>
+                        
+
                     </div>
                 </div>
+                
             </div>
         </ComponentMenu>
     );

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Fornecedor } from '../../Models/Fornecedor';
-import ComponentMenu from '../../Component/ComponentMenu';
+import ComponentMenu from '../../Component/ComponentMenu/ComponentMenu';
 import './fornecedores.css';
 
 function Fornecedores() {
@@ -12,6 +12,7 @@ function Fornecedores() {
   const [searchTerm, setSearchTerm] = useState('');
   const [fornecedores, setFornecedores] = useState<Array<Fornecedor>>([]);
   const [filteredFornecedores, setFilteredFornecedores] = useState<Array<Fornecedor>>([]);
+  const param = useParams();
 
   async function carregarFornecedores() {
     const resp = await axios.get('http://localhost:8081/fornecedor/encontrarFornecedores');
@@ -21,6 +22,7 @@ function Fornecedores() {
 
   useEffect(() => {
     carregarFornecedores();
+    console.log(param)
   }, []);
 
   useEffect(() => {
@@ -30,6 +32,9 @@ function Fornecedores() {
     );
     setFilteredFornecedores(results);
   }, [searchTerm, fornecedores]);
+
+
+
 
   return (
     <ComponentMenu>
@@ -52,7 +57,7 @@ function Fornecedores() {
               <th>CNPJ</th>
               <th>ENDERECO</th>
               <th>Status</th>
-              <th>Exibir Produto</th>
+              <th>Exibir Fornecedor</th>
             </tr>
           </thead>
           <tbody>
@@ -65,14 +70,14 @@ function Fornecedores() {
                 <td>{fornecedor.forn_cnpj}</td>
                 <td>{fornecedor.forn_endereco}</td>
                 <td>{fornecedor.forn_status}</td>
-                <td><button onClick={() => navegacao('../editarFornecedor/' + fornecedor.id_forn)}>Editar</button></td>
+                <td><button onClick={() => navegacao('../editarFornecedor/'+ param.id +"/"+ fornecedor.id_forn)}>Editar</button></td>
               </tr>
             ))}
           </tbody>
         </table>
         <div className="button-containerFornecedor">
-          <button className="action-buttonFornecedor" onClick={() => navegacao('../cadastrarFornecedores')}>Cadastrar Fornecedor</button>
-          <button className="action-buttonFornecedor" onClick={() => navegacao('../fornecedorxproduto')}>Fornecedores x Produtos</button>
+          <button className="action-buttonFornecedor" onClick={() => navegacao('../cadastrarFornecedores/'+param.id)}>Cadastrar Fornecedor</button>
+          <button className="action-buttonFornecedor" onClick={() => navegacao('../fornecedorxproduto/'+param.id)}>Fornecedores x Produtos</button>
         </div>
         <div className="button-containerFornecedor">
         </div>

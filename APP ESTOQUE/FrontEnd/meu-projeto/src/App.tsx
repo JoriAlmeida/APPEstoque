@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { Route, Routes } from 'react-router-dom';
 import Login from './pages/login/login';
 import Produtos from './pages/produtos/produtos';
@@ -18,17 +17,17 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Login />} />
-      <Route path="/menu" element={<Menu />} />
-      <Route path="/produtos" element={<Produtos />} />
-      <Route path="/cadastroprodutos" element={<CadastroProduto/>} />
-      <Route path="/fornecedores" element={<Fornecedores/>} />
-      <Route path="/editarFornecedor/:id" element={<EditarFornecedor/>} />
-      <Route path="/editarProdutos/:id" element={<EditarProdutos/>} />
-      <Route path="/fornecedorxproduto" element={<Fornecedorxproduto/>} />
-      <Route path="/cadastrarFornecedores" element={<CadastroFornecedor/>} />
-      <Route path="/movimentacaoLoja/:id" element={<MovimentoLoja/>} />
-      <Route path="/estoque" element={<Estoque/>} />
-      <Route path="/loja" element={<Lojas/>} />
+      <Route path="//menu/:id" element={<Menu />} />
+      <Route path="/produtos/:id" element={<Produtos />} />
+      <Route path="/cadastroprodutos/:id" element={<CadastroProduto/>} />
+      <Route path="/fornecedores/:id" element={<Fornecedores/>} />
+      <Route path="/editarFornecedor/:id/:forn" element={<EditarFornecedor/>} />
+      <Route path="/editarProdutos/:id/:prod" element={<EditarProdutos/>} />
+      <Route path="/fornecedorxproduto/:id" element={<Fornecedorxproduto/>} />
+      <Route path="/cadastrarFornecedores/:id" element={<CadastroFornecedor/>} />
+      <Route path="/movimentacaoLoja/:id/:loja" element={<MovimentoLoja/>} />
+      <Route path="/estoque/:id" element={<Estoque/>} />
+      <Route path="/loja/:id" element={<Lojas/>} />
 
     </Routes>
   );

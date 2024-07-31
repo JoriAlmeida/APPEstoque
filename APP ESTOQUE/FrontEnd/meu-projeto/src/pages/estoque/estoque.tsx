@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Fornecedor } from '../../Models/Fornecedor';
 import { Estoque } from '../../Models/Estoque';
-import ComponentMenu from '../../Component/ComponentMenu';
+import ComponentMenu from '../../Component/ComponentMenu/ComponentMenu';
 import './estoque.css';
 
 function Estoques() {

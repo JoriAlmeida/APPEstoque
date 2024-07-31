@@ -1,5 +1,5 @@
  
-  .cadastroFornecedor-container {
+  .editarFornecedor-container {
     text-align: center;
     background-color: #fff;
     padding: 20px;
@@ -12,22 +12,22 @@
 
   }
   
-  .cadastroFornecedor-titulo {
+  .editarFornecedor-titulo {
     margin-bottom: 20px;
   }
   
-  .cadastroFornecedor-formGroup {
+  .editarFornecedor-formGroup {
     margin-bottom: 15px;
     text-align: left;
   }
   
-  .cadastroFornecedor-label {
+  .editarFornecedor-label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
   }
   
-  .cadastroFornecedor-input {
+  .editarFornecedor-input {
     width: 100%;
     padding: 10px;
     border: 1px solid #ddd;
@@ -35,17 +35,17 @@
     box-sizing: border-box;
   }
   
-  textarea.cadastroFornecedor-input {
+  textarea.editarFornecedor-input {
     resize: vertical;
   }
   
-  .cadastroFornecedor-buttonContainer {
+  .editarFornecedor-buttonContainer {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
   }
   
-  .cadastroFornecedor-actionButton {
+  .editarFornecedor-actionButton {
     padding: 10px 20px;
     border: none;
     background-color: #007bff;
@@ -55,14 +55,14 @@
     transition: background-color 0.3s ease;
   }
   
-  .cadastroFornecedor-actionButton:hover {
+  .cadastroEditar-actionButton:hover {
     background-color: #0056b3;
   }
   
-  .cadastroFornecedor-cancelButton {
+  .editarFornecedor-cancelButton {
     background-color: #dc3545;
   }
   
-  .cadastroFornecedor-cancelButton:hover {
+  .editarFornecedor-cancelButton:hover {
     background-color: #c82333;
   }

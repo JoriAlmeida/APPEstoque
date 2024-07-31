@@ -33,7 +33,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
-  margin-bottom: 20px;
+
 }
 
 .editarProduto-formGroup {
@@ -64,7 +64,15 @@
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
-  color: #555;
+  color: indigo;
+}
+
+.editarProduto-labelValorUnit {
+  display: block;
+  margin-bottom: 7px;
+  font-weight: bold;
+  color: indigo;
+  margin-top: 10px;
 }
 
 .editarProduto-input {

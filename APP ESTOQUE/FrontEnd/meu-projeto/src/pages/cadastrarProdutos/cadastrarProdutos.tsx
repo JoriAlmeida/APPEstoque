@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import ComponentMenu from 'Component/ComponentMenu';
+import React, { useState} from 'react';
+import ComponentMenu from '../../Component/ComponentMenu/ComponentMenu';
 import './cadastrarProdutos.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 function CadastroProduto() {
@@ -15,6 +15,7 @@ function CadastroProduto() {
     const [valor_quant, setValor_quant] = useState(0);
     const [prod_status, setProd_status] = useState("");
     const navegate = useNavigate();
+    const param = useParams();
 
     async function acrescentarProduto(e) {
 
@@ -51,7 +52,7 @@ function CadastroProduto() {
                         alert("Produto novo inserido")
 
                     );
-                    navegate('/produtos')
+                    navegate('/produtos/'+param.id)
                 } catch (error) {
                     console.error("Erro ao cadastrar produto:", error);
                     alert("Erro ao cadastrar produto");
@@ -126,7 +127,7 @@ function CadastroProduto() {
                 </div>
                 <div className="cadastroProduto-buttonContainer">
                     <button className="cadastroProduto-actionButton" onClick={acrescentarProduto}>Confirmar Cadastro</button>
-                    <button className="cadastroProduto-actionButton cadastroProduto-cancelButton" onClick={() => navegacao('../produtos')}>Cancelar</button>
+                    <button className="cadastroProduto-actionButton cadastroProduto-cancelButton" onClick={() => navegacao('../produtos/'+param.id)}>Cancelar</button>
                 </div>
             </div>
         </ComponentMenu>

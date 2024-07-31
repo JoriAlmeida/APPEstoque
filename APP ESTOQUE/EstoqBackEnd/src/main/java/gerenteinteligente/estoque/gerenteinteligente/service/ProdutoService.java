@@ -76,11 +76,11 @@ public class ProdutoService {
 		ProdutoEntity produtoEntity = produtoRepository.getReferenceById(id);
 		String checkStatus = produtoEntity.getProd_status();
 
-		if (checkStatus.equals("ativo")) {
-			produtoEntity.setProd_status("inativo");
+		if (checkStatus.equals("Ativo")) {
+			produtoEntity.setProd_status("Desativado");
 
 		} else {
-			produtoEntity.setProd_status("ativo");
+			produtoEntity.setProd_status("Ativo");
 		}
 
 		produtoRepository.save(produtoEntity);

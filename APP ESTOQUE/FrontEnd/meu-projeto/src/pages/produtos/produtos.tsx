@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Produto } from '../../Models/Produto';
 import { Fornecedor } from '../../Models/Fornecedor';
-import ComponentMenu from '../../Component/ComponentMenu';
+import ComponentMenu from '../../Component/ComponentMenu/ComponentMenu';
 import './produtos.css';
 import { FaRegEdit, FaPlusCircle } from "react-icons/fa";
 
 function Produtos() {
   const navegacao = useNavigate();
+  const param = useParams();
   const [searchTerm, setSearchTerm] = useState('');
   const [produto, setProduto] = useState<Array<Produto>>([]);
   const [fornecedores, setFornecedores] = useState<Array<Fornecedor>>([]);
@@ -21,10 +22,10 @@ function Produtos() {
     setFornecedores(respForn.data.slice(0, 10));
     setFilteredProdutos(resp.data);
   }
-
   useEffect(() => {
     carregarProdutos();
   }, []);
+
 
   useEffect(() => {
     const results = produto.filter(produto =>
@@ -60,10 +61,12 @@ function Produtos() {
       return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value);
     };
 
+
+
     return (
       <ComponentMenu>
         <div className="containerProduto">
-          <h1 className="tituloProduto">Gestão de Produtos</h1>
+          <h1 className="tituloProduto">GESTÃO DE PRODUTOS</h1>
           <div className="boxSuperiorProduto">
             <input
               type="text"
@@ -73,7 +76,7 @@ function Produtos() {
               onChange={e => setSearchTerm(e.target.value)}
             />
             <div className="botaoCadastroProduto">
-              <FaPlusCircle className="action-button" onClick={() => navegacao('../cadastroProdutos')} />
+              <FaPlusCircle className="action-button" onClick={() => navegacao('../cadastroProdutos/'+param.id)} />
             </div>
           </div>
           <table className="product-table">
@@ -85,7 +88,7 @@ function Produtos() {
                 <th>Valor Unit</th>
                 <th>Status</th>
                 <th>Fornecedor</th>
-                <th>Exibir Produto</th>
+                <th>Editar Produto</th>
               </tr>
             </thead>
             <tbody>
@@ -97,7 +100,7 @@ function Produtos() {
                   <td>{formatCurrency(produto.valor_quant)}</td>
                   <td>{produto.prod_status}</td>
                   <td>{getNomeFornecedor(produto.fk_id_forn)}</td>
-                  <td onClick={() => navegacao('../editarProdutos/' + produto.id_prod)}><FaRegEdit /></td>
+                  <td onClick={() => navegacao('../editarProdutos/'+param.id +"/" + produto.id_prod)}><FaRegEdit /></td>
                 </tr>
               ))}
             </tbody>

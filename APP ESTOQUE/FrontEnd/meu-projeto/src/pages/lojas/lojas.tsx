@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Lojas } from '../../Models/Lojas';
-import ComponentMenu from '../../Component/ComponentMenu';
+import ComponentMenu from '../../Component/ComponentMenu/ComponentMenu';
 import './lojas.css';
 
 function Loja() {
@@ -12,14 +12,15 @@ function Loja() {
   const [searchTerm, setSearchTerm] = useState('');
   const [lojas, setLojas] = useState<Array<Lojas>>([]);
   const [filteredLojas, setFilteredLojas] = useState<Array<Lojas>>([]);
+  const param = useParams();
 
   async function carregarLojas() {
     const resp = await axios.get('http://localhost:8081/loja/encontrarLojas');
     setLojas(resp.data.slice(0, 10));
-    setFilteredLojas(resp.data.slice(0,10));
+    setFilteredLojas(resp.data.slice(0, 10));
   }
 
-useEffect(() => {
+  useEffect(() => {
     if (searchTerm === '') {
       setFilteredLojas(lojas);
     } else {
@@ -36,8 +37,8 @@ useEffect(() => {
 
   return (
     <ComponentMenu>
-      <div className="containerFornecedor">
-        <h1 className="tituloFornecedor">Lojas</h1>
+      <div className="containerLoja">
+        <h1 className="tituloLoja">Lojas</h1>
         <input
           type="text"
           placeholder="Informe o número da loja"
@@ -45,7 +46,7 @@ useEffect(() => {
           value={searchTerm}
           onChange={e => setSearchTerm(e.target.value)}
         />
-        <table className="fornecedor-table">
+        <table className="loja-table">
           <thead>
             <tr>
               <th>Loja</th>
@@ -62,7 +63,7 @@ useEffect(() => {
                 <td>{lojas.loja_nome}</td>
                 <td>{lojas.loja_endereco}</td>
                 <td>{lojas.loja_contato}</td>
-                <td><button onClick={() => navegacao('../movimentacaoLoja/' + lojas.loja)}>Editar</button></td>
+                <td><button onClick={() => navegacao('../movimentacaoLoja/' + param.id + "/" + lojas.loja)}>Editar</button></td>
               </tr>
             ))}
           </tbody>

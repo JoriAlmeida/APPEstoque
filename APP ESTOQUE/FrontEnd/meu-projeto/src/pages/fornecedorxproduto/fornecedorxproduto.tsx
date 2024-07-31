@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Fornecedor } from '../../Models/Fornecedor';
 import { Produto } from '../../Models/Produto';
-import ComponentMenu from '../../Component/ComponentMenu';
-import '../fornecedorxproduto/fornecedorxproduto';
+import ComponentMenu from '../../Component/ComponentMenu/ComponentMenu';
+import './fornecedorxproduto.css';
 
 function Fornecedoresxproduto() {
 
@@ -47,16 +47,16 @@ function Fornecedoresxproduto() {
 
   return (
     <ComponentMenu>
-      <div className="containerFornecedor">
-        <h1 className="tituloFornecedor">Produto x Fornecedor</h1>
+      <div className="containerFornecedorXprod">
+        <h1 className="tituloFornecedorXprod">Produto x Fornecedor</h1>
         <input
           type="text"
           placeholder="Buscar fornecedor por nome"
-          className="search-inputProduto"
+          className="search-inputProdutoXprod"
           value={searchTerm}
           onChange={e => setSearchTerm(e.target.value)}
         />
-        <table className="fornecedor-table">
+        <table className="fornecedorXprod-table">
           <thead>
             <tr>
               <th>Fornecedor</th>
@@ -72,12 +72,6 @@ function Fornecedoresxproduto() {
             ))}
           </tbody>
         </table>
-        <div className="button-containerFornecedor">
-          <button className="action-buttonFornecedor" onClick={() => navegacao('../cadastrarFornecedores')}>Cadastrar Fornecedor</button>
-
-        </div>
-        <div className="button-containerFornecedor">
-        </div>
       </div>
     </ComponentMenu>
   );

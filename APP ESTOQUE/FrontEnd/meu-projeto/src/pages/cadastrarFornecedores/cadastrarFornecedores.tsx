@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
-import ComponentMenu from '../../Component/ComponentMenu';
+import ComponentMenu from '../../Component/ComponentMenu/ComponentMenu';
 import './cadastrarFornecedores.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 function CadastroFornecedor() {
 
     const navegacao = useNavigate();
-
+    const param = useParams();
     const [id_forn, setId_forn] = useState(0);
     const [forn_nome, setForn_nome] = useState("");
     const [forn_telefone, setForn_telefone] = useState("");
     const [forn_email, setForn_email] = useState("");
     const [forn_cnpj, setForn_cnpj] = useState("");
     const [forn_endereco, setForn_endereco] = useState("");
+    const [forn_status, setForn_status] = useState("");
     const navegate = useNavigate();
 
     async function acrescentarFornecedor(e) {
@@ -25,6 +26,7 @@ function CadastroFornecedor() {
             forn_email: forn_email,
             forn_cnpj: forn_cnpj,
             forn_endereco: forn_endereco,
+            forn_status: forn_status,
         }
 
         var validarFornecedor = /[a-z]/g;
@@ -58,7 +60,7 @@ function CadastroFornecedor() {
                         alert("Fornecedor novo inserido")
 
                     );
-                    navegate('/fornecedores')
+                    navegate('/fornecedores/'+ param.id)
                 } catch (error) {
                     console.error("Erro ao cadastrar fornecedor:", error);
                     alert("Erro ao cadastrar fornecedor");
@@ -117,6 +119,16 @@ function CadastroFornecedor() {
                         name="fornecedor_endereco"
                         value={forn_endereco}
                         onChange={e => setForn_endereco(e.target.value)}
+                        className="cadastroFornecedor-input"
+                    />
+                </div>
+                <div className="cadastroFornecedor-formGroup">
+                    <label className="cadastroFornecedor-label">Status</label>
+                    <input
+                        type="text"
+                        name="fornecedor_status"
+                        value={forn_status}
+                        onChange={e => setForn_status(e.target.value)}
                         className="cadastroFornecedor-input"
                     />
                 </div>

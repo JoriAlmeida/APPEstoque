@@ -1,69 +1,73 @@
-INSERT INTO FORNECEDOR (FORN_NOME, FORN_TELEFONE, FORN_EMAIL, FORN_CNPJ, FORN_ENDERECO, FORN_STATUS)
-VALUES ('Fornecedor A', '1234-5678', 'fornecedorA@example.com', '12345678000100', 'Rua A, 123', 'ativo');
+-- INSERT FORNECEDOR
 
-INSERT INTO FORNECEDOR (FORN_NOME, FORN_TELEFONE, FORN_EMAIL, FORN_CNPJ, FORN_ENDERECO, FORN_STATUS)
-VALUES ('Fornecedor B', '8765-4321', 'fornecedorB@example.com', '98765432000100', 'Avenida B, 456','inativo');
+INSERT INTO FORNECEDOR (FORN_NOME, FORN_TELEFONE, FORN_EMAIL, FORN_CNPJ, FORN_ENDERECO, FORN_STATUS) 
+VALUES ('Tech Supplies Ltda', '(11) 98765-4321', 'contato@techsupplies.com.br', '12345678000195', 'Rua das Tecnologias, 123, São Paulo, SP', 'Ativo');
+
+INSERT INTO FORNECEDOR (FORN_NOME, FORN_TELEFONE, FORN_EMAIL, FORN_CNPJ, FORN_ENDERECO, FORN_STATUS) 
+VALUES ('Industrial Machines S.A.', '(21) 98765-4322', 'vendas@industrialmachines.com', '98765432000191', 'Avenida das Indústrias, 456, Rio de Janeiro, RJ', 'Ativo');
+
+INSERT INTO FORNECEDOR (FORN_NOME, FORN_TELEFONE, FORN_EMAIL, FORN_CNPJ, FORN_ENDERECO, FORN_STATUS) 
+VALUES ('Office Supplies EIRELI', '(31) 98765-4323', 'atendimento@officesupplies.com.br', '45678912000188', 'Praça dos Escritórios, 789, Belo Horizonte, MG', 'Ativo');
+
+INSERT INTO FORNECEDOR (FORN_NOME, FORN_TELEFONE, FORN_EMAIL, FORN_CNPJ, FORN_ENDERECO, FORN_STATUS) 
+VALUES ('Agro Equipamentos ME', '(41) 98765-4324', 'contato@agroequipamentos.com.br', '32165487000167', 'Estrada dos Campos, 1011, Curitiba, PR', 'Inativo');
 
 
--- Inserção de um produto com fornecedor existente
+-- INSERT PRODUTO
 INSERT INTO PRODUTO (PROD_NOME, PROD_DESCRICAO, PROD_PONTO_REP, FK_ID_FORN, VALOR_QUANT, PROD_STATUS) 
-VALUES ('Teclado Gamer', 'Teclado mecânico RGB para jogos', 10, 1, 250.00, 'ativo');
-
--- Inserção de outro produto com fornecedor existente
-INSERT INTO PRODUTO (PROD_NOME, PROD_DESCRICAO, PROD_PONTO_REP, FK_ID_FORN, VALOR_QUANT, PROD_STATUS)
-VALUES ('Mouse Wireless', 'Mouse óptico sem fio para desktop', 5, 2, 80.50, 'inativo');
-
-INSERT INTO PRODUTO (PROD_NOME, PROD_DESCRICAO, PROD_PONTO_REP, FK_ID_FORN, VALOR_QUANT, PROD_STATUS) 
-VALUES ('Teclado Gamer', 'Teclado mecânico RGB para jogos', 10, 1, 250.00, 'ativo');
-
--- Inserção de outro produto com fornecedor existente
-INSERT INTO PRODUTO (PROD_NOME, PROD_DESCRICAO, PROD_PONTO_REP, FK_ID_FORN, VALOR_QUANT, PROD_STATUS)
-VALUES ('Mouse Wireless', 'Mouse óptico sem fio para desktop', 5, 2, 80.50, 'inativo');
+VALUES ('Notebook Dell XPS', 'Notebook de alto desempenho com processador Intel i7', 10, 1, 5000.00, 'Ativo');
 
 INSERT INTO PRODUTO (PROD_NOME, PROD_DESCRICAO, PROD_PONTO_REP, FK_ID_FORN, VALOR_QUANT, PROD_STATUS) 
-VALUES ('Teclado Gamer', 'Teclado mecânico RGB para jogos', 10, 1, 250.00, 'ativo');
-
--- Inserção de outro produto com fornecedor existente
-INSERT INTO PRODUTO (PROD_NOME, PROD_DESCRICAO, PROD_PONTO_REP, FK_ID_FORN, VALOR_QUANT, PROD_STATUS)
-VALUES ('Mouse Wireless', 'Mouse óptico sem fio para desktop', 5, 2, 80.50, 'inativo');
+VALUES ('Impressora HP LaserJet', 'Impressora laser de alta velocidade', 5, 1, 1200.00, 'Ativo');
 
 INSERT INTO PRODUTO (PROD_NOME, PROD_DESCRICAO, PROD_PONTO_REP, FK_ID_FORN, VALOR_QUANT, PROD_STATUS) 
-VALUES ('Teclado Gamer', 'Teclado mecânico RGB para jogos', 10, 1, 250.00, 'ativo');
-
--- Inserção de outro produto com fornecedor existente
-INSERT INTO PRODUTO (PROD_NOME, PROD_DESCRICAO, PROD_PONTO_REP, FK_ID_FORN, VALOR_QUANT, PROD_STATUS)
-VALUES ('Mouse Wireless', 'Mouse óptico sem fio para desktop', 5, 2, 80.50, 'inativo');
+VALUES ('Monitor Samsung 24"', 'Monitor Full HD de 24 polegadas', 15, 2, 800.00, 'Ativo');
 
 INSERT INTO PRODUTO (PROD_NOME, PROD_DESCRICAO, PROD_PONTO_REP, FK_ID_FORN, VALOR_QUANT, PROD_STATUS) 
-VALUES ('Teclado Gamer', 'Teclado mecânico RGB para jogos', 10, 1, 250.00, 'ativo');
-
--- Inserção de outro produto com fornecedor existente
-INSERT INTO PRODUTO (PROD_NOME, PROD_DESCRICAO, PROD_PONTO_REP, FK_ID_FORN, VALOR_QUANT, PROD_STATUS)
-VALUES ('Mouse Wireless', 'Mouse óptico sem fio para desktop', 5, 2, 80.50, 'inativo');
+VALUES ('Teclado Mecânico Corsair', 'Teclado mecânico RGB para gamers', 20, 2, 350.00, 'Ativo');
 
 INSERT INTO PRODUTO (PROD_NOME, PROD_DESCRICAO, PROD_PONTO_REP, FK_ID_FORN, VALOR_QUANT, PROD_STATUS) 
-VALUES ('Teclado Gamer', 'Teclado mecânico RGB para jogos', 10, 1, 250.00, 'ativo');
+VALUES ('Mouse Logitech MX Master 3', 'Mouse sem fio ergonômico', 25, 2, 450.00, 'Ativo');
 
--- Inserção de outro produto com fornecedor existente
-INSERT INTO PRODUTO (PROD_NOME, PROD_DESCRICAO, PROD_PONTO_REP, FK_ID_FORN, VALOR_QUANT, PROD_STATUS)
-VALUES ('Mouse Wireless', 'Mouse óptico sem fio para desktop', 5, 2, 80.50, 'inativo');
+INSERT INTO PRODUTO (PROD_NOME, PROD_DESCRICAO, PROD_PONTO_REP, FK_ID_FORN, VALOR_QUANT, PROD_STATUS) 
+VALUES ('Servidor Dell PowerEdge', 'Servidor de alta capacidade para empresas', 3, 1, 10000.00, 'Ativo');
+
+INSERT INTO PRODUTO (PROD_NOME, PROD_DESCRICAO, PROD_PONTO_REP, FK_ID_FORN, VALOR_QUANT, PROD_STATUS) 
+VALUES ('Cadeira Gamer DXRacer', 'Cadeira ergonômica para gamers', 10, 3, 1500.00, 'Ativo');
+
+INSERT INTO PRODUTO (PROD_NOME, PROD_DESCRICAO, PROD_PONTO_REP, FK_ID_FORN, VALOR_QUANT, PROD_STATUS) 
+VALUES ('SSD Samsung 1TB', 'SSD de alta velocidade e capacidade', 30, 3, 600.00, 'Ativo');
+
+INSERT INTO PRODUTO (PROD_NOME, PROD_DESCRICAO, PROD_PONTO_REP, FK_ID_FORN, VALOR_QUANT, PROD_STATUS) 
+VALUES ('Memória RAM Kingston 16GB', 'Memória RAM DDR4 de alta performance', 50, 3, 400.00, 'Ativo');
+
+INSERT INTO PRODUTO (PROD_NOME, PROD_DESCRICAO, PROD_PONTO_REP, FK_ID_FORN, VALOR_QUANT, PROD_STATUS) 
+VALUES ('Placa de Vídeo NVIDIA RTX 3080', 'Placa de vídeo para alto desempenho gráfico', 5, 1, 7000.00, 'Ativo');
+
+INSERT INTO PRODUTO (PROD_NOME, PROD_DESCRICAO, PROD_PONTO_REP, FK_ID_FORN, VALOR_QUANT, PROD_STATUS) 
+VALUES ('Fonte Corsair 650W', 'Fonte de alimentação para PC', 15, 2, 500.00, 'Ativo');
+
+INSERT INTO PRODUTO (PROD_NOME, PROD_DESCRICAO, PROD_PONTO_REP, FK_ID_FORN, VALOR_QUANT, PROD_STATUS) 
+VALUES ('Headset HyperX Cloud II', 'Headset gamer com som surround', 20, 3, 300.00, 'Ativo');
 
 
--- Inserção com USU_PERMISSAO = 1
+-- INSERT USUARIO
 INSERT INTO USUARIO (USU_PERMISSAO, USU_NOME, USU_CPF, EMAIL, USU_SENHA)
-VALUES (1, 'Nome 1', 'CPF 1', 'admin@admin.com', 'admin');
+VALUES (1, 'Administrador', 'CPF 1', 'admin@admin.com', 'admin');
 
--- Inserção com USU_PERMISSAO = 2
 INSERT INTO USUARIO (USU_PERMISSAO, USU_NOME, USU_CPF, EMAIL, USU_SENHA)
-VALUES (2, 'Nome 2', 'CPF 2', 'email2@example.com', 'senha2');
+VALUES (2, 'Funcionario', 'CPF 2', 'email2@example.com', 'senha2');
 
--- Inserir dados de uma loja fictícia
+-- INSERT LOJA
 INSERT INTO loja (loja_nome, loja_endereco, loja_contato)
 VALUES ('Loja A', 'Rua Comercial, 123', '(11) 9876-5432');
 
--- Inserir dados de outra loja fictícia
+
 INSERT INTO loja (loja_nome, loja_endereco, loja_contato)
 VALUES ('Loja B', 'Av. Principal, 456', '(22) 1234-5678');
+
+INSERT INTO loja (loja_nome, loja_endereco, loja_contato)
+VALUES ('Loja C', 'Av. Principal, 226', '(22) 1234-5678');
 
 -- Inserção de dados na tabela MOVIMENTACAOLOJA
 INSERT INTO MOVIMENTACAOLOJA (FK_ID_LOJA, FK_ID_PROD, MOV_TIPO, MOV_QTDE, MOV_VALOR, MOV_PONTO_REP, MOV_VALOR_MEDIO) 

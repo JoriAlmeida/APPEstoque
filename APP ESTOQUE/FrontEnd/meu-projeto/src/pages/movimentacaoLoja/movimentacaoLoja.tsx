@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { MovimentacaoLoja } from '../../Models/MovimentacaoLoja';
 import { Lojas } from '../../Models/Lojas';
-import ComponentMenu from '../../Component/ComponentMenu';
+import ComponentMenu from '../../Component/ComponentMenu/ComponentMenu';
 import './movimentacaoLoja.css';
 
 
@@ -17,7 +17,7 @@ function MovimentoLoja() {
     const param = useParams();
 
     async function carregarMovLojas() {
-        const resp = await axios.get(`http://localhost:8081/movimentacaoLojaController/encontrarMovimentacaoLojaPorLoja/${param.id}`);
+        const resp = await axios.get(`http://localhost:8081/movimentacaoLojaController/encontrarMovimentacaoLojaPorLoja/${param.loja}`);
         setMovLoja(resp.data.slice(0, 10));
         setFilteredMovLojas(resp.data.slice(0, 10));
     }
@@ -41,16 +41,16 @@ function MovimentoLoja() {
 
     return (
         <ComponentMenu>
-            <div className="containerProduto">
-                <h1 className="tituloProduto">Gestão de Loja</h1>
+            <div className="containerMovimentacaoLoja">
+                <h1 className="tituloMovimentacaoLoja">Gestão de Loja</h1>
                 <input
                     type="text"
                     placeholder="Informe o número da loja"
-                    className="search-inputProduto"
+                    className="search-inputMovimentacaoLoja"
                     value={searchTerm}
                     onChange={e => setSearchTerm(e.target.value)}
                 />
-                <table className="product-table">
+                <table className="movimentacaoLoja-table">
                     <thead>
                         <tr>
                             <th>ID MOV</th>
@@ -78,8 +78,8 @@ function MovimentoLoja() {
                         ))}
                     </tbody>
                 </table>
-                <div className="button-containerProduto">
-                    <button className="action-button" onClick={() => navegacao('../cadastroProdutos')}>Cadastrar Produto</button>
+                <div className="button-containerMovimentacaoLoja">
+                    <button className="action-buttonMovimentacaoLoja" onClick={() => navegacao('../cadastroProdutos')}>Cadastrar Produto</button>
                 </div>
             </div>
         </ComponentMenu>

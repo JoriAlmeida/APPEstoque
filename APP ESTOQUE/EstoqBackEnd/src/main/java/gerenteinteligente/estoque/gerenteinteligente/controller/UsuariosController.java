@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import gerenteinteligente.estoque.gerenteinteligente.dtos.ProdutoDTO;
 import gerenteinteligente.estoque.gerenteinteligente.dtos.UsuariosDTO;
 import gerenteinteligente.estoque.gerenteinteligente.entity.UsuariosEntity;
 import gerenteinteligente.estoque.gerenteinteligente.service.UsuariosService;
@@ -40,4 +38,14 @@ public class UsuariosController {
 		return usuariosService.verificarlogin(email, usu_senha);
 	}
 
+	@GetMapping(value = "/encontrarUsuarioId/{id}")
+	public UsuariosDTO findById(@PathVariable int id) {
+		return usuariosService.findById(id);
+	}
+	
+	@GetMapping(value = "/encontrarEmail/{email}")
+	public UsuariosDTO findByEmail(@PathVariable String email) {
+		return usuariosService.findByEmail(email);
+	}
+	
 }

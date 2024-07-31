@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ComponentMenu from '../../Component/ComponentMenu';
+import ComponentMenu from '../../Component/ComponentMenu/ComponentMenu';
 import './editarFornecedor.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -9,6 +9,7 @@ function EditarFornecedor() {
 
     const navegacao = useNavigate();
     const param = useParams();
+    const { id, forn } = useParams();
 
     const [id_forn, setId_forn] = useState(0);
     const [forn_nome, setForn_nome] = useState("");
@@ -19,11 +20,8 @@ function EditarFornecedor() {
     const [forn_status, setForn_status] = useState("");
     const navegate = useNavigate();
 
-
-    const [fornecedor, setFornecedor] = useState<Array<Fornecedor>>([]);
-
     useEffect(() => {
-        axios.get("http://localhost:8081/fornecedor/encontrarFornecedorId/" + param.id)
+        axios.get("http://localhost:8081/fornecedor/encontrarFornecedorId/" + param.forn)
             .then(response => {
                 setId_forn((response).data.id_forn);
                 setForn_nome((response).data.forn_nome);
@@ -57,80 +55,80 @@ function EditarFornecedor() {
 
     return (
         <ComponentMenu>
-            <div className="cadastroFornecedor-container">
-                <h2 className="cadastroFornecedor-titulo">Editar Fornecedore</h2>
-                <div className="cadastroFornecedor-formGroup">
-                    <label className="cadastroFornecedor-label">ID do Fornecedo</label>
+            <div className="editarFornecedor-container">
+                <h2 className="editarFornecedor-titulo">Editar Fornecedore</h2>
+                <div className="editarFornecedor-formGroup">
+                    <label className="editarFornecedor-label">ID do Fornecedo</label>
                     <input
                         type="text"
                         name="fornecedor_id"
                         value={id_forn}
                         onChange={e => setId_forn(Number(e.target.value))}
-                        className="cadastroFornecedor-input"
+                        className="editarFornecedor-input"
                     />
                 </div>
-                <div className="cadastroFornecedor-formGroup">
-                    <label className="cadastroFornecedor-label">Nome do Fornecedor</label>
+                <div className="editarFornecedor-formGroup">
+                    <label className="editarFornecedor-label">Nome do Fornecedor</label>
                     <input
                         type="text"
                         name="fornecedor_nome"
                         value={forn_nome}
                         onChange={e => setForn_nome(e.target.value)}
-                        className="cadastroFornecedor-input"
+                        className="editarFornecedor-input"
                     />
                 </div>
-                <div className="cadastroFornecedor-formGroup">
-                    <label className="cadastroFornecedor-label">Telefone do Fornecedor</label>
+                <div className="editarFornecedor-formGroup">
+                    <label className="editarFornecedor-label">Telefone do Fornecedor</label>
                     <input
                         name="fornecedor_telefone"
                         value={forn_telefone}
                         onChange={e => setForn_telefone(e.target.value)}
-                        className="cadastroFornecedor-input"
+                        className="editarFornecedor-input"
                     />
                 </div>
-                <div className="cadastroFornecedor-formGroup">
-                    <label className="cadastroFornecedor-label">Email do Fornecedore</label>
+                <div className="editarFornecedor-formGroup">
+                    <label className="editarFornecedor-label">Email do Fornecedore</label>
                     <input
                         type="email"
                         name="fornecedor_email"
                         value={forn_email}
                         onChange={e => setForn_email(e.target.value)}
-                        className="cadastroFornecedor-input"
+                        className="editarFornecedor-input"
                     />
                 </div>
-                <div className="cadastroFornecedor-formGroup">
-                    <label className="cadastroFornecedor-label">CNPJ do Fornecedor</label>
+                <div className="editarFornecedor-formGroup">
+                    <label className="editarFornecedor-label">CNPJ do Fornecedor</label>
                     <input
                         type="number"
                         name="fornecedor_cnpj"
                         value={forn_cnpj}
                         onChange={e => setForn_cnpj(e.target.value)}
-                        className="cadastroFornecedor-input"
+                        className="editarFornecedor-input"
                     />
                 </div>
-                <div className="cadastroFornecedor-formGroup">
-                    <label className="cadastroFornecedor-label">Endereco do Fornecedor</label>
+                <div className="editarFornecedor-formGroup">
+                    <label className="editarFornecedor-label">Endereco do Fornecedor</label>
                     <input
                         type="text"
                         name="fornecedor_endereco"
                         value={forn_endereco}
                         onChange={e => setForn_endereco(e.target.value)}
-                        className="cadastroFornecedor-input"
+                        className="editarFornecedor-input"
                     />
                 </div>
-                <div className="cadastroFornecedor-formGroup">
-                    <label className="cadastroFornecedor-label">Status</label>
+                <div className="editarFornecedor-formGroup">
+                    <label className="editarFornecedor-label">Status</label>
                     <input
                         type="text"
                         name="fornecedor_status"
                         value={forn_status}
                         onChange={e => setForn_status(e.target.value)}
-                        className="cadastroFornecedor-input"
+                        className="editarFornecedor-input"
                     />
                 </div>
-                <div className="cadastroFornecedor-buttonContainer">
-                    <button className="cadastroFornecedor-actionButton" onClick={alterarFornecedor}>Confirmar</button>
-                    <button className="cadastroFornecedor-actionButton cadastroProduto-cancelButton" onClick={() => navegacao('../fornecedores')}>Cancelar</button>
+                <div className="editarFornecedor-buttonContainer">
+                    <button className="editarFornecedor-actionButton" onClick={alterarFornecedor}>Confirmar</button>
+                    <button className="editarFornecedor-actionButton editarProduto-cancelButton" onClick={() => navegacao('../fornecedores/'+param.id)}>Cancelar</button>
                 </div>
             </div>
         </ComponentMenu>

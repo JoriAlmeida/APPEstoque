@@ -1,4 +1,4 @@
-.containerFornecedor {
+.containerLoja {
   text-align: center;
   background-color: #fff;
   padding: 20px;
@@ -7,11 +7,11 @@
   height: 93%;
 }
 
-.tituloFornedor {
+.tituloLoja {
   margin-bottom: 20px;
 }
 
-.search-inputFornedor {
+.search-inputLoja {
   padding: 10px;
   width: 80%;
   max-width: 800px;
@@ -20,27 +20,27 @@
   border-radius: 4px;
 }
 
-.fornecedor-table {
+.loja-table {
   margin-left: 150px;
   width: 80%;
   border-collapse: collapse;
   margin-bottom: 20px;
 }
 
-.fornecedor-table th, .fornecedor-table td {
+.loja-table th, .loja-table td {
   padding: 5px;
   border: 1px solid #ddd;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
 }
 
-.button-containerFornecedor {
+.button-containerLoja {
   display: flex;
   gap: 10px;
   margin-left:150px;
 }
 
-.action-buttonFornecedor {
+.action-buttonLoja {
   padding: 10px 20px;
   border: none;
   background-color: indigo;
@@ -50,11 +50,11 @@
   transition: background-color 0.3s ease;
 }
 
-.action-buttonFornecedor:hover {
+.action-buttonLoja:hover {
   background-color: #0056b3;
 }
 
-.fornecedor-table th{
+.loja-table th{
   background-color: indigo;
   color: white;
   text-align: center;

@@ -9,7 +9,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import gerenteinteligente.estoque.gerenteinteligente.dtos.FornecedorDTO;
 import gerenteinteligente.estoque.gerenteinteligente.dtos.UsuariosDTO;
+import gerenteinteligente.estoque.gerenteinteligente.entity.FornecedorEntity;
 import gerenteinteligente.estoque.gerenteinteligente.entity.UsuariosEntity;
 import gerenteinteligente.estoque.gerenteinteligente.repository.UsuariosRepository;
 
@@ -47,12 +49,18 @@ public class UsuariosService {
 		return new ResponseEntity<>("Login realizado com sucesso!", HttpStatus.OK);
 	}
 
-	//Converte lista para DTO
-	private UsuariosDTO converterLista(UsuariosEntity usuariosEntity) {
-		UsuariosDTO usuariosDTO = new UsuariosDTO(usuariosEntity.getId_usuario(), usuariosEntity.getUsu_permissao(), usuariosEntity.getUsu_nome(),usuariosEntity.getUsu_cpf(),usuariosEntity.getEmail(), usuariosEntity.getUsu_senha());
-
+	public UsuariosDTO findById(int id) {
+		UsuariosEntity usuariosEntity = usuariosRepository.findById(id).get();
+		UsuariosDTO usuariosDTO = new UsuariosDTO(usuariosEntity);
 		return usuariosDTO;
 	}
+	
+	public UsuariosDTO findByEmail(String email) {
+		UsuariosEntity usuariosEntity = usuariosRepository.findByEmail(email);
+		UsuariosDTO usuariosDTO = new UsuariosDTO(usuariosEntity);
+		return usuariosDTO;
+	}
+	
 	
 	
 
