@@ -49,6 +49,7 @@
 
 .editarProduto-formGroup-status {
   flex: 1;
+  position: relative;
 }
 
 .editarProduto-formGroup-left {
@@ -82,7 +83,30 @@
   border-radius: 4px;
   box-sizing: border-box;
   font-size: 16px;
+  background-color: #f0f0f0;
+  transition: background-color 0.3s ease;
 }
+
+.editarProduto-input:focus {
+  background-color: #ffffff;
+  border-color: indigo;
+  outline: none;
+}
+
+.editarProduto-inputStatus {
+  width: 100%;
+  padding: 10px;
+  padding-right: 40px;
+  /* Adiciona espaço para o ícone */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+  background-color: #f0f0f0;
+  text-align: center;
+  font-weight: bold;
+}
+
 
 textarea.editarProduto-textarea {
   width: 100%;
@@ -91,8 +115,17 @@ textarea.editarProduto-textarea {
   border-radius: 4px;
   box-sizing: border-box;
   font-size: 16px;
-  height: 120px; /* Ajuste a altura conforme necessário */
+  height: 185px;
+  /* Ajuste a altura conforme necessário */
   resize: vertical;
+  background-color: #f0f0f0;
+  transition: background-color 0.3s ease;
+}
+
+textarea.editarProduto-textarea:focus {
+  background-color: #ffffff;
+  border-color: indigo;
+  outline: none;
 }
 
 .editarProduto-buttonContainer {
@@ -121,4 +154,22 @@ textarea.editarProduto-textarea {
 
 .editarProduto-cancelButton:hover {
   background-color: #c82333;
+}
+
+
+.alteracaoStatusProduto {
+  display: flex;
+  align-items: center;
+}
+
+
+
+
+.alteracaoStatusProduto .iconAlterarStatus {
+  position: absolute;
+  right: 10px;
+  /* Ajusta a posição do ícone dentro do input */
+  top: 70%;
+  transform: translateY(-50%);
+  cursor: pointer;
 }

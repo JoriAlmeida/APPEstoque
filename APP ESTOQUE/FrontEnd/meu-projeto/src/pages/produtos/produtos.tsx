@@ -27,12 +27,15 @@ function Produtos() {
   }, []);
 
 
+
   useEffect(() => {
     const results = produto.filter(produto =>
-      produto.prod_nome.toLowerCase().includes(searchTerm.toLowerCase())
+      produto.prodnome.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setFilteredProdutos(results);
   }, [searchTerm, produto]);
+
+
 
   const getNomeFornecedor = (id: number) => {
     const fornecedor = fornecedores.find(fornecedor => fornecedor.id_forn === id);
@@ -59,11 +62,15 @@ function Produtos() {
 
     const formatCurrency = (value: number) => {
       return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value);
+
+
+
     };
 
 
 
     return (
+
       <ComponentMenu>
         <div className="containerProduto">
           <h1 className="tituloProduto">GESTÃO DE PRODUTOS</h1>
@@ -75,32 +82,33 @@ function Produtos() {
               value={searchTerm}
               onChange={e => setSearchTerm(e.target.value)}
             />
+
             <div className="botaoCadastroProduto">
-              <FaPlusCircle className="action-button" onClick={() => navegacao('../cadastroProdutos/'+param.id)} />
+              <FaPlusCircle className="action-button" onClick={() => navegacao('../cadastroProdutos/' + param.id)} />
             </div>
           </div>
           <table className="product-table">
             <thead>
               <tr>
-                <th>Nome Produto</th>
-                <th>Descrição</th>
-                <th>Ponto de Rep</th>
-                <th>Valor Unit</th>
-                <th>Status</th>
-                <th>Fornecedor</th>
-                <th>Editar Produto</th>
+                <th>PRODUTO</th>
+                <th>DESCRIÇÃO</th>
+                <th>PONTO REP</th>
+                <th>VALOR</th>
+                <th>STATUS</th>
+                <th>FORNECEDOR</th>
+                <th>EDITAR</th>
               </tr>
             </thead>
             <tbody>
               {currentRows.map((produto, index) => (
                 <tr key={index}>
-                  <td>{produto.prod_nome}</td>
-                  <td>{produto.prod_descricao}</td>
-                  <td>{produto.prod_ponto_rep}</td>
-                  <td>{formatCurrency(produto.valor_quant)}</td>
-                  <td>{produto.prod_status}</td>
-                  <td>{getNomeFornecedor(produto.fk_id_forn)}</td>
-                  <td onClick={() => navegacao('../editarProdutos/'+param.id +"/" + produto.id_prod)}><FaRegEdit /></td>
+                  <td>{produto.prodnome}</td>
+                  <td>{produto.proddescricao}</td>
+                  <td>{produto.prodpontorep}</td>
+                  <td>{formatCurrency(produto.prodvalor)}</td>
+                  <td>{produto.prodstatus}</td>
+                  <td>{getNomeFornecedor(produto.fkidforn)}</td>
+                  <td onClick={() => navegacao('../editarProdutos/' + param.id + "/" + produto.produto)}><FaRegEdit /></td>
                 </tr>
               ))}
             </tbody>

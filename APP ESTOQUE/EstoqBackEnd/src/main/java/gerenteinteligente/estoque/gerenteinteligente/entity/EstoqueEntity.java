@@ -14,88 +14,102 @@ import jakarta.persistence.Table;
 @Table(name = "estoque")
 public class EstoqueEntity {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int estoque;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int estoque;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "estoqueidprod")
-	private ProdutoEntity produtoEntity;
-	private int estoquetipo;
-	private int estoqueqtd;
-	private double estoquevalor;
-	private int estoquepontrep;
-	private double estoquevalormedio;
-	
-	public EstoqueEntity() {
-		
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "estoqueidprod")
+    private ProdutoEntity produtoEntity;
+    private int estoquetransferencia;
+    
+    private int estoquetipo;
+    private int estoqueqtd;
+    private double estoquevalor;
+    private int estoquepontorep;
+
+    public EstoqueEntity() {}
+
+    public EstoqueEntity(EstoqueDTO estoqueDTO) {
+        this.estoque = estoqueDTO.getEstoque();
+        this.produtoEntity = new ProdutoEntity();
+        this.produtoEntity.setProduto(estoqueDTO.getEstoqueidprod());
+        this.estoquetransferencia = estoqueDTO.getEstoquetransferencia();
+        this.estoquetipo = estoqueDTO.getEstoquetipo();
+        this.estoqueqtd = estoqueDTO.getEstoqueqtd();
+        this.estoquevalor = estoqueDTO.getEstoquevalor();
+        this.estoquepontorep = estoqueDTO.getEstoquepontorep();
+    }
+
+    public int getEstoque() {
+        return estoque;
+    }
+
+    public void setEstoque(int estoque) {
+        this.estoque = estoque;
+    }
+
+    public ProdutoEntity getProdutoEntity() {
+        return produtoEntity;
+    }
+
+    public void setProdutoEntity(ProdutoEntity produtoEntity) {
+        this.produtoEntity = produtoEntity;
+    }
+
+    
+    
+   
+	public int getEstoquetransferencia() {
+		return estoquetransferencia;
 	}
 
-	public EstoqueEntity(EstoqueDTO estoqueDTO) {
-		this.estoque = estoqueDTO.getEstoque();
-		this.produtoEntity = new ProdutoEntity();
-		this.produtoEntity.setId_prod(estoqueDTO.getEstoqueidprod());
-		this.estoquetipo = estoqueDTO.getEstoquetipo();
-		this.estoqueqtd = estoqueDTO.getEstoqueqtd();
-		this.estoquevalor = estoqueDTO.getEstoquevalor();
-		this.estoquepontrep = estoqueDTO.getEstoquepontrep();
-		this.estoquevalormedio = estoqueDTO.getEstoquevalormedio();
-	}
-
-	public int getEstoque() {
-		return estoque;
-	}
-
-	public void setEstoque(int estoque) {
-		this.estoque = estoque;
-	}
-
-	public ProdutoEntity getProdutoEntity() {
-		return produtoEntity;
-	}
-
-	public void setProdutoEntity(ProdutoEntity produtoEntity) {
-		this.produtoEntity = produtoEntity;
+	public void setEstoquetransferencia(int estoquetransferencia) {
+		this.estoquetransferencia = estoquetransferencia;
 	}
 
 	public int getEstoquetipo() {
-		return estoquetipo;
+        return estoquetipo;
+    }
+
+    public void setEstoquetipo(int estoquetipo) {
+        this.estoquetipo = estoquetipo;
+    }
+
+    public int getEstoqueqtd() {
+        return estoqueqtd;
+    }
+
+    public void setEstoqueqtd(int estoqueqtd) {
+        this.estoqueqtd = estoqueqtd;
+    }
+
+    public double getEstoquevalor() {
+        return estoquevalor;
+    }
+
+    public void setEstoquevalor(double estoquevalor) {
+        this.estoquevalor = estoquevalor;
+    }
+
+    
+    public int getEstoquepontorep() {
+		return estoquepontorep;
 	}
 
-	public void setEstoquetipo(int estoquetipo) {
-		this.estoquetipo = estoquetipo;
+	public void setEstoquepontorep(int estoquepontorep) {
+		this.estoquepontorep = estoquepontorep;
 	}
 
-	public int getEstoqueqtd() {
-		return estoqueqtd;
-	}
+	public void atualizarEstoque(int quantidade) {
+        this.estoqueqtd += quantidade;
+    }
 
-	public void setEstoqueqtd(int estoqueqtd) {
-		this.estoqueqtd = estoqueqtd;
-	}
-
-	public double getEstoquevalor() {
-		return estoquevalor;
-	}
-
-	public void setEstoquevalor(double estoquevalor) {
-		this.estoquevalor = estoquevalor;
-	}
-
-	public int getEstoquepontrep() {
-		return estoquepontrep;
-	}
-
-	public void setEstoquepontrep(int estoquepontrep) {
-		this.estoquepontrep = estoquepontrep;
-	}
-
-	public double getEstoquevalormedio() {
-		return estoquevalormedio;
-	}
-
-	public void setEstoquevalormedio(double estoquevalormedio) {
-		this.estoquevalormedio = estoquevalormedio;
-	}
-
+    public void retirarEstoque(int quantidade) {
+        this.estoqueqtd -= quantidade;
+    }
+    
+    
+    
+    
 }

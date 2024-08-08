@@ -1,41 +1,37 @@
-.containerLogin{
+.containerLogin {
     width: 100vw;
     height: 100vh;
     background: linear-gradient(45deg, blue, indigo, violet);
     display: flex;
     align-items: center;
     justify-content: center;
-
-}
-
-
-.boxLogin{
+  }
+  
+  .boxLogin {
     width: 300px;
     margin: 100px auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.2);
+  }
 
-    
-}
-
-.logoLogin{
+  
+  .logoLogin {
     margin-top: 40px;
     text-align: center;
-}
-
-.imagemLogin{
+  }
+  
+  .imagemLogin {
     width: 130px;
     height: 130px;
-}
-
-.botaoLogin{
+  }
+  
+  .botaoLogin {
     margin-top: 50px;
-
-}
-
-.buttonLogin {
+  }
+  
+  .buttonLogin {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -49,74 +45,86 @@
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
-}
+  }
 
-.buttonLogin:focus {
+
+  
+  .buttonLogin:focus {
     outline: none;
-}
-
-.buttonLogin:hover {
+  }
+  
+  .buttonLogin:hover {
     background-color: #551A8B;
     transform: scale(1.05);
-}
-
-.buttonLogin:active {
+  }
+  
+  .buttonLogin:active {
     background-color: #301934;
     transform: scale(1);
-}
-
-.emailLogin{
+  }
+  
+  .emailLogin {
     font-size: 20px;
     margin-top: 50px;
-    display: flex;
-}
-
-.inputEmail{
-    height: 25px;
-    width: 300px;
-    background: none;
-    border: none;
-    border-bottom: 2px solid black;
-    outline: none;
-    font-size: 22px;
-    
-}
-
-
-.inputEmail::placeholder {
-    color: white;
-    opacity: 85%;
-    text-align: center;
-    background-color: none;
-}
-
-.inputSenha{
-    height: 25px;
-    width: 300px;
-    background: none;
-    border: none;
-    border-bottom: 2px solid black;
-    outline: none;
-    font-size: 22px;
-}
-
-.inputSenha::placeholder {
-    color: white;
-    opacity: 85%;
-    text-align: center;
-}
-
-.senhaLogin{
+    position: relative;
+  }
+  
+  .senhaLogin {
     font-size: 20px;
     margin-top: 30px;
-}
+    position: relative;
+  }
+  
+  .icon {
+    position: absolute;
+    left: 1px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  
+  .inputEmail {
+    padding-left: 20px; /* Espaço suficiente para o ícone */
+    height: 25px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid black;
+    outline: none;
+    font-size: 22px;
+    color:white;
+    text-align: center;
+  }
+  
+  .inputEmail::placeholder {
+    color: white;
+    opacity: 85%;
+    text-align: center;
 
-
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px white inset !important;
-  box-shadow: 0 0 0 30px white inset !important;
-  -webkit-text-fill-color: #000 !important;
-}
+  }
+  
+  .inputSenha {
+    padding-left: 20px; /* Espaço suficiente para o ícone */
+    height: 25px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid black;
+    outline: none;
+    font-size: 22px;
+    color:white;
+    text-align: center;
+  }
+  
+  .inputSenha::placeholder {
+    color: white;
+    opacity: 85%;
+    text-align: center;
+  }
+  
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+    box-shadow: 0 0 0 30px white inset !important;
+    -webkit-text-fill-color: #000 !important;
+  }

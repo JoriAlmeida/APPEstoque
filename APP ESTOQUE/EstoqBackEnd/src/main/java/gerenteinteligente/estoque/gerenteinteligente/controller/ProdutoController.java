@@ -11,24 +11,21 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import gerenteinteligente.estoque.gerenteinteligente.dtos.ProdutoDTO;
 import gerenteinteligente.estoque.gerenteinteligente.entity.FornecedorEntity;
 import gerenteinteligente.estoque.gerenteinteligente.entity.ProdutoEntity;
 import gerenteinteligente.estoque.gerenteinteligente.service.ProdutoService;
-import jakarta.transaction.Transactional;
-
 
 @RestController
 @RequestMapping("/produtos")
 public class ProdutoController {
-	
+
 	private final ProdutoService produtoService;
-	
-	public ProdutoController (ProdutoService produtoService) {
+
+	public ProdutoController(ProdutoService produtoService) {
 		this.produtoService = produtoService;
 	}
-	
+
 	@GetMapping(value = "/encontrarpeloid/{id}")
 	public ProdutoDTO findById(@PathVariable int id) {
 		return produtoService.findById(id);
@@ -39,28 +36,25 @@ public class ProdutoController {
 		return produtoService.encontrarProdutos();
 	}
 
-    @PostMapping(value = "/cadastrarProdutos")
-    public ResponseEntity<ProdutoEntity> salvarProduto(@RequestBody ProdutoDTO produtoDTO) {
-        FornecedorEntity fornecedor = new FornecedorEntity();
-        fornecedor.setId_forn(produtoDTO.getFk_id_forn());
-        ProdutoEntity produto = new ProdutoEntity(produtoDTO, fornecedor);
-        ProdutoEntity produtoSalvo = produtoService.salvarProduto(produto);
-        return new ResponseEntity<>(produtoSalvo, HttpStatus.CREATED);
-    }
-	
-    @PutMapping(value = "/alterarProduto/{id}")
-    public ResponseEntity<ProdutoDTO> alterarProduto(@PathVariable int id, @RequestBody ProdutoDTO produtoDTO) {
-        ProdutoDTO produtoAlterado = produtoService.alterarProduto(id, produtoDTO);
-        return new ResponseEntity<>(produtoAlterado, HttpStatus.OK);
-    }
+	@PostMapping(value = "/cadastrarProdutos")
+	public ResponseEntity<ProdutoEntity> salvarProduto(@RequestBody ProdutoDTO produtoDTO) {
+		FornecedorEntity fornecedor = new FornecedorEntity();
+		fornecedor.setId_forn(produtoDTO.getFkidforn());
+		ProdutoEntity produto = new ProdutoEntity(produtoDTO, fornecedor);
+		ProdutoEntity produtoSalvo = produtoService.salvarProduto(produto);
+		return new ResponseEntity<>(produtoSalvo, HttpStatus.CREATED);
+	}
+
+	@PutMapping(value = "/alterarProduto/{id}")
+	public ResponseEntity<ProdutoDTO> alterarProduto(@PathVariable int id, @RequestBody ProdutoDTO produtoDTO) {
+		ProdutoDTO produtoAlterado = produtoService.alterarProduto(id, produtoDTO);
+		return new ResponseEntity<>(produtoAlterado, HttpStatus.OK);
+	}
 
 	@PutMapping(value = "/status/{id}")
 	public ProdutoDTO alterarStatus(@PathVariable int id) {
 		return produtoService.alterarStatus(id);
 
 	}
-	
-	
-
 
 }

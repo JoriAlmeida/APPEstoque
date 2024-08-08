@@ -103,6 +103,7 @@ public class FornecedorEntity {
 		fornecedorEntity.setForn_email(fornecedorDTO.getForn_email());
 		fornecedorEntity.setForn_cnpj(fornecedorDTO.getForn_cnpj());
 		fornecedorEntity.setForn_endereco(fornecedorDTO.getForn_endereco());
+		fornecedorEntity.setForn_status(fornecedorDTO.getForn_status());
 		return fornecedorEntity;
 	}
 	

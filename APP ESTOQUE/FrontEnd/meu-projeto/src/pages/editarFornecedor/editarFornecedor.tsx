@@ -58,16 +58,6 @@ function EditarFornecedor() {
             <div className="editarFornecedor-container">
                 <h2 className="editarFornecedor-titulo">Editar Fornecedore</h2>
                 <div className="editarFornecedor-formGroup">
-                    <label className="editarFornecedor-label">ID do Fornecedo</label>
-                    <input
-                        type="text"
-                        name="fornecedor_id"
-                        value={id_forn}
-                        onChange={e => setId_forn(Number(e.target.value))}
-                        className="editarFornecedor-input"
-                    />
-                </div>
-                <div className="editarFornecedor-formGroup">
                     <label className="editarFornecedor-label">Nome do Fornecedor</label>
                     <input
                         type="text"

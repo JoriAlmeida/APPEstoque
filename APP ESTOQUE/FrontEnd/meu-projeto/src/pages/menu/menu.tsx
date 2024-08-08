@@ -6,7 +6,7 @@ import { Produto } from '../../Models/Produto';
 import { Fornecedor } from '../../Models/Fornecedor';
 import { Lojas } from '../../Models/Lojas';
 import { useNavigate, useParams } from 'react-router-dom';
-
+import { FaBox, FaWarehouse, FaTruck, FaExchangeAlt, FaUser } from 'react-icons/fa';
 
 function Menu() {
 
@@ -21,7 +21,6 @@ function Menu() {
     setProduto(respProd.data);
   }
 
-
   async function carregarFornecedores() {
     const respForn = await axios.get('http://localhost:8081/fornecedor/encontrarFornecedores');
     setFornecedores(respForn.data);
@@ -32,13 +31,11 @@ function Menu() {
     setLojas(resp.data);
   }
 
-
   useEffect(() => {
     carregarProdutos();
     carregarFornecedores();
     carregarLojas();
   }, [])
-
 
   const getQuantProd = () => {
     return produto.length;
@@ -55,12 +52,26 @@ function Menu() {
   return (
     <ComponentMenu>
       <div className="menu-produtos">
-        <h1 className="tituloMenu">DASHBOARD</h1>
         <div className="boxDashboard">
-          <button className="dashboard-button" onClick={() => navegacao('../produtos/'+param.id)}> <h5>PRODUTOS</h5> {getQuantProd()}</button>
-          <button className="dashboard-button" onClick={() => navegacao('../fornecedores/'+param.id)}><h5>FORNECEDORES</h5> {getQuantForn()}</button>
-          <button className="dashboard-button" onClick={() => navegacao('../loja/'+param.id)}><h5>LOJAS</h5> {getQuantLoja()}</button>
-          <button className="dashboard-button">EXTRATO</button>
+          <button className="dashboard-button" onClick={() => navegacao('../produtos/' + param.id)}>
+            <h5 className="tituloDoMenu">PRODUTOS</h5>
+            <FaBox size={40}/>
+            <span>{getQuantProd()}</span>
+          </button>
+          <button className="dashboard-button" onClick={() => navegacao('../fornecedores/' + param.id)}>
+            <h5 className="tituloDoMenu">FORNECEDORES</h5>
+            <FaTruck size={40}/>
+            <span>{getQuantForn()}</span>
+          </button>
+          <button className="dashboard-button" onClick={() => navegacao('../loja/' + param.id)}>
+            <h5 className="tituloDoMenu">LOJAS</h5>
+            <FaWarehouse size={40}/>
+            <span>{getQuantLoja()}</span>
+          </button>
+          <button className="dashboard-button">
+            <h5 className="tituloDoMenu">EXTRATO</h5>
+            <FaExchangeAlt size={40} style={{ marginRight: '10px' }} aria-hidden="true" />
+          </button>
         </div>
       </div>
     </ComponentMenu>

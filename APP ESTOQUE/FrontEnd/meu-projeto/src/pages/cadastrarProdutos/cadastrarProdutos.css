@@ -1,68 +1,94 @@
- 
-  .cadastroProduto-container {
-    text-align: center;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 40%;
-    align-items: center;
-    margin-left: 450px;
-    margin-top: 15px;
+.cadastroProduto-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* 100% da altura da viewport */
+}
 
-  }
-  
-  .cadastroProduto-titulo {
-    margin-bottom: 20px;
-  }
-  
-  .cadastroProduto-formGroup {
-    margin-bottom: 15px;
-    text-align: left;
-  }
-  
-  .cadastroProduto-label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
-  .cadastroProduto-input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  
-  textarea.cadastroProduto-input {
-    resize: vertical;
-  }
-  
-  .cadastroProduto-buttonContainer {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
-  
-  .cadastroProduto-actionButton {
-    padding: 10px 20px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .cadastroProduto-actionButton:hover {
-    background-color: #0056b3;
-  }
-  
-  .cadastroProduto-cancelButton {
-    background-color: #dc3545;
-  }
-  
-  .cadastroProduto-cancelButton:hover {
-    background-color: #c82333;
-  }
+.cadastroProduto-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cadastroProduto-formGroup {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.cadastroProduto-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: indigo;
+}
+
+.cadastroProduto-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-family: 'SuaFonteDesejada', sans-serif; 
+}
+
+textarea.cadastroProduto-input {
+  resize: vertical;
+}
+
+.cadastroProduto-buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.cadastroProduto-actionButton {
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cadastroProduto-actionButton:hover {
+  background-color: #0056b3;
+}
+
+.cadastroProduto-cancelButton {
+  background-color: #dc3545;
+}
+
+.cadastroProduto-cancelButton:hover {
+  background-color: #c82333;
+}
+
+--daqui para baixo faltou
+.cadastroProduto-input.empty {
+  background-color: #f0f0f0;
+  opacity: 50%;
+  border: 1px solid;
+  transition: background-color 0.3s ease;
+}
+
+.cadastroProduto-input.empty:focus {
+  background-color: #ffffff;
+  border-color: indigo;
+  outline: none;
+}
+
+.cadastroProduto-input.filled {
+  background-color: #fff;
+}
+
+.cadastroProduto-titulo{
+  display: flex;
+  justify-content: center;
+  color:indigo;
+}

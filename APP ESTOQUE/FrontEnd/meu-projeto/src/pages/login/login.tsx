@@ -4,10 +4,11 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from "axios";
 import logo from '../../Imagens/login.png';
 import { Usuarios } from '../../Models/Usuarios';
+import { TfiLock, TfiEmail } from "react-icons/tfi";
 
 function Login() {
 
-  const navegate = useNavigate();
+  const navigate = useNavigate();
   const [USU_EMAIL, loginVerifica] = useState("");
   const [USU_SENHA, senhaVerifica] = useState("");
   let { userId } = useParams();
@@ -16,7 +17,6 @@ function Login() {
   function strCompare(str1, str2) {
     return str1 === str2;
   }
-
 
   async function verificarLogin(event: { preventDefault: () => void }) {
     event.preventDefault();
@@ -29,25 +29,19 @@ function Login() {
     const resp = await axios.get('http://localhost:8081/usuario/encontrarEmail/' + USU_EMAIL);
     setUsuario(resp.data);
     const auxiliar = resp.data.id_usuario;
-    console.log(auxiliar)
-
-
+    console.log(auxiliar);
 
     const resultado = await axios
       .get(
         "http://localhost:8081/usuario/verificarlogin/" + bodyRequest.USU_EMAIL + "/" + bodyRequest.USU_SENHA
       )
-
       .then((response) => {
-
-        navegate('../menu/'+auxiliar);
-
-
+        navigate('../menu/' + auxiliar);
       })
       .catch((error) => {
-        if (error.response.status == 404) {
+        if (error.response.status === 404) {
           alert("Email ou senha invalido.");
-        } else if ((error.response.status = 401)) {
+        } else if (error.response.status === 401) {
           alert("Email ou senha invalido.");
         }
       });
@@ -61,16 +55,16 @@ function Login() {
             <img className="imagemLogin" src={logo} alt="Logo do login" />
           </div>
           <div className="emailLogin">
+            <TfiEmail className="icon" />
             <input className="inputEmail" type="email" placeholder='Email ID' value={USU_EMAIL} onChange={(e) => loginVerifica(e.target.value)} required autoComplete="off" />
           </div>
           <div className="senhaLogin">
+            <TfiLock className="icon" />
             <input type="password" className="inputSenha" placeholder='Password' value={USU_SENHA} onChange={(e) => senhaVerifica(e.target.value)} required autoComplete="new-password" />
           </div>
-
           <div className="botaoLogin" onClick={verificarLogin}>
-            <button className="buttonLogin" >LOGIN</button>
+            <button className="buttonLogin">LOGIN</button>
           </div>
-
         </div>
       </div>
     </article>

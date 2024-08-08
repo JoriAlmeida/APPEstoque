@@ -7,4 +7,5 @@ import gerenteinteligente.estoque.gerenteinteligente.entity.EstoqueEntity;
 
 public interface EstoqueRepository extends JpaRepository<EstoqueEntity, Integer>{
 
+	  EstoqueEntity findByProdutoEntityProduto(int produto);
 }

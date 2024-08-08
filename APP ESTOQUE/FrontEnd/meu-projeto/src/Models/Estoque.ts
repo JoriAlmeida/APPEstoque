@@ -4,8 +4,6 @@ export interface Estoque{
     estoquetipo: number,
     estoqueqtd: number,
     estoquevalor: number,   
-    estoquepontrep: number,
-    estoquevalormedio: number,
 }
 
 

@@ -11,25 +11,40 @@ public class MovimentacaoLojaDTO {
 	private int mov_qtde;
 	private double mov_valor;
 	private int mov_ponto_rep;
-	private double mov_valor_medio;
-
+	
+	
+	public MovimentacaoLojaDTO(MovimentacaoLojaEntity movimentacaoLojaEntity) {
+	    this.id_mov_loja = movimentacaoLojaEntity.getId_mov_loja();
+	    this.fk_id_loja = movimentacaoLojaEntity.getLojaEntity() != null
+	            ? movimentacaoLojaEntity.getLojaEntity().getLoja()
+	            : 0;
+	    this.fk_id_prod = movimentacaoLojaEntity.getProdutoEntity() != null
+	            ? movimentacaoLojaEntity.getProdutoEntity().getProduto()
+	            : 0;
+	    this.mov_tipo = movimentacaoLojaEntity.getMov_tipo();
+	    this.mov_qtde = movimentacaoLojaEntity.getMov_qtde();
+	    this.mov_valor = movimentacaoLojaEntity.getMov_valor();
+	    this.mov_ponto_rep = movimentacaoLojaEntity.getMov_ponto_rep();
+	}
+	
+/*
 	public MovimentacaoLojaDTO(MovimentacaoLojaEntity movimentacaoLojaEntity) {
 		this.id_mov_loja = movimentacaoLojaEntity.getId_mov_loja();
 		this.fk_id_loja = movimentacaoLojaEntity.getLojaEntity() != null
 				? movimentacaoLojaEntity.getLojaEntity().getLoja()
 				: 0;
 		this.fk_id_prod = movimentacaoLojaEntity.getProdutoEntity() != null
-				? movimentacaoLojaEntity.getProdutoEntity().getId_prod()
+				? movimentacaoLojaEntity.getProdutoEntity().getProduto()
 				: 0;
 		this.mov_tipo = movimentacaoLojaEntity.getMov_tipo();
 		this.mov_qtde = movimentacaoLojaEntity.getMov_qtde();
 		this.mov_valor = movimentacaoLojaEntity.getMov_valor();
 		this.mov_ponto_rep = movimentacaoLojaEntity.getMov_ponto_rep();
-		this.mov_valor_medio = movimentacaoLojaEntity.getMov_valor_medio();
-	}
 
-	public MovimentacaoLojaDTO(int id_mov_loja, int fk_id_loja, int fk_id_prod, int mov_tipo, int mov_qtde,
-			double mov_valor, int mov_ponto_rep, double mov_valor_medio) {
+	}
+	*/
+
+	public MovimentacaoLojaDTO(int id_mov_loja, int fk_id_loja, int fk_id_prod, int mov_tipo, int mov_qtde,double mov_valor, int mov_ponto_rep) {
 		this.id_mov_loja = id_mov_loja;
 		this.fk_id_loja = fk_id_loja;
 		this.fk_id_prod = fk_id_prod;
@@ -37,7 +52,7 @@ public class MovimentacaoLojaDTO {
 		this.mov_qtde = mov_qtde;
 		this.mov_valor = mov_valor;
 		this.mov_ponto_rep = mov_ponto_rep;
-		this.mov_valor_medio = mov_valor_medio;
+
 	}
 
 	public MovimentacaoLojaDTO() {
@@ -100,12 +115,5 @@ public class MovimentacaoLojaDTO {
 		this.mov_ponto_rep = mov_ponto_rep;
 	}
 
-	public double getMov_valor_medio() {
-		return mov_valor_medio;
-	}
-
-	public void setMov_valor_medio(double mov_valor_medio) {
-		this.mov_valor_medio = mov_valor_medio;
-	}
 
 }

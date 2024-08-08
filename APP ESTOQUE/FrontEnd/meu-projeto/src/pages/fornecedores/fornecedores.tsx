@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Fornecedor } from '../../Models/Fornecedor';
 import ComponentMenu from '../../Component/ComponentMenu/ComponentMenu';
 import './fornecedores.css';
+import { FaRegEdit, FaPlusCircle } from "react-icons/fa";
 
 function Fornecedores() {
 
@@ -22,7 +23,6 @@ function Fornecedores() {
 
   useEffect(() => {
     carregarFornecedores();
-    console.log(param)
   }, []);
 
   useEffect(() => {
@@ -39,7 +39,8 @@ function Fornecedores() {
   return (
     <ComponentMenu>
       <div className="containerFornecedor">
-        <h1 className="tituloFornecedor">Gestão de Fornecedores</h1>
+        <h1 className="tituloFornecedor">GESTÃO DE FORNECEDORES</h1>
+        <div className="boxSuperiorFornecedores">
         <input
           type="text"
           placeholder="Buscar fornecedor por nome"
@@ -47,37 +48,40 @@ function Fornecedores() {
           value={searchTerm}
           onChange={e => setSearchTerm(e.target.value)}
         />
+
+        <div className="botaoCadastroProduto">
+          <FaPlusCircle className="action-button" onClick={() => navegacao('../cadastrarFornecedores/' + param.id)} />
+        </div>
+        </div>
+
         <table className="fornecedor-table">
           <thead>
             <tr>
-              <th>ID Fornecedor</th>
-              <th>Nome Fornecedor</th>
-              <th>Telefone</th>
-              <th>Email</th>
+              <th>FORNECEDOR</th>
+              <th>TELEFONE</th>
+              <th>EMAIL</th>
               <th>CNPJ</th>
               <th>ENDERECO</th>
-              <th>Status</th>
-              <th>Exibir Fornecedor</th>
+              <th>STATUS</th>
+              <th>EDITAR</th>
             </tr>
           </thead>
           <tbody>
             {filteredFornecedores.map(fornecedor => (
               <tr key={fornecedor.id_forn}>
-                <td>{fornecedor.id_forn}</td>
                 <td>{fornecedor.forn_nome}</td>
                 <td>{fornecedor.forn_telefone}</td>
                 <td>{fornecedor.forn_email}</td>
                 <td>{fornecedor.forn_cnpj}</td>
                 <td>{fornecedor.forn_endereco}</td>
                 <td>{fornecedor.forn_status}</td>
-                <td><button onClick={() => navegacao('../editarFornecedor/'+ param.id +"/"+ fornecedor.id_forn)}>Editar</button></td>
+                <td onClick={() => navegacao('../editarFornecedor/' + param.id + "/" + fornecedor.id_forn)}><FaRegEdit /></td>
               </tr>
             ))}
           </tbody>
         </table>
         <div className="button-containerFornecedor">
-          <button className="action-buttonFornecedor" onClick={() => navegacao('../cadastrarFornecedores/'+param.id)}>Cadastrar Fornecedor</button>
-          <button className="action-buttonFornecedor" onClick={() => navegacao('../fornecedorxproduto/'+param.id)}>Fornecedores x Produtos</button>
+          <button className="action-buttonFornecedor" onClick={() => navegacao('../fornecedorxproduto/' + param.id)}>Fornecedores x Produtos</button>
         </div>
         <div className="button-containerFornecedor">
         </div>

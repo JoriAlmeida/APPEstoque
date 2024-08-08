@@ -1,72 +1,87 @@
 .containerFornecedor {
-    text-align: center;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    height: 93%;
-  }
-  
-  .tituloFornedor {
-    margin-bottom: 20px;
-  }
-  
-  .search-inputFornedor {
-    padding: 10px;
-    width: 80%;
-    max-width: 800px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-  
-  .fornecedor-table {
-    margin-left: 150px;
-    width: 80%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-  }
-  
-  .fornecedor-table th, .fornecedor-table td {
-    padding: 5px;
-    border: 1px solid #ddd;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  
-  }
-  
-  .button-containerFornecedor {
-    display: flex;
-    gap: 10px;
-    margin-left:150px;
-  }
-  
-  .action-buttonFornecedor {
-    padding: 10px 20px;
-    border: none;
-    background-color: indigo;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .action-buttonFornecedor:hover {
-    background-color: #0056b3;
-  }
-  
-  .fornecedor-table th{
-    background-color: indigo;
-    color: white;
-    text-align: center;
-  }
+  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  height: 93%;
+}
+
+.tituloFornecedor {
+  margin-bottom: 20px;
+  color: indigo;
+}
+
+.search-inputFornedor {
+  padding: 10px;
+  width: 80%;
+  max-width: 800px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.fornecedor-table {
+  margin-left: 150px;
+  width: 80%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.fornecedor-table th,
+.fornecedor-table td {
+  padding: 5px;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+  /* Adicionado para evitar quebra de linha */
+  max-width: 150px;
+  /* Limita a largura máxima da célula */
+  overflow: hidden;
+  /* Oculta o excesso de texto */
+  text-overflow: ellipsis;
+  /* Adiciona reticências ao texto excedente */
+}
+
+.button-containerFornecedor {
+  display: flex;
+  gap: 10px;
+  margin-left: 150px;
+}
+
+.action-buttonFornecedor {
+  padding: 10px 20px;
+  border: none;
+  background-color: indigo;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.action-buttonFornecedor:hover {
+  background-color: #0056b3;
+}
+
+.fornecedor-table th {
+  background-color: indigo;
+  color: white;
+  text-align: center;
+}
 
 
-  .search-inputFornecedor {
-    margin-left: 26px;
-    padding: 10px;
-    width: 80%;
-    max-width: 800px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
+.search-inputFornecedor {
+  margin-left: 26px;
+  padding: 10px;
+  width: 80%;
+  max-width: 800px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.boxSuperiorFornecedores{
+  display: flex;
+  justify-content: center;
+  justify-content: space-around;
+}

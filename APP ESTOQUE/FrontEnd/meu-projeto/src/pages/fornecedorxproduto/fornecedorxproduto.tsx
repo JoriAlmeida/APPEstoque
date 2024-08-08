@@ -39,7 +39,7 @@ function Fornecedoresxproduto() {
   useEffect(() => {
     // Filtrar fornecedores com base no termo de busca
     const results = produtos.filter(produtos =>
-      getNomeFornecedor(produtos.fk_id_forn).toLowerCase().includes(searchTerm.toLowerCase())
+      getNomeFornecedor(produtos.fkidforn).toLowerCase().includes(searchTerm.toLowerCase())
       
     );
     setFilteredProdutos(results);
@@ -65,9 +65,9 @@ function Fornecedoresxproduto() {
           </thead>
           <tbody>
             {filteredProdutos.map(produtos => (
-              <tr key={produtos.id_prod}>
-                <td>{getNomeFornecedor(produtos.fk_id_forn)}</td>
-                <td>{produtos.prod_nome}</td>
+              <tr key={produtos.produto}>
+                <td>{getNomeFornecedor(produtos.fkidforn)}</td>
+                <td>{produtos.prodnome}</td>
               </tr>
             ))}
           </tbody>

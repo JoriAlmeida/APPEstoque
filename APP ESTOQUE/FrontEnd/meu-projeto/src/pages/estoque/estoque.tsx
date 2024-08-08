@@ -5,6 +5,7 @@ import { Fornecedor } from '../../Models/Fornecedor';
 import { Estoque } from '../../Models/Estoque';
 import ComponentMenu from '../../Component/ComponentMenu/ComponentMenu';
 import './estoque.css';
+import { Produto } from '../../Models/Produto';
 
 function Estoques() {
 
@@ -13,18 +14,33 @@ function Estoques() {
   const [searchTerm, setSearchTerm] = useState('');
   const [estoque, setEstoque] = useState<Array<Estoque>>([]);
   const [filteredEstoque, setFilteredEstoque] = useState<Array<Estoque>>([]);
+  const [produto, setProduto] = useState<Array<Produto>>([]);
+  const [pontoRep, setPontoRep] = useState(0);
   
 
   async function carregarEstoque() {
     const resp = await axios.get('http://localhost:8081/estoque/encontrarEstoque');
+    const respProd = await axios.get('http://localhost:8081/produtos/encontrarProdutos');
     setEstoque(resp.data.slice(0, 10));
     setFilteredEstoque(resp.data.slice(0, 10)); // Inicializa a lista filtrada
+    setProduto(respProd.data);
   }
+
+
+
+
+
 
   useEffect(() => {
     carregarEstoque();
+    console.log(produto)
   }, []);
 
+
+  const getPontoRep = (estoqueIdProd) => {
+    const prod = produto.find(p => p.produto === estoqueIdProd);
+    return prod ? prod.prodpontorep : 'N/A';
+  };
 
   useEffect(() => {
     if (searchTerm === '') {
@@ -51,7 +67,6 @@ function Estoques() {
         <table className="estoque-table">
           <thead>
             <tr>
-              <th>ID Estoque</th>
               <th>ID Produto</th>
               <th>Tipo Mov</th>
               <th>Quantidade</th>
@@ -63,13 +78,12 @@ function Estoques() {
           <tbody>
             {filteredEstoque.map(estoque => (
               <tr key={estoque.estoque}>
-                <td>{estoque.estoque}</td>
                 <td>{estoque.estoqueidprod}</td>
                 <td>{estoque.estoquetipo}</td>
                 <td>{estoque.estoqueqtd}</td>
                 <td>{estoque.estoquevalor}</td>
-                <td>{estoque.estoquepontrep}</td>
-                <td>{estoque.estoquevalormedio}</td>
+                <td>{getPontoRep(estoque.estoqueidprod)}</td>
+                <td>{estoque.estoquevalor / estoque.estoqueqtd}</td>
               </tr>
             ))}
           </tbody>

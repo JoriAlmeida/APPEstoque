@@ -17,7 +17,7 @@ function MovimentoLoja() {
     const param = useParams();
 
     async function carregarMovLojas() {
-        const resp = await axios.get(`http://localhost:8081/movimentacaoLojaController/encontrarMovimentacaoLojaPorLoja/${param.loja}`);
+        const resp = await axios.get(`http://localhost:8081/movimentacaoLoja/encontrarMovimentacaoLojaPorLoja/${param.loja}`);
         setMovLoja(resp.data.slice(0, 10));
         setFilteredMovLojas(resp.data.slice(0, 10));
     }
