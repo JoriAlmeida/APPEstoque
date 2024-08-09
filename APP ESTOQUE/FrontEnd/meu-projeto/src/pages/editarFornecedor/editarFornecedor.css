@@ -1,68 +1,100 @@
- 
-  .editarFornecedor-container {
-    text-align: center;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 40%;
-    align-items: center;
-    margin-left: 450px;
-    margin-top: 15px;
+   .editarFornecedor-container {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     padding: 20px;
+     background-color: #f9f9f9;
+     min-height: 100vh;
+   }
 
-  }
-  
-  .editarFornecedor-titulo {
-    margin-bottom: 20px;
-  }
-  
-  .editarFornecedor-formGroup {
-    margin-bottom: 15px;
-    text-align: left;
-  }
-  
-  .editarFornecedor-label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
-  .editarFornecedor-input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  
-  textarea.editarFornecedor-input {
-    resize: vertical;
-  }
-  
-  .editarFornecedor-buttonContainer {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
-  
-  .editarFornecedor-actionButton {
-    padding: 10px 20px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .cadastroEditar-actionButton:hover {
-    background-color: #0056b3;
-  }
-  
-  .editarFornecedor-cancelButton {
-    background-color: #dc3545;
-  }
-  
-  .editarFornecedor-cancelButton:hover {
-    background-color: #c82333;
-  }
+   .editarFornecedor-header {
+     text-align: center;
+     margin-bottom: 20px;
+   }
+
+
+   .editarFornecedor-titulo {
+     text-align: center;
+     margin-bottom: 20px;
+   }
+
+
+   .editarFornecedor-content {
+     width: 100%;
+     max-width: 1000px;
+   }
+
+
+   .editarFornecedor-form {
+     background-color: #fff;
+     padding: 20px;
+     border-radius: 8px;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   }
+
+   .editarFornecedor-formRow {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 15px;
+
+   }
+
+   .editarFornecedor-formGroup {
+     flex: 1;
+     min-width: 250px;
+     margin-bottom: 15px;
+   }
+
+
+   .editarFornecedor-label {
+     display: block;
+     margin-bottom: 5px;
+     font-weight: bold;
+     color: indigo;
+   }
+
+   .editarFornecedor-input {
+     width: 100%;
+     padding: 10px;
+     border: 1px solid #ddd;
+     border-radius: 4px;
+     box-sizing: border-box;
+     font-size: 16px;
+     background-color: #f0f0f0;
+     transition: background-color 0.3s ease;
+   }
+
+   textarea.editarFornecedor-input {
+     resize: vertical;
+   }
+
+   .editarFornecedor-buttonContainer {
+     display: flex;
+     justify-content: space-between;
+     margin-top: 20px;
+   }
+
+   .editarFornecedor-actionButton {
+     padding: 10px 20px;
+     border: none;
+     background-color: #007bff;
+     color: white;
+     border-radius: 4px;
+     cursor: pointer;
+     transition: background-color 0.3s ease;
+   }
+
+   .cadastroEditar-actionButton:hover {
+     background-color: #0056b3;
+   }
+
+   .editarFornecedor-cancelButton {
+     background-color: #dc3545;
+   }
+
+   .editarFornecedor-cancelButton:hover {
+     background-color: #c82333;
+   }
+
+
+

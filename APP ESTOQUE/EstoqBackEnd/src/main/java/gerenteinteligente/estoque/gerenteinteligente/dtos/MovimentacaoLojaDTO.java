@@ -4,54 +4,35 @@ import gerenteinteligente.estoque.gerenteinteligente.entity.MovimentacaoLojaEnti
 
 public class MovimentacaoLojaDTO {
 
-	private int id_mov_loja;
-	private int fk_id_loja;
-	private int fk_id_prod;
-	private int mov_tipo;
-	private int mov_qtde;
-	private double mov_valor;
-	private int mov_ponto_rep;
+	private int idmovimentacao;
+	private int fkidloja;
+	private int fkidprod;
+	private int movqtde;
+	private double movvalor;
+	private int movpontorep;
+	
 	
 	
 	public MovimentacaoLojaDTO(MovimentacaoLojaEntity movimentacaoLojaEntity) {
-	    this.id_mov_loja = movimentacaoLojaEntity.getId_mov_loja();
-	    this.fk_id_loja = movimentacaoLojaEntity.getLojaEntity() != null
+	    this.idmovimentacao = movimentacaoLojaEntity.getIdmovimentacao();
+	    this.fkidloja = movimentacaoLojaEntity.getLojaEntity() != null
 	            ? movimentacaoLojaEntity.getLojaEntity().getLoja()
 	            : 0;
-	    this.fk_id_prod = movimentacaoLojaEntity.getProdutoEntity() != null
+	    this.fkidprod = movimentacaoLojaEntity.getProdutoEntity() != null
 	            ? movimentacaoLojaEntity.getProdutoEntity().getProduto()
 	            : 0;
-	    this.mov_tipo = movimentacaoLojaEntity.getMov_tipo();
-	    this.mov_qtde = movimentacaoLojaEntity.getMov_qtde();
-	    this.mov_valor = movimentacaoLojaEntity.getMov_valor();
-	    this.mov_ponto_rep = movimentacaoLojaEntity.getMov_ponto_rep();
+	    this.movqtde = movimentacaoLojaEntity.getMovqtde();
+	    this.movvalor = movimentacaoLojaEntity.getMovvalor();
+	    this.movpontorep = movimentacaoLojaEntity.getMovpontorep();
 	}
 	
-/*
-	public MovimentacaoLojaDTO(MovimentacaoLojaEntity movimentacaoLojaEntity) {
-		this.id_mov_loja = movimentacaoLojaEntity.getId_mov_loja();
-		this.fk_id_loja = movimentacaoLojaEntity.getLojaEntity() != null
-				? movimentacaoLojaEntity.getLojaEntity().getLoja()
-				: 0;
-		this.fk_id_prod = movimentacaoLojaEntity.getProdutoEntity() != null
-				? movimentacaoLojaEntity.getProdutoEntity().getProduto()
-				: 0;
-		this.mov_tipo = movimentacaoLojaEntity.getMov_tipo();
-		this.mov_qtde = movimentacaoLojaEntity.getMov_qtde();
-		this.mov_valor = movimentacaoLojaEntity.getMov_valor();
-		this.mov_ponto_rep = movimentacaoLojaEntity.getMov_ponto_rep();
-
-	}
-	*/
-
-	public MovimentacaoLojaDTO(int id_mov_loja, int fk_id_loja, int fk_id_prod, int mov_tipo, int mov_qtde,double mov_valor, int mov_ponto_rep) {
-		this.id_mov_loja = id_mov_loja;
-		this.fk_id_loja = fk_id_loja;
-		this.fk_id_prod = fk_id_prod;
-		this.mov_tipo = mov_tipo;
-		this.mov_qtde = mov_qtde;
-		this.mov_valor = mov_valor;
-		this.mov_ponto_rep = mov_ponto_rep;
+	public MovimentacaoLojaDTO(int idmovimentacao, int fkidloja, int fkidprod, int movqtde,double movvalor, int movpontorep) {
+		this.idmovimentacao = idmovimentacao;
+		this.fkidloja = fkidloja;
+		this.fkidprod = fkidprod;
+		this.movqtde = movqtde;
+		this.movvalor = movvalor;
+		this.movpontorep = movpontorep;
 
 	}
 
@@ -59,61 +40,55 @@ public class MovimentacaoLojaDTO {
 
 	}
 
-	public int getId_mov_loja() {
-		return id_mov_loja;
+	public int getIdmovimentacao() {
+		return idmovimentacao;
 	}
 
-	public void setId_mov_loja(int id_mov_loja) {
-		this.id_mov_loja = id_mov_loja;
+	public void setIdmovimentacao(int idmovimentacao) {
+		this.idmovimentacao = idmovimentacao;
 	}
 
-	public int getFk_id_loja() {
-		return fk_id_loja;
+	public int getFkidloja() {
+		return fkidloja;
 	}
 
-	public void setFk_id_loja(int fk_id_loja) {
-		this.fk_id_loja = fk_id_loja;
+	public void setFkidloja(int fkidloja) {
+		this.fkidloja = fkidloja;
 	}
 
-	public int getFk_id_prod() {
-		return fk_id_prod;
+	public int getFkidprod() {
+		return fkidprod;
 	}
 
-	public void setFk_id_prod(int fk_id_prod) {
-		this.fk_id_prod = fk_id_prod;
+	public void setFkidprod(int fkidprod) {
+		this.fkidprod = fkidprod;
 	}
 
-	public int getMov_tipo() {
-		return mov_tipo;
+	public int getMovqtde() {
+		return movqtde;
 	}
 
-	public void setMov_tipo(int mov_tipo) {
-		this.mov_tipo = mov_tipo;
+	public void setMovqtde(int movqtde) {
+		this.movqtde = movqtde;
 	}
 
-	public int getMov_qtde() {
-		return mov_qtde;
+	public double getMovvalor() {
+		return movvalor;
 	}
 
-	public void setMov_qtde(int mov_qtde) {
-		this.mov_qtde = mov_qtde;
+	public void setMovvalor(double movvalor) {
+		this.movvalor = movvalor;
 	}
 
-	public double getMov_valor() {
-		return mov_valor;
+	public int getMovpontorep() {
+		return movpontorep;
 	}
 
-	public void setMov_valor(double mov_valor) {
-		this.mov_valor = mov_valor;
+	public void setMovpontorep(int movpontorep) {
+		this.movpontorep = movpontorep;
 	}
 
-	public int getMov_ponto_rep() {
-		return mov_ponto_rep;
-	}
-
-	public void setMov_ponto_rep(int mov_ponto_rep) {
-		this.mov_ponto_rep = mov_ponto_rep;
-	}
+	
 
 
 }

@@ -143,7 +143,7 @@ function CadastroFornecedor() {
                     </div>
                     <div className="cadastroFornecedor-buttonContainer">
                         <button className="cadastroFornecedor-actionButton" onClick={acrescentarFornecedor}>Confirmar Cadastro</button>
-                        <button className="cadastroFornecedor-actionButton cadastroProduto-cancelButton" onClick={() => navegacao('../fornecedores')}>Cancelar</button>
+                        <button className="cadastroFornecedor-actionButton cadastroProduto-cancelButton" onClick={() => navegacao('../fornecedores/' + param.id)}>Cancelar</button>
                     </div>
                 </div>
             </div>

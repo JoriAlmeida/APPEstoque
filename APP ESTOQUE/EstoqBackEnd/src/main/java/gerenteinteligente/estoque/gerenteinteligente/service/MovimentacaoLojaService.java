@@ -63,31 +63,34 @@ public class MovimentacaoLojaService {
 	}
 
 	@Transactional
-    public MovimentacaoLojaDTO cadastrarMovimentacaoLoja(MovimentacaoLojaDTO movimentacaoLojaDTO) {
-        ProdutoEntity produtoEntity = produtoRepository.findById(movimentacaoLojaDTO.getFk_id_prod())
-                .orElseThrow(() -> new IllegalArgumentException("Produto não encontrado"));
+	public MovimentacaoLojaDTO cadastrarMovimentacaoLoja(MovimentacaoLojaDTO movimentacaoLojaDTO) {
 
-        LojaEntity lojaEntity = lojaRepository.findById(movimentacaoLojaDTO.getFk_id_loja())
-                .orElseThrow(() -> new IllegalArgumentException("Loja não encontrada"));
+	    ProdutoEntity produtoEntity = produtoRepository.findById(movimentacaoLojaDTO.getFkidprod())
+	            .orElseThrow(() -> new IllegalArgumentException("Produto não encontrado"));
 
+	    LojaEntity lojaEntity = lojaRepository.findById(movimentacaoLojaDTO.getFkidloja())
+	            .orElseThrow(() -> new IllegalArgumentException("Loja não encontrada"));
 
-        MovimentacaoLojaEntity movimentacaoLojaEntity = movimentacaoLojaRepository.findByProdutoEntityProduto(produtoEntity.getProduto());
-        
-        if (produtoEntity != null && lojaEntity != null) {
-            movimentacaoLojaEntity.setMov_qtde(movimentacaoLojaEntity.getMov_qtde() + movimentacaoLojaDTO.getMov_qtde());
-        } else {
-            movimentacaoLojaEntity = new MovimentacaoLojaEntity();
-            movimentacaoLojaEntity.setLojaEntity(lojaEntity);
-            movimentacaoLojaEntity.setProdutoEntity(produtoEntity);
-            movimentacaoLojaEntity.setMov_tipo(movimentacaoLojaDTO.getMov_tipo());
-            movimentacaoLojaEntity.setMov_qtde(movimentacaoLojaDTO.getMov_qtde());
-            movimentacaoLojaEntity.setMov_valor(produtoEntity.getProdvalor());
-            movimentacaoLojaEntity.setMov_ponto_rep(produtoEntity.getProdpontorep());
-        }
+	    // Usando orElse(null) para tratar o Optional
+	    MovimentacaoLojaEntity movimentacaoLojaEntity = movimentacaoLojaRepository
+	            .findByProdutoEntityAndLojaEntity(produtoEntity, lojaEntity)
+	            .orElse(null);
 
-        movimentacaoLojaEntity = movimentacaoLojaRepository.save(movimentacaoLojaEntity);
-        return new MovimentacaoLojaDTO(movimentacaoLojaEntity);
-    }
+	    if (movimentacaoLojaEntity != null) {
+	        movimentacaoLojaEntity.setMovqtde(movimentacaoLojaEntity.getMovqtde() + movimentacaoLojaDTO.getMovqtde());
+	        
+	    } else {
+	        movimentacaoLojaEntity = new MovimentacaoLojaEntity();
+	        movimentacaoLojaEntity.setLojaEntity(lojaEntity);
+	        movimentacaoLojaEntity.setProdutoEntity(produtoEntity);
+	        movimentacaoLojaEntity.setMovqtde(movimentacaoLojaDTO.getMovqtde());
+	        movimentacaoLojaEntity.setMovvalor(produtoEntity.getProdvalor());
+	        movimentacaoLojaEntity.setMovpontorep(produtoEntity.getProdpontorep());
+	    }
+
+	    movimentacaoLojaEntity = movimentacaoLojaRepository.save(movimentacaoLojaEntity);
+	    return new MovimentacaoLojaDTO(movimentacaoLojaEntity);
+	}
 }
 
 

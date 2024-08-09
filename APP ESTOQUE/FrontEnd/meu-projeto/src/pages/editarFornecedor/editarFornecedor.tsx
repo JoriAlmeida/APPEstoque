@@ -43,11 +43,12 @@ function EditarFornecedor() {
             forn_email: forn_email,
             forn_cnpj: forn_cnpj,
             forn_endereco: forn_endereco,
-            forn_status:forn_status
+            forn_status: forn_status
         }
 
-        await axios.put('http://localhost:8081/fornecedor/editarFornecedor/'+ id_forn, bodyRequest).then((result) => {
+        await axios.put('http://localhost:8081/fornecedor/editarFornecedor/' + id_forn, bodyRequest).then((result) => {
             alert("Fornecedor alterado com sucesso")
+            navegacao('../fornecedores/' + param.id);
             console.log(bodyRequest)
         })
     }
@@ -56,69 +57,87 @@ function EditarFornecedor() {
     return (
         <ComponentMenu>
             <div className="editarFornecedor-container">
-                <h2 className="editarFornecedor-titulo">Editar Fornecedore</h2>
-                <div className="editarFornecedor-formGroup">
-                    <label className="editarFornecedor-label">Nome do Fornecedor</label>
-                    <input
-                        type="text"
-                        name="fornecedor_nome"
-                        value={forn_nome}
-                        onChange={e => setForn_nome(e.target.value)}
-                        className="editarFornecedor-input"
-                    />
+
+                <div className="editarFornecedor-header">
+                    <h2 className="editarFornecedor-titulo">Editar Fornecedore</h2>
                 </div>
-                <div className="editarFornecedor-formGroup">
-                    <label className="editarFornecedor-label">Telefone do Fornecedor</label>
-                    <input
-                        name="fornecedor_telefone"
-                        value={forn_telefone}
-                        onChange={e => setForn_telefone(e.target.value)}
-                        className="editarFornecedor-input"
-                    />
-                </div>
-                <div className="editarFornecedor-formGroup">
-                    <label className="editarFornecedor-label">Email do Fornecedore</label>
-                    <input
-                        type="email"
-                        name="fornecedor_email"
-                        value={forn_email}
-                        onChange={e => setForn_email(e.target.value)}
-                        className="editarFornecedor-input"
-                    />
-                </div>
-                <div className="editarFornecedor-formGroup">
-                    <label className="editarFornecedor-label">CNPJ do Fornecedor</label>
-                    <input
-                        type="number"
-                        name="fornecedor_cnpj"
-                        value={forn_cnpj}
-                        onChange={e => setForn_cnpj(e.target.value)}
-                        className="editarFornecedor-input"
-                    />
-                </div>
-                <div className="editarFornecedor-formGroup">
-                    <label className="editarFornecedor-label">Endereco do Fornecedor</label>
-                    <input
-                        type="text"
-                        name="fornecedor_endereco"
-                        value={forn_endereco}
-                        onChange={e => setForn_endereco(e.target.value)}
-                        className="editarFornecedor-input"
-                    />
-                </div>
-                <div className="editarFornecedor-formGroup">
-                    <label className="editarFornecedor-label">Status</label>
-                    <input
-                        type="text"
-                        name="fornecedor_status"
-                        value={forn_status}
-                        onChange={e => setForn_status(e.target.value)}
-                        className="editarFornecedor-input"
-                    />
-                </div>
-                <div className="editarFornecedor-buttonContainer">
-                    <button className="editarFornecedor-actionButton" onClick={alterarFornecedor}>Confirmar</button>
-                    <button className="editarFornecedor-actionButton editarProduto-cancelButton" onClick={() => navegacao('../fornecedores/'+param.id)}>Cancelar</button>
+                <div className="editarFornecedor-content">
+                    <div className="editarFornecedor-form">
+                        <form>
+                            <div className="editarFornecedor-formRow">
+                                <div className="editarFornecedor-formGroup" editarFornecedor-formGroup-name>
+                                    <label className="editarFornecedor-label">Nome do Fornecedor</label>
+                                    <input
+                                        type="text"
+                                        name="fornecedor_nome"
+                                        value={forn_nome}
+                                        onChange={e => setForn_nome(e.target.value)}
+                                        className="editarFornecedor-input"
+                                    />
+                                </div>
+                                <div className="editarFornecedor-formGroup" editarFornecedor-formGroup-status>
+                                    <label className="editarFornecedor-label">Status</label>
+                                    <input
+                                        type="text"
+                                        name="fornecedor_status"
+                                        value={forn_status}
+                                        onChange={e => setForn_status(e.target.value)}
+                                        className="editarFornecedor-input"
+                                    />
+                                </div>
+
+                            </div>
+                            <div className="editarFornecedor-formRow">
+                                <div className="editarFornecedor-formGroup" editarFornecedor-formGroup-email>
+                                    <label className="editarFornecedor-label">Email do Fornecedore</label>
+                                    <input
+                                        type="email"
+                                        name="fornecedor_email"
+                                        value={forn_email}
+                                        onChange={e => setForn_email(e.target.value)}
+                                        className="editarFornecedor-input"
+                                    />
+                                </div>
+                                <div className="editarFornecedor-formGroup" editarFornecedor-formGroup-telefone>
+                                    <label className="editarFornecedor-label">Telefone do Fornecedor</label>
+                                    <input
+                                        name="fornecedor_telefone"
+                                        value={forn_telefone}
+                                        onChange={e => setForn_telefone(e.target.value)}
+                                        className="editarFornecedor-input"
+                                    />
+                                </div>
+                            </div>
+                            <div className="editarFornecedor-formRow">
+                                <div className="editarFornecedor-formGroup" editarFornecedor-formGroup-endereco>
+                                    <label className="editarFornecedor-label">Endereco do Fornecedor</label>
+                                    <input
+                                        type="text"
+                                        name="fornecedor_endereco"
+                                        value={forn_endereco}
+                                        onChange={e => setForn_endereco(e.target.value)}
+                                        className="editarFornecedor-input"
+                                    />
+                                </div>
+                                <div className="editarFornecedor-formGroup" editarFornecedor-formGroup-cnpj>
+                                    <label className="editarFornecedor-label">CNPJ do Fornecedor</label>
+                                    <input
+                                        type="number"
+                                        name="fornecedor_cnpj"
+                                        value={forn_cnpj}
+                                        onChange={e => setForn_cnpj(e.target.value)}
+                                        className="editarFornecedor-input"
+                                    />
+                                </div>
+
+                            </div>
+
+                            <div className="editarFornecedor-buttonContainer">
+                                <button className="editarFornecedor-actionButton" onClick={alterarFornecedor}>Confirmar</button>
+                                <button className="editarFornecedor-actionButton editarProduto-cancelButton" onClick={() => navegacao('../fornecedores/' + param.id)}>Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </ComponentMenu>

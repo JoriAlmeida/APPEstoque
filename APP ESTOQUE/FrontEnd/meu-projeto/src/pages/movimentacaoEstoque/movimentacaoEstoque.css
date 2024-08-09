@@ -1,0 +1,176 @@
+.cadastrarEstoque-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+}
+
+.cadastrarEstoque-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.cadastrarEstoque-titulo {
+  font-size: 28px;
+  color: #333;
+}
+
+.cadastrarEstoque-content {
+  width: 100%;
+  max-width: 1000px;
+}
+
+.cadastrarEstoque-form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cadastrarEstoque-formRow {
+  display: flex;
+
+  gap: 15px;
+
+}
+
+.cadastrarEstoque-formGroup {
+  flex: 1;
+  min-width: 250px;
+  margin-bottom: 15px;
+}
+
+.cadastrarEstoque-formGroup-name {
+  flex: 2;
+  margin-right: 15px;
+}
+
+.cadastrarEstoque-formGroup-status {
+  flex: 1;
+  position: relative;
+}
+
+.cadastrarEstoque-formGroup-left {
+  flex: 1;
+  margin-right: 15px;
+}
+
+.cadastrarEstoque-descriptionGroup {
+  flex: 2;
+}
+
+.cadastrarEstoque-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: indigo;
+}
+
+.cadastrarEstoque-labelValorUnit {
+  display: block;
+  margin-bottom: 7px;
+  font-weight: bold;
+  color: indigo;
+  margin-top: 10px;
+}
+
+.cadastrarEstoque-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+  background-color: #f0f0f0;
+  transition: background-color 0.3s ease;
+}
+
+.cadastrarEstoque-input:focus {
+  background-color: #ffffff;
+  border-color: indigo;
+  outline: none;
+}
+
+.cadastrarEstoque-inputStatus {
+  width: 100%;
+  padding: 10px;
+  padding-right: 40px;
+  /* Adiciona espaço para o ícone */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+  background-color: #f0f0f0;
+  text-align: center;
+  font-weight: bold;
+}
+
+
+.cadastrarEstoque-buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.cadastrarEstoque-actionButton {
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cadastrarEstoque-actionButton:hover {
+  background-color: #0056b3;
+}
+
+.cadastrarEstoque-cancelButton {
+  background-color: #dc3545;
+}
+
+.cadastrarEstoque-cancelButton:hover {
+  background-color: #c82333;
+}
+
+
+.alteracaoStatusProduto {
+  display: flex;
+  align-items: center;
+}
+
+
+.alteracaoStatusProduto .iconAlterarStatus {
+  position: absolute;
+  right: 10px;
+  /* Ajusta a posição do ícone dentro do input */
+  top: 70%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+
+
+.cadastrarEstoque-inlineGroup {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  align-items: center;
+  width: 100%;
+}
+
+.cadastrarEstoque-formGroup {
+  flex: 1;
+  min-width: 0;
+}
+
+.cadastrarEstoque-formGroup label {
+  margin-bottom: 5px;
+}
+
+.cadastrarEstoque-formGroup input {
+  width: 100%;
+}

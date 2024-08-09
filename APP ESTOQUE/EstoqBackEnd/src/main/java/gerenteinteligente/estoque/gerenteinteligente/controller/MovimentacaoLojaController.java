@@ -43,12 +43,23 @@ public class MovimentacaoLojaController {
         return movimentacaoLojaService.encontrarMovimentacaoLojasPorLoja(fkIdLoja);
     }
     
+    /*
     @PostMapping(value = "/cadastrarMovimentacao")
     public ResponseEntity<MovimentacaoLojaDTO> cadastrarMovimentacaoLoja(@RequestBody MovimentacaoLojaDTO movimentacaoLojaDTO) {
         MovimentacaoLojaDTO novaMovimentacaoLoja = movimentacaoLojaService.cadastrarMovimentacaoLoja(movimentacaoLojaDTO);
         return new ResponseEntity<>(novaMovimentacaoLoja, HttpStatus.CREATED);
     }
+    */
     
+    @PostMapping("/cadastrarMovimentacao")
+    public ResponseEntity<MovimentacaoLojaDTO> cadastrarMovimentacaoLoja(@RequestBody MovimentacaoLojaDTO movimentacaoLojaDTO) {
+        try {
+            MovimentacaoLojaDTO novaMovimentacao = movimentacaoLojaService.cadastrarMovimentacaoLoja(movimentacaoLojaDTO);
+            return ResponseEntity.ok(novaMovimentacao);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(null);
+        }
     
+    }
 	
 }

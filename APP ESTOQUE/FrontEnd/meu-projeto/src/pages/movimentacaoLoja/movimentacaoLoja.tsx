@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { MovimentacaoLoja } from '../../Models/MovimentacaoLoja';
+import { Produto } from '../../Models/Produto';
 import { Lojas } from '../../Models/Lojas';
 import ComponentMenu from '../../Component/ComponentMenu/ComponentMenu';
 import './movimentacaoLoja.css';
+
 
 
 function MovimentoLoja() {
@@ -13,6 +15,7 @@ function MovimentoLoja() {
     const [searchTerm, setSearchTerm] = useState('');
     const [movLoja, setMovLoja] = useState<Array<MovimentacaoLoja>>([]);
     const [filteredMovLojas, setFilteredMovLojas] = useState<Array<MovimentacaoLoja>>([]);
+    const [produtos, setProdutos] = useState<Array<Produto>>([]);
 
     const param = useParams();
 
@@ -27,7 +30,7 @@ function MovimentoLoja() {
             setFilteredMovLojas(movLoja);
         } else {
             const results = movLoja.filter(movLoja =>
-                `Loja ${movLoja.id_mov_loja}`.toLowerCase().includes(searchTerm.toLowerCase())
+                `Loja ${movLoja.idmovimentacao}`.toLowerCase().includes(searchTerm.toLowerCase())
             );
             setFilteredMovLojas(results);
         }
@@ -35,14 +38,27 @@ function MovimentoLoja() {
 
     useEffect(() => {
         carregarMovLojas();
+        carregarProdutos();
     }, []);
 
 
+    async function carregarProdutos() {
+        const respProd = await axios.get('http://localhost:8081/produtos/encontrarProdutos');
+        setProdutos(respProd.data.slice(0, 10));
+    
+      }
+
+
+    const getNomeProduto = (id: number) => {
+        const produto = produtos.find(produto => produto.produto === id);
+        return produto ? produto.prodnome : 'Desconhecido';
+      };
+    
 
     return (
         <ComponentMenu>
             <div className="containerMovimentacaoLoja">
-                <h1 className="tituloMovimentacaoLoja">Gestão de Loja</h1>
+                <h1 className="tituloMovimentacaoLoja">LOJA {param.loja}</h1>
                 <input
                     type="text"
                     placeholder="Informe o número da loja"
@@ -53,27 +69,23 @@ function MovimentoLoja() {
                 <table className="movimentacaoLoja-table">
                     <thead>
                         <tr>
-                            <th>ID MOV</th>
-                            <th>ID LOJA</th>
-                            <th>ID PROD</th>
-                            <th>MOV TIPO</th>
-                            <th>MOV QUANT</th>
+                            <th>PRODUTO</th>
+                            <th>QUANTIDADE</th>
                             <th>VALOR</th>
-                            <th>PONTO REP</th>
-                            <th>VALOR MEDIO</th>
+                            <th>PONTO REPOSIÇÃO</th>
+                            <th>REPOR PRODUTO</th>
+                            <th>TRANSFERIR</th>
                         </tr>
                     </thead>
                     <tbody>
                         {filteredMovLojas.map(movLoja => (
-                            <tr key={movLoja.id_mov_loja}>
-                                <td>{movLoja.id_mov_loja}</td>
-                                <td>{movLoja.fk_id_loja}</td>
-                                <td>{movLoja.fk_id_prod}</td>
-                                <td>{movLoja.mov_tipo}</td>
-                                <td>{movLoja.mov_qtde}</td>
-                                <td>{movLoja.mov_valor}</td>
-                                <td>{movLoja.mov_ponto_rep}</td>
-                                <td>{movLoja.mov_valor_medio}</td>
+                            <tr key={movLoja.idmovimentacao}>
+                                <td>{getNomeProduto(movLoja.fkidprod)}</td>
+                                <td>{movLoja.movqtde}</td>
+                                <td>{movLoja.movvalor}</td>
+                                <td>{movLoja.movpontorep}</td>
+                                <td>O</td>
+                                <td><button>TRANSF</button></td>
                             </tr>
                         ))}
                     </tbody>

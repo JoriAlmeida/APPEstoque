@@ -16,45 +16,39 @@ public class MovimentacaoLojaEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id_mov_loja;
+	private int idmovimentacao;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "fk_id_loja")
+	@JoinColumn(name = "fkidloja")
 	private LojaEntity lojaEntity;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "fk_id_prod")
+	@JoinColumn(name = "fkidprod")
 	private ProdutoEntity produtoEntity;
 
-	private int mov_tipo;
-	private int mov_qtde;
-	private double mov_valor;
-	private int mov_ponto_rep;
+	private int movqtde;
+	private double movvalor;
+	private int movpontorep;
 
 	public MovimentacaoLojaEntity() {
 
 	}
 
 	public MovimentacaoLojaEntity(MovimentacaoLojaDTO movimentacaoLojaDTO, LojaEntity lojaEnity, ProdutoEntity produtoEntity) {
-		this.id_mov_loja = movimentacaoLojaDTO.getId_mov_loja();
+		this.idmovimentacao = movimentacaoLojaDTO.getIdmovimentacao();
 		this.lojaEntity = new LojaEntity();
 		this.produtoEntity = new ProdutoEntity();
-		this.mov_tipo = movimentacaoLojaDTO.getMov_tipo();
-		this.mov_qtde = movimentacaoLojaDTO.getMov_qtde();
-		this.mov_valor = movimentacaoLojaDTO.getMov_valor();
-		this.mov_ponto_rep = movimentacaoLojaDTO.getMov_ponto_rep();
+		this.movqtde = movimentacaoLojaDTO.getMovqtde();
+		this.movvalor = movimentacaoLojaDTO.getMovvalor();
+		this.movpontorep = movimentacaoLojaDTO.getMovpontorep();
 	}
 
-	//this.lojaEntity.setLoja(movimentacaoLojaDTO.getFk_id_loja());
-	//this.produtoEntity.setProduto(movimentacaoLojaDTO.getFk_id_prod());
-
-
-	public int getId_mov_loja() {
-		return id_mov_loja;
+	public int getIdmovimentacao() {
+		return idmovimentacao;
 	}
 
-	public void setId_mov_loja(int id_mov_loja) {
-		this.id_mov_loja = id_mov_loja;
+	public void setIdmovimentacao(int idmovimentacao) {
+		this.idmovimentacao = idmovimentacao;
 	}
 
 	public LojaEntity getLojaEntity() {
@@ -73,36 +67,33 @@ public class MovimentacaoLojaEntity {
 		this.produtoEntity = produtoEntity;
 	}
 
-	public int getMov_tipo() {
-		return mov_tipo;
+	public int getMovqtde() {
+		return movqtde;
 	}
 
-	public void setMov_tipo(int mov_tipo) {
-		this.mov_tipo = mov_tipo;
+	public void setMovqtde(int movqtde) {
+		this.movqtde = movqtde;
 	}
 
-	public int getMov_qtde() {
-		return mov_qtde;
+	public double getMovvalor() {
+		return movvalor;
 	}
 
-	public void setMov_qtde(int mov_qtde) {
-		this.mov_qtde = mov_qtde;
+	public void setMovvalor(double movvalor) {
+		this.movvalor = movvalor;
 	}
 
-	public double getMov_valor() {
-		return mov_valor;
+	public int getMovpontorep() {
+		return movpontorep;
 	}
 
-	public void setMov_valor(double mov_valor) {
-		this.mov_valor = mov_valor;
+	public void setMovpontorep(int movpontorep) {
+		this.movpontorep = movpontorep;
 	}
 
-	public int getMov_ponto_rep() {
-		return mov_ponto_rep;
-	}
 
-	public void setMov_ponto_rep(int mov_ponto_rep) {
-		this.mov_ponto_rep = mov_ponto_rep;
-	}
+
+
+	
 
 }
