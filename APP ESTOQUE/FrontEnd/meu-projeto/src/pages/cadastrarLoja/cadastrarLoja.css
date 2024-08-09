@@ -1,0 +1,91 @@
+.cadastroLoja-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+  }
+  
+  .cadastroLoja-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   }
+  
+   .cadastroLoja-formGroup {
+     margin-bottom: 15px;
+     text-align: left;
+   }
+  
+   .cadastroLoja-label {
+     display: block;
+     margin-bottom: 5px;
+     font-weight: bold;
+     color: indigo;
+   }
+  
+   .cadastroLoja-input {
+     width: 100%;
+     padding: 10px;
+     border: 1px solid #ddd;
+     border-radius: 4px;
+     box-sizing: border-box;
+     font-family: 'SuaFonteDesejada', sans-serif;
+   }
+  
+  
+   .cadastroLoja-buttonContainer {
+     display: flex;
+     justify-content: space-between;
+     margin-top: 20px;
+   }
+  
+   .cadastroLoja-actionButton {
+     padding: 10px 20px;
+     border: none;
+     background-color: #007bff;
+     color: white;
+     border-radius: 4px;
+     cursor: pointer;
+     transition: background-color 0.3s ease;
+   }
+  
+   .cadastroLoja-actionButton:hover {
+     background-color: #0056b3;
+   }
+  
+   .cadastroLoja-cancelButton {
+     background-color: #dc3545;
+   }
+  
+   .cadastroLoja-cancelButton:hover {
+     background-color: #c82333;
+   }
+  
+  
+  .cadastroLoja-input.empty {
+     background-color: #f0f0f0;
+     opacity: 50%;
+     border: 1px solid;
+     transition: background-color 0.3s ease;
+   }
+  
+   .cadastroLoja-input.empty:focus {
+     background-color: #ffffff;
+     border-color: indigo;
+     outline: none;
+   }
+  
+   .cadastroLoja-input.filled {
+     background-color: #fff;
+   }
+  
+   .cadastroLoja-titulo {
+     display: flex;
+     justify-content: center;
+     color: indigo;
+   }

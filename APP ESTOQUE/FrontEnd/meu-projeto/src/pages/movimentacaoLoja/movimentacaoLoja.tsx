@@ -6,7 +6,8 @@ import { Produto } from '../../Models/Produto';
 import { Lojas } from '../../Models/Lojas';
 import ComponentMenu from '../../Component/ComponentMenu/ComponentMenu';
 import './movimentacaoLoja.css';
-
+import { TbArrowsLeftRight } from "react-icons/tb";
+import { FaCircle } from "react-icons/fa";
 
 
 function MovimentoLoja() {
@@ -45,15 +46,15 @@ function MovimentoLoja() {
     async function carregarProdutos() {
         const respProd = await axios.get('http://localhost:8081/produtos/encontrarProdutos');
         setProdutos(respProd.data.slice(0, 10));
-    
-      }
+
+    }
 
 
     const getNomeProduto = (id: number) => {
         const produto = produtos.find(produto => produto.produto === id);
         return produto ? produto.prodnome : 'Desconhecido';
-      };
-    
+    };
+
 
     return (
         <ComponentMenu>
@@ -84,8 +85,18 @@ function MovimentoLoja() {
                                 <td>{movLoja.movqtde}</td>
                                 <td>{movLoja.movvalor}</td>
                                 <td>{movLoja.movpontorep}</td>
-                                <td>O</td>
-                                <td><button>TRANSF</button></td>
+                                <td>
+                                    <FaCircle 
+                                        style={{
+                                            color: movLoja.movqtde < movLoja.movpontorep ? 'red' : 'green'
+                                        }} 
+                                    />
+                                </td>
+                                <td>
+                                    <button onClick={() => navegacao('../transferenciaEstoque/' + param.id)} style={{ border: 'none', background: 'none', padding: 0, cursor: 'pointer', fontSize: 15 }}>
+                                        <TbArrowsLeftRight className='iconetransferencia' />
+                                    </button>
+                                </td>
                             </tr>
                         ))}
                     </tbody>

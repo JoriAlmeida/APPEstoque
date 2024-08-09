@@ -6,6 +6,7 @@ import Fornecedores from './pages/fornecedores/fornecedores';
 import Menu from './pages/menu/menu';
 import CadastroProduto from './pages/cadastrarProdutos/cadastrarProdutos';
 import CadastroFornecedor from './pages/cadastrarFornecedores/cadastrarFornecedores';
+import CadastroLoja from './pages/cadastrarLoja/cadastrarLoja';
 import EditarFornecedor from './pages/editarFornecedor/editarFornecedor';
 import EditarProdutos from './pages/editarProdutos/editarProdutos';
 import Fornecedorxproduto from './pages/fornecedorxproduto/fornecedorxproduto';
@@ -22,6 +23,7 @@ function App() {
       <Route path="//menu/:id" element={<Menu />} />
       <Route path="/produtos/:id" element={<Produtos />} />
       <Route path="/cadastroprodutos/:id" element={<CadastroProduto/>} />
+      <Route path="/cadastrarLoja/:id" element={<CadastroLoja/>} />
       <Route path="/fornecedores/:id" element={<Fornecedores/>} />
       <Route path="/editarFornecedor/:id/:forn" element={<EditarFornecedor/>} />
       <Route path="/editarProdutos/:id/:prod" element={<EditarProdutos/>} />

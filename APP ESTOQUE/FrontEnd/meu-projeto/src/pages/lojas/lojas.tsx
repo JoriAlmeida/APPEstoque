@@ -4,6 +4,9 @@ import axios from 'axios';
 import { Lojas } from '../../Models/Lojas';
 import ComponentMenu from '../../Component/ComponentMenu/ComponentMenu';
 import './lojas.css';
+import { FaRegEdit, FaPlusCircle, FaStore } from "react-icons/fa";
+
+
 
 function Loja() {
 
@@ -39,13 +42,19 @@ function Loja() {
     <ComponentMenu>
       <div className="containerLoja">
         <h1 className="tituloLoja">Lojas</h1>
-        <input
-          type="text"
-          placeholder="Informe o número da loja"
-          className="search-inputProduto"
-          value={searchTerm}
-          onChange={e => setSearchTerm(e.target.value)}
-        />
+        <div className="boxSuperiorProduto">
+          <input
+            type="text"
+            placeholder="Informe o número da loja"
+            className="search-inputProduto"
+            value={searchTerm}
+            onChange={e => setSearchTerm(e.target.value)}
+          />
+
+          <div className="botaoCadastroProduto">
+            <FaPlusCircle className="action-button" onClick={() => navegacao('../cadastrarLoja/' + param.id)} />
+          </div>
+        </div>
         <table className="loja-table">
           <thead>
             <tr>
@@ -53,7 +62,8 @@ function Loja() {
               <th>Proprietario</th>
               <th>Telefone</th>
               <th>Endereço</th>
-              <th>Movimentação</th>
+              <th>Editar</th>
+              <th>Exibir</th>
             </tr>
           </thead>
           <tbody>
@@ -63,7 +73,8 @@ function Loja() {
                 <td>{lojas.loja_nome}</td>
                 <td>{lojas.loja_endereco}</td>
                 <td>{lojas.loja_contato}</td>
-                <td><button onClick={() => navegacao('../movimentacaoLoja/' + param.id + "/" + lojas.loja)}>Editar</button></td>
+                <td onClick={() => navegacao('../editarProdutos/' + param.id + "/" )}><FaRegEdit /></td>
+                <td onClick={() => navegacao('../movimentacaoLoja/' + param.id + "/" + lojas.loja)}><FaStore /></td>
               </tr>
             ))}
           </tbody>

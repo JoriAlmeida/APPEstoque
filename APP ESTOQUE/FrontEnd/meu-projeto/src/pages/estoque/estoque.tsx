@@ -7,6 +7,7 @@ import ComponentMenu from '../../Component/ComponentMenu/ComponentMenu';
 import './estoque.css';
 import { Produto } from '../../Models/Produto';
 import { FaRegEdit, FaPlusCircle } from "react-icons/fa";
+import { TbArrowsLeftRight } from "react-icons/tb";
 
 function Estoques() {
 
@@ -108,7 +109,11 @@ function Estoques() {
                 <td>{estoque.estoquevalor}</td>
                 <td>{getPontoRep(estoque.estoqueidprod)}</td>
                 <td>{estoque.estoquevalor / estoque.estoqueqtd}</td>
-                <td><button onClick={() => navegacao('../transferenciaEstoque/' + param.id)}>Transf</button></td>
+                <td>
+                  <button onClick={() => navegacao('../transferenciaEstoque/' + param.id)} style={{ border: 'none', background: 'none', padding: 0, cursor: 'pointer', fontSize: 15 }}>
+                    <TbArrowsLeftRight className='iconetransferencia' />
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
