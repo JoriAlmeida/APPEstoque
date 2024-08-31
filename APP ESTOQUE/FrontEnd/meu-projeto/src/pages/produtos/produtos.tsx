@@ -7,6 +7,7 @@ import ComponentMenu from '../../Component/ComponentMenu/ComponentMenu';
 import './produtos.css';
 import { FaRegEdit, FaPlusCircle } from "react-icons/fa";
 
+
 function Produtos() {
   const navegacao = useNavigate();
   const param = useParams();
@@ -14,17 +15,6 @@ function Produtos() {
   const [produto, setProduto] = useState<Array<Produto>>([]);
   const [fornecedores, setFornecedores] = useState<Array<Fornecedor>>([]);
   const [filteredProdutos, setFilteredProdutos] = useState<Array<Produto>>([]);
-
-  async function carregarProdutos() {
-    const resp = await axios.get('http://localhost:8081/produtos/encontrarProdutos');
-    const respForn = await axios.get('http://localhost:8081/fornecedor/encontrarFornecedores');
-    setProduto(resp.data);
-    setFornecedores(respForn.data.slice(0, 10));
-    setFilteredProdutos(resp.data);
-  }
-  useEffect(() => {
-    carregarProdutos();
-  }, []);
 
 
 
@@ -34,6 +24,22 @@ function Produtos() {
     );
     setFilteredProdutos(results);
   }, [searchTerm, produto]);
+
+
+  async function carregarProdutos() {
+    const resp = await axios.get('http://localhost:8081/produtos/encontrarProdutos');
+    const respForn = await axios.get('http://localhost:8081/fornecedor/encontrarFornecedores');
+    setProduto(resp.data);
+    setFornecedores(respForn.data);
+    setFilteredProdutos(resp.data);
+  }
+  useEffect(() => {
+    carregarProdutos();
+  }, []);
+
+
+
+
 
 
 

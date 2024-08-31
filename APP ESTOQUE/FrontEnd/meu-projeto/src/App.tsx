@@ -13,6 +13,7 @@ import Fornecedorxproduto from './pages/fornecedorxproduto/fornecedorxproduto';
 import MovimentoLoja from './pages/movimentacaoLoja/movimentacaoLoja';
 import MovimentoEstoque from './pages/movimentacaoEstoque/movimentacaoEstoque';
 import TransferenciaEstoque from './pages/transferenciaEstoque/transferenciaEstoque';
+import TransferenciaLojas from './pages/transferenciaLojas/transferenciaLojas';
 import Estoque from './pages/estoque/estoque';
 import Lojas from './pages/lojas/lojas'
 
@@ -31,7 +32,8 @@ function App() {
       <Route path="/cadastrarFornecedores/:id" element={<CadastroFornecedor/>} />
       <Route path="/movimentacaoLoja/:id/:loja" element={<MovimentoLoja/>} />
       <Route path="/movimentacaoEstoque/:id" element={<MovimentoEstoque/>} />
-      <Route path="/transferenciaEstoque/:id" element={<TransferenciaEstoque/>} />
+      <Route path="/transferenciaEstoque/:id/:produto" element={<TransferenciaEstoque/>} />
+      <Route path="/transferenciaLojas/:id/:loja/:produto" element={<TransferenciaLojas/>} />
       <Route path="/estoque/:id" element={<Estoque/>} />
       <Route path="/loja/:id" element={<Lojas/>} />
 

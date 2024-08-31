@@ -78,6 +78,12 @@ function TransferenciaEstoque() {
         setEstoquevalor(valorProduto);
         setValorTotal(valorProduto * estoqueqtd);
     }, [estoqueidprod, estoqueqtd, produtos]);
+    
+
+    const getNomeProduto = (id: number) => {
+        const produto = produtos.find(produto => produto.produto === id);
+        return produto ? produto.prodnome : 'Desconhecido';
+      };
 
     return (
         <ComponentMenu>

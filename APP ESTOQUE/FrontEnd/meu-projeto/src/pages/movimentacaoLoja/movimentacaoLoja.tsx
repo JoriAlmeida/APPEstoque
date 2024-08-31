@@ -31,11 +31,13 @@ function MovimentoLoja() {
             setFilteredMovLojas(movLoja);
         } else {
             const results = movLoja.filter(movLoja =>
-                `Loja ${movLoja.idmovimentacao}`.toLowerCase().includes(searchTerm.toLowerCase())
+                `Loja ${movLoja.fkidprod}`.toLowerCase().includes(searchTerm.toLowerCase())
             );
             setFilteredMovLojas(results);
         }
     }, [searchTerm, movLoja]);
+
+
 
     useEffect(() => {
         carregarMovLojas();
@@ -45,7 +47,7 @@ function MovimentoLoja() {
 
     async function carregarProdutos() {
         const respProd = await axios.get('http://localhost:8081/produtos/encontrarProdutos');
-        setProdutos(respProd.data.slice(0, 10));
+        setProdutos(respProd.data);
 
     }
 
@@ -56,17 +58,24 @@ function MovimentoLoja() {
     };
 
 
+
+
     return (
         <ComponentMenu>
             <div className="containerMovimentacaoLoja">
                 <h1 className="tituloMovimentacaoLoja">LOJA {param.loja}</h1>
-                <input
-                    type="text"
-                    placeholder="Informe o número da loja"
-                    className="search-inputMovimentacaoLoja"
-                    value={searchTerm}
-                    onChange={e => setSearchTerm(e.target.value)}
-                />
+                <div className="boxSuperiorMovimentacaoLoja">
+                    <input
+                        type="text"
+                        placeholder="Informe o número da loja"
+                        className="search-inputMovimentacaoLoja"
+                        value={searchTerm}
+                        onChange={e => setSearchTerm(e.target.value)}
+                    />
+                    <div>
+
+                    </div>
+                </div>
                 <table className="movimentacaoLoja-table">
                     <thead>
                         <tr>
@@ -86,14 +95,16 @@ function MovimentoLoja() {
                                 <td>{movLoja.movvalor}</td>
                                 <td>{movLoja.movpontorep}</td>
                                 <td>
-                                    <FaCircle 
+                                    <FaCircle
                                         style={{
-                                            color: movLoja.movqtde < movLoja.movpontorep ? 'red' : 'green'
-                                        }} 
+                                            color: movLoja.movqtde < movLoja.movpontorep ? 'red' : 'green',
+                                            border: '1px solid black',
+                                            borderRadius: '50%'
+                                        }}
                                     />
                                 </td>
                                 <td>
-                                    <button onClick={() => navegacao('../transferenciaEstoque/' + param.id)} style={{ border: 'none', background: 'none', padding: 0, cursor: 'pointer', fontSize: 15 }}>
+                                    <button onClick={() => navegacao('../transferenciaLojas/' + param.id + '/'+ movLoja.fkidloja +'/'+ movLoja.fkidprod)} style={{ border: 'none', background: 'none', padding: 0, cursor: 'pointer', fontSize: 15 }}>
                                         <TbArrowsLeftRight className='iconetransferencia' />
                                     </button>
                                 </td>
@@ -101,9 +112,6 @@ function MovimentoLoja() {
                         ))}
                     </tbody>
                 </table>
-                <div className="button-containerMovimentacaoLoja">
-                    <button className="action-buttonMovimentacaoLoja" onClick={() => navegacao('../cadastroProdutos')}>Cadastrar Produto</button>
-                </div>
             </div>
         </ComponentMenu>
     )

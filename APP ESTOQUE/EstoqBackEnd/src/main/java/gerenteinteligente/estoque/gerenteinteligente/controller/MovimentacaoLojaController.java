@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import gerenteinteligente.estoque.gerenteinteligente.dtos.MovimentacaoLojaDTO;
 import gerenteinteligente.estoque.gerenteinteligente.entity.LojaEntity;
@@ -43,14 +44,6 @@ public class MovimentacaoLojaController {
         return movimentacaoLojaService.encontrarMovimentacaoLojasPorLoja(fkIdLoja);
     }
     
-    /*
-    @PostMapping(value = "/cadastrarMovimentacao")
-    public ResponseEntity<MovimentacaoLojaDTO> cadastrarMovimentacaoLoja(@RequestBody MovimentacaoLojaDTO movimentacaoLojaDTO) {
-        MovimentacaoLojaDTO novaMovimentacaoLoja = movimentacaoLojaService.cadastrarMovimentacaoLoja(movimentacaoLojaDTO);
-        return new ResponseEntity<>(novaMovimentacaoLoja, HttpStatus.CREATED);
-    }
-    */
-    
     @PostMapping("/cadastrarMovimentacao")
     public ResponseEntity<MovimentacaoLojaDTO> cadastrarMovimentacaoLoja(@RequestBody MovimentacaoLojaDTO movimentacaoLojaDTO) {
         try {
@@ -60,6 +53,17 @@ public class MovimentacaoLojaController {
             return ResponseEntity.badRequest().body(null);
         }
     
+    }
+    
+    @PostMapping("/transferir")
+    public ResponseEntity<MovimentacaoLojaDTO> transferirEstoque(
+            @RequestParam int fkidprod,
+            @RequestParam int origem,
+            @RequestParam int fkidloja,
+            @RequestParam int movqtde) {
+
+        MovimentacaoLojaDTO movimentacaoLojaDTO = movimentacaoLojaService.transferirEstoque(fkidprod, origem, fkidloja, movqtde);
+        return ResponseEntity.ok(movimentacaoLojaDTO);
     }
 	
 }

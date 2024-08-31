@@ -91,6 +91,57 @@ public class MovimentacaoLojaService {
 	    movimentacaoLojaEntity = movimentacaoLojaRepository.save(movimentacaoLojaEntity);
 	    return new MovimentacaoLojaDTO(movimentacaoLojaEntity);
 	}
-}
+	
+	
+	  @Transactional
+	    public MovimentacaoLojaDTO transferirEstoque(int fkidprod, int origem, int fkidloja, int movqtde) {
+	        // Verifica se as lojas existem
+	        LojaEntity lojaOrigem = lojaRepository.findById(fkidloja)
+	                .orElseThrow(() -> new IllegalArgumentException("Loja de origem não encontrada"));
+	        LojaEntity lojaDestino = lojaRepository.findById(fkidloja)
+	                .orElseThrow(() -> new IllegalArgumentException("Loja de destino não encontrada"));
+
+	        // Verifica se o produto existe
+	        ProdutoEntity produtoEntity = produtoRepository.findById(fkidprod)
+	                .orElseThrow(() -> new IllegalArgumentException("Produto não encontrado"));
+
+	        // Verifica se a loja de origem tem o produto com a quantidade suficiente
+	        MovimentacaoLojaEntity movimentacaoOrigem = movimentacaoLojaRepository
+	                .findByProdutoEntityAndLojaEntity(produtoEntity, lojaOrigem)
+	                .orElseThrow(() -> new IllegalArgumentException("Produto não encontrado na loja de origem"));
+
+	        if (movimentacaoOrigem.getMovqtde() < movqtde) {
+	            throw new IllegalArgumentException("Quantidade insuficiente na loja de origem");
+	        }
+
+	        // Atualiza a quantidade na loja de origem
+	        movimentacaoOrigem.setMovqtde(movimentacaoOrigem.getMovqtde() - movqtde);
+	        movimentacaoLojaRepository.save(movimentacaoOrigem);
+
+	        // Verifica se a loja de destino já possui o produto
+	        MovimentacaoLojaEntity movimentacaoDestino = movimentacaoLojaRepository
+	                .findByProdutoEntityAndLojaEntity(produtoEntity, lojaDestino)
+	                .orElse(null);
+
+	        if (movimentacaoDestino != null) {
+	            // Atualiza a quantidade na loja de destino
+	            movimentacaoDestino.setMovqtde(movimentacaoDestino.getMovqtde() + movqtde);
+	        } else {
+	            // Cadastra o produto na loja de destino
+	            movimentacaoDestino = new MovimentacaoLojaEntity();
+	            movimentacaoDestino.setLojaEntity(lojaDestino);
+	            movimentacaoDestino.setProdutoEntity(produtoEntity);
+	            movimentacaoDestino.setMovqtde(movqtde);
+	            movimentacaoDestino.setMovvalor(produtoEntity.getProdvalor());
+	            movimentacaoDestino.setMovpontorep(produtoEntity.getProdpontorep());
+	        }
+
+	        movimentacaoDestino = movimentacaoLojaRepository.save(movimentacaoDestino);
+	        return new MovimentacaoLojaDTO(movimentacaoDestino);
+	    }
+	}
+	
+	
+
 
 

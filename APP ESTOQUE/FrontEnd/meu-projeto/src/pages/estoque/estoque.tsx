@@ -110,7 +110,7 @@ function Estoques() {
                 <td>{getPontoRep(estoque.estoqueidprod)}</td>
                 <td>{estoque.estoquevalor / estoque.estoqueqtd}</td>
                 <td>
-                  <button onClick={() => navegacao('../transferenciaEstoque/' + param.id)} style={{ border: 'none', background: 'none', padding: 0, cursor: 'pointer', fontSize: 15 }}>
+                  <button onClick={() => navegacao('../transferenciaEstoque/' + param.id + '/'+ estoque.estoqueidprod)} style={{ border: 'none', background: 'none', padding: 0, cursor: 'pointer', fontSize: 15 }}>
                     <TbArrowsLeftRight className='iconetransferencia' />
                   </button>
                 </td>

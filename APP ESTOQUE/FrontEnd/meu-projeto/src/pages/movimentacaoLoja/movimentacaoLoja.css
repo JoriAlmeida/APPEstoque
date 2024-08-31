@@ -13,7 +13,7 @@
 }
 
 .search-inputMovimentacaoLoja {
-  margin-left: 26px;
+  margin-left: 8px;
   padding: 10px;
   width: 80%;
   max-width: 800px;
@@ -71,3 +71,9 @@
   margin-right: 8px;
 }
 
+
+.boxSuperiorMovimentacaoLoja{
+  display: flex;
+  justify-content: center;
+  justify-content: space-around;
+}
